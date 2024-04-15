@@ -1,0 +1,6 @@
+{
+  "TimeSlot": {
+    "WeekDay": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+    "Period": ["1st", "2nd", "3rd", "4th","5th","Major1","Major2"]
+  }
+}

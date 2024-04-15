@@ -1,0 +1,6 @@
+{
+  "TimeTable": {
+    "Col": ["WeekDay", "Period"],
+    "Row": ["Department", "Grade"]
+  }
+}
