@@ -18,7 +18,7 @@ const db = admin.firestore();
 app.use(bodyParser.json());
 
 // 授業取得エンドポイント
-app.get('/api/courses', async (req: Request, res: Response) => {
+app.get('/api/courses/:id', async (req: Request, res: Response) => {
     try {
         const coursesRef = db.collection('courses');
         const snapshot = await coursesRef.get();
@@ -37,15 +37,48 @@ res.status(200).json(courses);
     }
 });
 
-// 授業作成エンドポイント
-app.post('/api/courses/add', async (req: Request, res: Response) => {
+// 授業作成APIエンドポイント
+app.post('/api/courses/add', async (req, res) => {
     try {
-        const newData = req.body; // リクエストボディからデータを取得
-        // データをFirestoreに追加
-        const docRef = db.collection('courses').doc('mechanicalBasics');
-        await docRef.set(newData);
-        console.log('データがFirestoreに追加されました:', newData); // データが追加されたことをログに出力
-        res.status(200).send('データが正常に追加されました');
+        let newDataArray = [];
+        if (Array.isArray(req.body)) {
+            newDataArray = req.body;
+        } else if (typeof req.body === 'object' && req.body !== null) {
+            newDataArray = [req.body];
+        } else {
+            console.error('無効なリクエストボディです');
+            return res.status(400).send('無効なリクエストボディです');
+        }
+        // データ配列内の各オブジェクトをFirestoreに追加
+        const promises = newDataArray.map(async (newData) => {
+            let docId;
+            const { name, grade, department, departments, instructor, room } = newData;
+            if (Array.isArray(departments) && departments.length > 0) {
+                docId = `${name}${departments.length}学科${grade}`;
+            } else if (typeof department === 'string' && department.trim() !== '') {
+                docId = `${name}${department}${grade}`;
+            } else {
+                console.error('departmentまたはdepartmentsが適切に指定されていません');
+                return null;
+            }
+            if (!docId) {
+                console.error('ドキュメントIDを生成できませんでした:', newData);
+                return null;
+            }
+            const docRef = db.collection('courses').doc(docId); // ドキュメントIDを指定してドキュメント参照を取得
+            const docSnapshot = await docRef.get(); // ドキュメントの存在を確認
+            if (docSnapshot.exists) {
+                console.error('ドキュメントIDが重複しています:', docId);
+                return null;
+            }
+            await docRef.set(newData);
+            console.log('データがFirestoreに追加されました'); // データが追加されたことをログに出力
+            return docId; // 追加したドキュメントのIDを返す
+        });
+        // 全てのデータ追加のPromiseを待機し、追加されたドキュメントIDを取得
+        const docIds = await Promise.all(promises);
+        // 追加されたドキュメントIDの配列をクライアントに返す
+        res.status(200).json(docIds.filter(id => id !== null)); // nullを除外して返す
     } catch (error) {
         console.error('データの追加中にエラーが発生しました:', error);
         res.status(500).send('データの追加中にエラーが発生しました');
@@ -60,7 +93,6 @@ app.put('/api/courses/update/:id', async (req: Request, res: Response) => {
 
         const docRef = db.collection('courses').doc(courseId);
         const doc = await docRef.get();
-
         if (doc.exists) {
             // ドキュメントが存在する場合は更新する
             await docRef.update(newData);
@@ -84,7 +116,6 @@ app.delete('/api/courses/deleteAll', async (req: Request, res: Response) => {
                 doc.ref.delete();
             });
         });
-
         console.log('全てのデータがFirestoreから削除されました'); // ログに削除メッセージを出力
         res.status(200).send('全てのデータが正常に削除されました');
     } catch (error) {
@@ -126,8 +157,45 @@ app.get('/api/timetables/detail/:id', async (req: Request, res: Response) => {
 
 // 時間割作成エンドポイント
 app.post('/api/timetables/create', async (req: Request, res: Response) => {
-  // 時間割の作成処理を実装する
+    try {
+        const coursesSnapshot = await db.collection('Courses').limit(1).get(); // Firebaseから授業データを取得
+        if (coursesSnapshot.empty) {
+            throw new Error('No courses found in Firestore');
+        }
+
+        const courseData = coursesSnapshot.docs[0].data(); // 最初の授業データを取得
+
+        // 時間割を格納する配列
+        const timetable: { [key: string]: any }[] = [];
+
+        // 曜日ごとにデータを整理
+        const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+        daysOfWeek.forEach(day => {
+            const dayData: { [key: string]: any } = {}; // 曜日ごとのデータを作成
+            const grades = ['1年', '2年', '3年', '4年', '5年', '専1', '専2'];
+            grades.forEach(grade => {
+                const gradeData: { [key: string]: any } = {}; // 学年ごとのデータを作成
+                const classes = ['ME', 'IE', 'CA'];
+                classes.forEach(cls => {
+                    const classData: { [key: string]: any } = {}; // クラスごとのデータを作成
+                    const timeSlots = ['1,2限', '3,4限', '5,6限', '7,8限'];
+                    timeSlots.forEach(slot => {
+                        classData[slot] = { course: courseData }; // 授業データを格納
+                    });
+                    gradeData[cls] = classData; // クラスデータを学年データに追加
+                });
+                dayData[grade] = gradeData; // 学年データを曜日データに追加
+            });
+            timetable.push({ [day]: dayData }); // 曜日データを時間割に追加
+        });
+
+        res.status(200).json(timetable); // 完成した時間割データを返す
+    } catch (error) {
+        console.error('時間割の作成中にエラーが発生しました:', error);
+        res.status(500).send('時間割の作成中にエラーが発生しました');
+    }
 });
+
 
 // 時間割更新エンドポイント
 app.put('/api/timetables/update/:id', async (req: Request, res: Response) => {
