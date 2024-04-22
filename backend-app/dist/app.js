@@ -188,7 +188,7 @@ app.get('/api/timetables', (req, res) => __awaiter(void 0, void 0, void 0, funct
 app.get('/api/timetables/detail/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // 時間割の詳細情報取得処理を実装する
 }));
-//時間割作成APIエンドポイント
+// 時間割作成APIエンドポイント
 app.post('/api/timetables/create', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const startTime = performance.now(); // 処理開始時刻を記録
@@ -196,28 +196,30 @@ app.post('/api/timetables/create', (req, res) => __awaiter(void 0, void 0, void 
         if (coursesSnapshot.empty) {
             throw new Error('No courses found in Firestore');
         }
-        const courseData = coursesSnapshot.docs.map(doc => doc.data()); // 授業データを取得
         // 時間割を格納する配列
         const timetable = [];
         // 曜日ごとにデータを整理
         const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
         for (const day of daysOfWeek) {
             const dayData = {}; // 曜日ごとのデータを作成
-            const grades = ['1年', '2年', '3年', '4年', '5年', '専1', '専2'];
+            const grades = ['1', '2', '3', '4', '5', '専1', '専2'];
             for (const grade of grades) {
                 const gradeData = {}; // 学年ごとのデータを作成
                 const classes = ['ME', 'IE', 'CA'];
                 for (const cls of classes) {
                     const classData = {}; // クラスごとのデータを作成
                     const timeSlots = ['1,2限', '3,4限', '5,6限', '7,8限'];
+                    const usedCourses = {}; // 重複チェック用のオブジェクト
                     for (const slot of timeSlots) {
-                        // ランダムに授業を選択
-                        const randomCourse = courseData[Math.floor(Math.random() * courseData.length)];
-                        if (randomCourse.department === cls && randomCourse.grade === grade) {
-                            classData[slot] = { course: randomCourse }; // 授業データを格納
+                        const courseSnapshot = coursesSnapshot.docs.find(doc => doc.data().grade === grade && doc.data().department === cls &&
+                            !usedCourses[doc.id] // 既に使用済みの授業かどうかをチェック
+                        );
+                        if (courseSnapshot) {
+                            usedCourses[courseSnapshot.id] = true; // 使用済みとしてマーク
+                            classData[slot] = { course: courseSnapshot.data() }; // 授業データを格納
                         }
                         else {
-                            classData[slot] = null; // データが見つからない場合はnullを格納
+                            console.error(`No course found for ${cls} ${grade}`);
                         }
                     }
                     gradeData[cls] = classData; // クラスデータを学年データに追加

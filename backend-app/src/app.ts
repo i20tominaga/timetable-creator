@@ -157,42 +157,39 @@ app.get('/api/timetables/detail/:id', async (req: Request, res: Response) => {
 });
 
 
-//時間割作成APIエンドポイント
-app.post('/api/timetables/create', async (req, res) => {
+// 時間割作成APIエンドポイント
+app.post('/api/timetables/create', async (req: Request, res: Response) => {
     try {
         const startTime = performance.now(); // 処理開始時刻を記録
-        const coursesSnapshot = await db.collection('courses').get(); // Firebaseから授業データを全て取得
+        const coursesSnapshot = await db.collection('courses').get(); // Firebaseから授業データを取得
         if (coursesSnapshot.empty) {
             throw new Error('No courses found in Firestore');
         }
 
-        const coursesData = coursesSnapshot.docs.map(doc => doc.data()); // 授業データを配列に変換
-
-        // 曜日ごとのデータを整理
-        const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+        // 時間割を格納する配列
         const timetable: { [key: string]: any }[] = [];
-
-        // 各曜日ごとに処理
+        // 曜日ごとにデータを整理
+        const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
         for (const day of daysOfWeek) {
             const dayData: { [key: string]: any } = {}; // 曜日ごとのデータを作成
-
-            // 各学年ごとに処理
-            const grades = ['1年', '2年', '3年', '4年', '5年', '専1', '専2'];
+            const grades = ['1', '2', '3', '4', '5', '専1', '専2'];
             for (const grade of grades) {
                 const gradeData: { [key: string]: any } = {}; // 学年ごとのデータを作成
-
-                // 各学科ごとに処理
                 const classes = ['ME', 'IE', 'CA'];
                 for (const cls of classes) {
                     const classData: { [key: string]: any } = {}; // クラスごとのデータを作成
                     const timeSlots = ['1,2限', '3,4限', '5,6限', '7,8限'];
-
-                    // 各コマごとに処理
+                    const usedCourses: { [key: string]: boolean } = {}; // 重複チェック用のオブジェクト
                     for (const slot of timeSlots) {
-                        // ここで授業データをランダムに選択して格納する例
-                        const randomCourse = coursesData[Math.floor(Math.random() * coursesData.length)];
-                        if (randomCourse.department === cls) {
-                            classData[slot] = { course: randomCourse }; // 授業データを格納
+                        const courseSnapshot = coursesSnapshot.docs.find(doc =>
+                            doc.data().grade === grade && doc.data().department === cls &&
+                            !usedCourses[doc.id] // 既に使用済みの授業かどうかをチェック
+                        );
+                        if (courseSnapshot) {
+                            usedCourses[courseSnapshot.id] = true; // 使用済みとしてマーク
+                            classData[slot] = { course: courseSnapshot.data() }; // 授業データを格納
+                        } else {
+                            console.error(`No course found for ${cls} ${grade}`);
                         }
                     }
                     gradeData[cls] = classData; // クラスデータを学年データに追加
@@ -201,14 +198,9 @@ app.post('/api/timetables/create', async (req, res) => {
             }
             timetable.push({ [day]: dayData }); // 曜日データを時間割に追加
         }
-
         const endTime = performance.now(); // 処理終了時刻を記録
         const executionTime = endTime - startTime; // 処理時間を計算
         console.log(`Execution time: ${executionTime}ms`); // 処理時間をログに出力
-
-        // JSONファイルに出力
-        fs.writeFileSync('Test.json', JSON.stringify(timetable, null, 2));
-
         res.status(200).json(timetable); // 完成した時間割データを返す
     } catch (error) {
         console.error('時間割の作成中にエラーが発生しました:', error);
