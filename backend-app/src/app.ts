@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import * as admin from 'firebase-admin';
 import * as bodyParser from 'body-parser';
+import fs from 'fs';
 
 const serviceAccount = require('/Users/tominagaayumu/Downloads/秘密鍵/testdata-684fc-firebase-adminsdk-9vujs-cfd14231bd.json'); // Firebaseのサービスアカウントキーのパスを指定
 const app = express();
@@ -155,39 +156,58 @@ app.get('/api/timetables/detail/:id', async (req: Request, res: Response) => {
   // 時間割の詳細情報取得処理を実装する
 });
 
-// 時間割作成エンドポイント
-app.post('/api/timetables/create', async (req: Request, res: Response) => {
+
+//時間割作成APIエンドポイント
+app.post('/api/timetables/create', async (req, res) => {
     try {
-        const coursesSnapshot = await db.collection('Courses').limit(1).get(); // Firebaseから授業データを取得
+        const startTime = performance.now(); // 処理開始時刻を記録
+        const coursesSnapshot = await db.collection('courses').get(); // Firebaseから授業データを全て取得
         if (coursesSnapshot.empty) {
             throw new Error('No courses found in Firestore');
         }
 
-        const courseData = coursesSnapshot.docs[0].data(); // 最初の授業データを取得
+        const coursesData = coursesSnapshot.docs.map(doc => doc.data()); // 授業データを配列に変換
 
-        // 時間割を格納する配列
+        // 曜日ごとのデータを整理
+        const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
         const timetable: { [key: string]: any }[] = [];
 
-        // 曜日ごとにデータを整理
-        const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-        daysOfWeek.forEach(day => {
+        // 各曜日ごとに処理
+        for (const day of daysOfWeek) {
             const dayData: { [key: string]: any } = {}; // 曜日ごとのデータを作成
+
+            // 各学年ごとに処理
             const grades = ['1年', '2年', '3年', '4年', '5年', '専1', '専2'];
-            grades.forEach(grade => {
+            for (const grade of grades) {
                 const gradeData: { [key: string]: any } = {}; // 学年ごとのデータを作成
+
+                // 各学科ごとに処理
                 const classes = ['ME', 'IE', 'CA'];
-                classes.forEach(cls => {
+                for (const cls of classes) {
                     const classData: { [key: string]: any } = {}; // クラスごとのデータを作成
                     const timeSlots = ['1,2限', '3,4限', '5,6限', '7,8限'];
-                    timeSlots.forEach(slot => {
-                        classData[slot] = { course: courseData }; // 授業データを格納
-                    });
+
+                    // 各コマごとに処理
+                    for (const slot of timeSlots) {
+                        // ここで授業データをランダムに選択して格納する例
+                        const randomCourse = coursesData[Math.floor(Math.random() * coursesData.length)];
+                        if (randomCourse.department === cls) {
+                            classData[slot] = { course: randomCourse }; // 授業データを格納
+                        }
+                    }
                     gradeData[cls] = classData; // クラスデータを学年データに追加
-                });
+                }
                 dayData[grade] = gradeData; // 学年データを曜日データに追加
-            });
+            }
             timetable.push({ [day]: dayData }); // 曜日データを時間割に追加
-        });
+        }
+
+        const endTime = performance.now(); // 処理終了時刻を記録
+        const executionTime = endTime - startTime; // 処理時間を計算
+        console.log(`Execution time: ${executionTime}ms`); // 処理時間をログに出力
+
+        // JSONファイルに出力
+        fs.writeFileSync('Test.json', JSON.stringify(timetable, null, 2));
 
         res.status(200).json(timetable); // 完成した時間割データを返す
     } catch (error) {
@@ -195,6 +215,8 @@ app.post('/api/timetables/create', async (req: Request, res: Response) => {
         res.status(500).send('時間割の作成中にエラーが発生しました');
     }
 });
+
+
 
 
 // 時間割更新エンドポイント

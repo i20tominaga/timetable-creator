@@ -1,0 +1,560 @@
+[
+  {
+    "Monday": {
+      "1年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "2年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "3年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "4年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "5年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "専1": {
+        "ME": {
+          "1,2限": {
+            "course": {
+              "instructor": "張間",
+              "grade": "専1",
+              "name": "流体制御工学△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          },
+          "3,4限": {
+            "course": {
+              "rooms": [
+                "地域生涯",
+                "講義室3"
+              ],
+              "grade": "専1",
+              "name": "コンピュータ総合演習",
+              "department": "ME",
+              "instructors": [
+                "池田光",
+                "池田将"
+              ]
+            }
+          }
+        },
+        "IE": {
+          "7,8限": {
+            "course": {
+              "instructor": "柳澤",
+              "grade": "専1",
+              "name": "論理設計",
+              "department": "IE",
+              "room": "IE実験"
+            }
+          }
+        },
+        "CA": {}
+      },
+      "専2": {
+        "ME": {
+          "1,2限": {
+            "course": {
+              "rooms": [
+                "講義室3",
+                "CAD"
+              ],
+              "instructor": "池田光",
+              "grade": "専2",
+              "name": "機械制御工学専攻総合演習",
+              "department": "ME"
+            }
+          },
+          "3,4限": {
+            "course": {
+              "instructor": "西村",
+              "grade": "専2",
+              "name": "材料設計工学△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          }
+        },
+        "IE": {
+          "1,2限": {
+            "course": {
+              "instructor": "浦上",
+              "grade": "専2",
+              "name": "分散システム概論△",
+              "department": "IE",
+              "room": "講義室2"
+            }
+          }
+        },
+        "CA": {
+          "7,8限": {
+            "course": {
+              "instructor": "段下",
+              "grade": "専2",
+              "name": "環境システム工学△",
+              "department": "CA",
+              "room": "講義室1"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "Tuesday": {
+      "1年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "2年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "3年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "4年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "5年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "専1": {
+        "ME": {
+          "3,4限": {
+            "course": {
+              "instructor": "三浦",
+              "grade": "専1",
+              "name": "電気電子工学特論△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          },
+          "5,6限": {
+            "course": {
+              "rooms": [
+                "地域生涯",
+                "講義室3"
+              ],
+              "grade": "専1",
+              "name": "コンピュータ総合演習",
+              "department": "ME",
+              "instructors": [
+                "池田光",
+                "池田将"
+              ]
+            }
+          }
+        },
+        "IE": {
+          "3,4限": {
+            "course": {
+              "instructor": "柳澤",
+              "grade": "専1",
+              "name": "論理設計",
+              "department": "IE",
+              "room": "IE実験"
+            }
+          },
+          "5,6限": {
+            "course": {
+              "instructor": "石田",
+              "grade": "専1",
+              "name": "回路応用設計△",
+              "department": "IE",
+              "room": "講義室3"
+            }
+          }
+        },
+        "CA": {
+          "3,4限": {
+            "course": {
+              "rooms": [
+                "講義室1",
+                "講義室3"
+              ],
+              "instructor": "温品",
+              "grade": "専1",
+              "name": "鉄筋コンクリート特論△",
+              "department": "CA"
+            }
+          }
+        }
+      },
+      "専2": {
+        "ME": {},
+        "IE": {
+          "7,8限": {
+            "course": {
+              "instructor": "柳澤",
+              "grade": "専2",
+              "name": "コンピュータ構成学△",
+              "department": "IE",
+              "room": "講義室2"
+            }
+          }
+        },
+        "CA": {
+          "1,2限": {
+            "course": {
+              "instructor": "海田",
+              "grade": "専2",
+              "name": "耐震工学△",
+              "department": "CA",
+              "room": "共同研究室"
+            }
+          },
+          "5,6限": {
+            "course": {
+              "rooms": [
+                "講義室2",
+                "2パ"
+              ],
+              "instructor": "桑嶋",
+              "grade": "専2",
+              "name": "耐震基礎構造学△",
+              "department": "CA"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "Wednesday": {
+      "1年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "2年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "3年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "4年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "5年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "専1": {
+        "ME": {
+          "3,4限": {
+            "course": {
+              "instructor": "福田",
+              "grade": "専1",
+              "name": "弾性力学△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          },
+          "7,8限": {
+            "course": {
+              "instructor": "橋爪",
+              "grade": "専1",
+              "name": "応用計測工学△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          }
+        },
+        "IE": {
+          "3,4限": {
+            "course": {
+              "instructor": "増井",
+              "grade": "専1",
+              "name": "フィードバック制御概論△",
+              "department": "IE",
+              "room": "講義室2"
+            }
+          }
+        },
+        "CA": {
+          "3,4限": {
+            "course": {
+              "instructor": "島袋",
+              "grade": "専1",
+              "name": "建設プログラミング",
+              "department": "CA",
+              "room": "1パ"
+            }
+          }
+        }
+      },
+      "専2": {
+        "ME": {
+          "1,2限": {
+            "course": {
+              "instructor": "池田将",
+              "grade": "専2",
+              "name": "システム設計工学△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          },
+          "5,6限": {
+            "course": {
+              "instructor": "西村",
+              "grade": "専2",
+              "name": "材料設計工学△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          }
+        },
+        "IE": {},
+        "CA": {}
+      }
+    }
+  },
+  {
+    "Thursday": {
+      "1年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "2年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "3年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "4年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "5年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "専1": {
+        "ME": {
+          "5,6限": {
+            "course": {
+              "instructor": "福田",
+              "grade": "専1",
+              "name": "弾性力学△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          }
+        },
+        "IE": {
+          "1,2限": {
+            "course": {
+              "instructor": "義永",
+              "grade": "専1",
+              "name": "オートマンと計算論△",
+              "department": "IE",
+              "room": "講義室2"
+            }
+          }
+        },
+        "CA": {
+          "1,2限": {
+            "course": {
+              "instructor": "応用研究担当",
+              "grade": "専1",
+              "name": "応用研究",
+              "department": "CA",
+              "room": "各研究室"
+            }
+          }
+        }
+      },
+      "専2": {
+        "ME": {
+          "3,4限": {
+            "course": {
+              "instructor": "池田光",
+              "grade": "専2",
+              "name": "熱流体工学△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          },
+          "5,6限": {
+            "course": {
+              "instructor": "鈴木",
+              "grade": "専2",
+              "name": "電気音響工学△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          }
+        },
+        "IE": {
+          "5,6限": {
+            "course": {
+              "instructor": "宮崎",
+              "grade": "専2",
+              "name": "メディア信号処理△",
+              "department": "IE",
+              "room": "講義室2"
+            }
+          }
+        },
+        "CA": {
+          "3,4限": {
+            "course": {
+              "instructor": "荒木",
+              "grade": "専2",
+              "name": "土質力学△",
+              "department": "CA",
+              "room": "講義室1"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "Friday": {
+      "1年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "2年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "3年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "4年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "5年": {
+        "ME": {},
+        "IE": {},
+        "CA": {}
+      },
+      "専1": {
+        "ME": {},
+        "IE": {},
+        "CA": {
+          "1,2限": {
+            "course": {
+              "instructor": "島袋",
+              "grade": "専1",
+              "name": "建設プログラミング",
+              "department": "CA",
+              "room": "1パ"
+            }
+          },
+          "3,4限": {
+            "course": {
+              "instructor": "島袋",
+              "grade": "専1",
+              "name": "建設プログラミング",
+              "department": "CA",
+              "room": "1パ"
+            }
+          },
+          "5,6限": {
+            "course": {
+              "rooms": [
+                "講義室1",
+                "講義室3"
+              ],
+              "instructor": "温品",
+              "grade": "専1",
+              "name": "鉄筋コンクリート特論△",
+              "department": "CA"
+            }
+          }
+        }
+      },
+      "専2": {
+        "ME": {
+          "1,2限": {
+            "course": {
+              "instructor": "三浦",
+              "grade": "専2",
+              "name": "電気電子工学特論△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          },
+          "3,4限": {
+            "course": {
+              "instructor": "池田将",
+              "grade": "専2",
+              "name": "ロボット制御工学△",
+              "department": "ME",
+              "room": "講義室3"
+            }
+          }
+        },
+        "IE": {
+          "7,8限": {
+            "course": {
+              "instructor": "浦上",
+              "grade": "専2",
+              "name": "分散システム概論△",
+              "department": "IE",
+              "room": "講義室2"
+            }
+          }
+        },
+        "CA": {
+          "1,2限": {
+            "course": {
+              "instructor": "渡辺",
+              "grade": "専2",
+              "name": "応用水理学△",
+              "department": "CA",
+              "room": "講義室1"
+            }
+          }
+        }
+      }
+    }
+  }
+]
