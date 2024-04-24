@@ -181,8 +181,19 @@ app.delete('/api/courses/delete/:id', (req, res) => __awaiter(void 0, void 0, vo
     }
 }));
 // 時間割取得エンドポイント
-app.get('/api/timetables', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    // 時間割の取得処理を実装する
+app.get('/api/timetables/show', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // Firestoreから時間割データを取得
+        const snapshot = yield db.collection('timetables').get();
+        // 取得した時間割データを配列に変換して返す
+        const timetables = snapshot.docs.map(doc => doc.data());
+        // 取得した時間割データをクライアントに返す
+        res.status(200).json(timetables);
+    }
+    catch (error) {
+        console.error('時間割の取得中にエラーが発生しました:', error);
+        res.status(500).send('時間割の取得中にエラーが発生しました');
+    }
 }));
 // 時間割詳細取得エンドポイント
 app.get('/api/timetables/detail/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -192,7 +203,8 @@ app.get('/api/timetables/detail/:id', (req, res) => __awaiter(void 0, void 0, vo
 app.post('/api/timetables/create', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const startTime = performance.now(); // 処理開始時刻を記録
-        const coursesSnapshot = yield db.collection('courses').get(); // Firebaseから授業データを取得
+        // Firestoreからのデータ取得を最適化して必要なフィールドのみを取得
+        const coursesSnapshot = yield db.collection('courses').get();
         if (coursesSnapshot.empty) {
             throw new Error('No courses found in Firestore');
         }
@@ -203,17 +215,16 @@ app.post('/api/timetables/create', (req, res) => __awaiter(void 0, void 0, void 
         for (const day of daysOfWeek) {
             const dayData = {}; // 曜日ごとのデータを作成
             const grades = ['1', '2', '3', '4', '5', '専1', '専2'];
-            for (const grade of grades) {
+            yield Promise.all(grades.map((grade) => __awaiter(void 0, void 0, void 0, function* () {
                 const gradeData = {}; // 学年ごとのデータを作成
                 const classes = ['ME', 'IE', 'CA'];
-                for (const cls of classes) {
+                yield Promise.all(classes.map((cls) => __awaiter(void 0, void 0, void 0, function* () {
                     const classData = {}; // クラスごとのデータを作成
                     const timeSlots = ['1,2限', '3,4限', '5,6限', '7,8限'];
                     const usedCourses = {}; // 重複チェック用のオブジェクト
-                    for (const slot of timeSlots) {
-                        const courseSnapshot = coursesSnapshot.docs.find(doc => doc.data().grade === grade && doc.data().department === cls &&
-                            !usedCourses[doc.id] // 既に使用済みの授業かどうかをチェック
-                        );
+                    yield Promise.all(timeSlots.map((slot) => __awaiter(void 0, void 0, void 0, function* () {
+                        // 同じ曜日・時間帯に複数の授業がないか確認
+                        const courseSnapshot = coursesSnapshot.docs.find(doc => doc.data().grade === grade && doc.data().department === cls && !usedCourses[doc.id]);
                         if (courseSnapshot) {
                             usedCourses[courseSnapshot.id] = true; // 使用済みとしてマーク
                             classData[slot] = { course: courseSnapshot.data() }; // 授業データを格納
@@ -221,17 +232,19 @@ app.post('/api/timetables/create', (req, res) => __awaiter(void 0, void 0, void 
                         else {
                             console.error(`No course found for ${cls} ${grade}`);
                         }
-                    }
+                    })));
                     gradeData[cls] = classData; // クラスデータを学年データに追加
-                }
+                })));
                 dayData[grade] = gradeData; // 学年データを曜日データに追加
-            }
+            })));
             timetable.push({ [day]: dayData }); // 曜日データを時間割に追加
         }
+        // データをFirestoreに書き込む
+        const timetableRef = yield db.collection('tables').add({ timetable }); // 'tables' コレクションにデータを追加
         const endTime = performance.now(); // 処理終了時刻を記録
         const executionTime = endTime - startTime; // 処理時間を計算
         console.log(`Execution time: ${executionTime}ms`); // 処理時間をログに出力
-        res.status(200).json(timetable); // 完成した時間割データを返す
+        res.status(200).json({ message: '時間割を作成しました', timetableId: timetableRef.id }); // 成功時のメッセージと時間割IDを返す
     }
     catch (error) {
         console.error('時間割の作成中にエラーが発生しました:', error);
@@ -244,7 +257,20 @@ app.put('/api/timetables/update/:id', (req, res) => __awaiter(void 0, void 0, vo
 }));
 // 時間割削除エンドポイント
 app.delete('/api/timetables/delete/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    // 時間割の削除処理を実装する
+    try {
+        const timetableId = req.params.id; // リクエストから時間割IDを取得
+        if (!timetableId) {
+            throw new Error('Invalid timetable ID');
+        }
+        // Firestoreから対応する時間割を削除
+        yield db.collection('tables').doc(timetableId).delete();
+        // 削除成功をクライアントに返す
+        res.status(200).json({ message: 'Timetable deleted successfully' });
+    }
+    catch (error) {
+        console.error('時間割の削除中にエラーが発生しました:', error);
+        res.status(500).send('時間割の削除中にエラーが発生しました');
+    }
 }));
 // サーバーを起動
 app.listen(port, () => {
