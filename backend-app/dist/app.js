@@ -50,18 +50,37 @@ const db = admin.firestore();
 // Expressアプリケーションを設定
 app.use(bodyParser.json());
 // 授業取得エンドポイント
-app.get('/api/courses/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('/api/courses/show/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const courseId = req.params.id; // パラメータから授業IDを取得
+        const courseDoc = yield db.collection('courses').doc(courseId).get();
+        if (!courseDoc.exists) {
+            // 該当する授業が見つからない場合はエラーを返す
+            res.status(404).send('Course not found');
+            return;
+        }
+        const courseData = courseDoc.data();
+        const course = {
+            id: courseDoc.id,
+            data: courseData
+        };
+        res.status(200).json(course);
+    }
+    catch (error) {
+        console.error('Error fetching course:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}));
+// 全授業取得エンドポイント
+app.get('/api/courses/showAll', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const startTime = performance.now(); // 処理開始時刻を記録
         const coursesRef = db.collection('courses');
-        const snapshot = yield coursesRef.get();
-        const courses = [];
-        snapshot.forEach((doc) => {
-            courses.push({
-                id: doc.id,
-                data: doc.data()
-            });
-        });
-        res.status(200).json(courses);
+        const snapshot = yield coursesRef.select('name').get(); // 必要なフィールドのみ取得
+        const courseNames = snapshot.docs.map(doc => doc.data().name); // 授業名の配列を生成
+        res.status(200).json(courseNames);
+        const endTime = performance.now(); // 処理終了時刻を記録
+        console.log(`Execution time: ${endTime - startTime}ms`); // 処理時間をログに出力
     }
     catch (error) {
         console.error('Error fetching courses:', error);
@@ -180,15 +199,16 @@ app.delete('/api/courses/delete/:id', (req, res) => __awaiter(void 0, void 0, vo
         res.status(500).send('Internal Server Error');
     }
 }));
-// 時間割取得エンドポイント
+// 全ての時間割取得エンドポイント
 app.get('/api/timetables/show', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Firestoreから時間割データを取得
-        const snapshot = yield db.collection('timetables').get();
-        // 取得した時間割データを配列に変換して返す
-        const timetables = snapshot.docs.map(doc => doc.data());
-        // 取得した時間割データをクライアントに返す
-        res.status(200).json(timetables);
+        const snapshot = yield db.collection('tables').listDocuments();
+        // 取得した時間割データのドキュメント名を取得して返す
+        const documentNames = snapshot.map(doc => doc.id);
+        // 取得した時間割ドキュメント名をクライアントに返す
+        res.status(200).json(documentNames);
+        console.log('時間割データを取得しました');
     }
     catch (error) {
         console.error('時間割の取得中にエラーが発生しました:', error);

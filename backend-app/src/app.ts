@@ -19,19 +19,37 @@ const db = admin.firestore();
 app.use(bodyParser.json());
 
 // 授業取得エンドポイント
-app.get('/api/courses/:id', async (req: Request, res: Response) => {
+app.get('/api/courses/show/:id', async (req: Request, res: Response) => {
     try {
-        const coursesRef = db.collection('courses');
-        const snapshot = await coursesRef.get();
-        const courses: any[] = [];
-        snapshot.forEach((doc) => {
-        courses.push({
-            id: doc.id,
-            data: doc.data()
-        });
+        const courseId = req.params.id; // パラメータから授業IDを取得
+        const courseDoc = await db.collection('courses').doc(courseId).get();
+        if (!courseDoc.exists) {
+            // 該当する授業が見つからない場合はエラーを返す
+            res.status(404).send('Course not found');
+            return;
+        }
+        const courseData = courseDoc.data();
+        const course = {
+            id: courseDoc.id,
+            data: courseData
+        };
+        res.status(200).json(course);
+    } catch (error) {
+        console.error('Error fetching course:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
-res.status(200).json(courses);
+// 全授業取得エンドポイント
+app.get('/api/courses/showAll', async (req: Request, res: Response) => {
+    try {
+        const startTime = performance.now(); // 処理開始時刻を記録
+        const coursesRef = db.collection('courses');
+        const snapshot = await coursesRef.select('name').get(); // 必要なフィールドのみ取得
+        const courseNames = snapshot.docs.map(doc => doc.data().name); // 授業名の配列を生成
+        res.status(200).json(courseNames);
+        const endTime = performance.now(); // 処理終了時刻を記録
+        console.log(`Execution time: ${endTime - startTime}ms`); // 処理時間をログに出力
     } catch (error) {
         console.error('Error fetching courses:', error);
         res.status(500).send('Internal Server Error');
@@ -150,11 +168,12 @@ app.delete('/api/courses/delete/:id', async (req: Request, res: Response) => {
 app.get('/api/timetables/show', async (req: Request, res: Response) => {
     try {
         // Firestoreから時間割データを取得
-        const snapshot = await db.collection('timetables').get();
-        // 取得した時間割データを配列に変換して返す
-        const timetables = snapshot.docs.map(doc => doc.data());
-        // 取得した時間割データをクライアントに返す
-        res.status(200).json(timetables);
+        const snapshot = await db.collection('tables').listDocuments();
+        // 取得した時間割データのドキュメント名を取得して返す
+        const documentNames = snapshot.map(doc => doc.id);
+        // 取得した時間割ドキュメント名をクライアントに返す
+        res.status(200).json(documentNames);
+        console.log('時間割データを取得しました');
     } catch (error) {
         console.error('時間割の取得中にエラーが発生しました:', error);
         res.status(500).send('時間割の取得中にエラーが発生しました');
@@ -220,9 +239,6 @@ app.post('/api/timetables/create', async (req: Request, res: Response) => {
     }
 });
 
-
-
-
 // 時間割更新エンドポイント
 app.put('/api/timetables/update/:id', async (req: Request, res: Response) => {
   // 時間割の更新処理を実装する
@@ -246,7 +262,6 @@ app.delete('/api/timetables/delete/:id', async (req: Request, res: Response) => 
         res.status(500).send('時間割の削除中にエラーが発生しました');
     }
 });
-
 
 // サーバーを起動
 app.listen(port, () => {
