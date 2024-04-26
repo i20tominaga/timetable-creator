@@ -1,19 +1,9 @@
 {
   "Lecture": [
     {
-      "name": "機械の基礎",
-      "instructors": [
-        "池田光",
-        "張間"
-      ],
-    "room": "CAD",
-      "grade": "1",
-      "department": "ME"
-    },
-    {
       "name": "数学IB",
       "instructor": "伊藤",
-    "room": "ME1",
+      "room": "ME1",
       "grade": "1",
       "department": "ME"
     },
@@ -25,25 +15,8 @@
       "department": "ME"
     },
     {
-      "name": "基礎プログラミングI",
-      "instructors": [
-        "宮崎",
-        "荻原"
-      ],
-      "room": "1パ",
-      "grade": "1",
-      "department": "IE"
-    },
-    {
       "name": "化学基礎",
       "instructor": "大橋",
-      "room": "IE1",
-      "grade": "1",
-      "department": "IE"
-    },
-    {
-      "name": "ライフサイエンス・アースサイエンス",
-      "instructor": "天内",
       "room": "IE1",
       "grade": "1",
       "department": "IE"
@@ -85,42 +58,6 @@
       "department": "CA"
     },
     {
-      "name": "技術発達史論",
-      "instructors": [
-        "鈴木",
-        "天内",
-        "池田将",
-        "橋爪"
-      ],
-      "room": "CAD",
-      "grade": "1",
-      "department": "ME"
-    },
-    {
-      "name": "基礎英語W",
-      "instructor": "倉増",
-      "room": "ME1",
-      "grade": "1",
-      "department": "ME"
-    },
-    {
-      "name": "ライフサイエンス・アースサイエンス",
-      "instructor": "天内",
-      "room": "ME1",
-      "grade": "1",
-      "department": "ME"
-    },
-    {
-      "name": "コンピュータ演習",
-      "instructor": "重村",
-      "rooms": [
-        "1パ",
-        "IE電算"
-      ],
-      "grade": "1",
-      "department": "IE"
-    },
-    {
       "name": "総合英語W",
       "instructor": "倉増",
       "room": "IE1",
@@ -142,19 +79,6 @@
       "department": "IE"
     },
     {
-      "name": "建築デザイン概論",
-      "instructors": [
-        "西川",
-        "目山",
-        "中川",
-        "江本",
-        "河野"
-      ],
-      "room": "設計製作",
-      "grade": "1",
-      "department": "CA"
-    },
-    {
       "name": "基礎英語R",
       "instructor": "上田真",
       "room": "CA1",
@@ -164,13 +88,6 @@
     {
       "name": "化学基礎",
       "instructor": "大橋",
-      "room": "CA1",
-      "grade": "1",
-      "department": "CA"
-    },
-    {
-      "name": "基礎英語W",
-      "instructor": "倉増",
       "room": "CA1",
       "grade": "1",
       "department": "CA"
@@ -231,13 +148,6 @@
       "department": "IE"
     },
     {
-      "name": "ライフサイエンス・アースサイエンス",
-      "instructor": "天内",
-      "room": "CA1",
-      "grade": "1",
-      "department": "CA"
-    },
-    {
       "name": "数学IA",
       "instructor": "上田和",
       "room": "CA1",
@@ -265,16 +175,6 @@
       "name": "基礎設計図I",
       "instructors": [
         "張間",
-        "三浦"
-      ],
-      "room": "2パ",
-      "grade": "1",
-      "department": "ME"
-    },
-    {
-      "name": "コンピュータ基礎",
-      "instructors": [
-        "飛車",
         "三浦"
       ],
       "room": "2パ",
@@ -317,6 +217,16 @@
       "department": "IE"
     },
     {
+      "name": "基礎プログラミングII",
+      "instructors": [
+        "宮崎",
+        "荻原"
+      ],
+      "room": "1パ",
+      "grade": "1",
+      "department": "IE"
+    },
+    {
       "name": "HR",
       "instructor": "上田真",
       "room": "IE1",
@@ -324,14 +234,18 @@
       "department": "IE"
     },
     {
-      "name": "力と変形",
-      "instructors": [
-        "海田",
-        "山根"
-      ],
+      "name": "建設材料",
+      "instructor": "島袋",
       "room": "設計製作",
       "grade": "1",
       "department": "CA"
+    },
+    {
+      "name": "電気の基礎",
+      "instructor": "片山",
+      "room": "ME2",
+      "grade": "2",
+      "department": "ME"
     },
     {
       "name": "情報処理",
@@ -357,17 +271,6 @@
       "room": "ME1",
       "grade": "1",
       "department": "ME"
-    },
-    {
-      "name": "ライフサイエンス・アースサイエンス",
-      "instructor": "天内",
-      "room": "メディア",
-      "grade": "1",
-      "departments": [
-        "ME",
-        "IE",
-        "CA"
-      ]
     },
     {
       "name": "工作実習I",
@@ -559,13 +462,6 @@
       "department": "IE"
     },
     {
-      "name": "プログラミング言語",
-      "instructor": "高山",
-      "room": "IE2",
-      "grade": "2",
-      "department": "IE"
-    },
-    {
       "name": "数学IIA",
       "instructor": "山本",
       "room": "IE2",
@@ -618,23 +514,6 @@
       "department": "ME"
     },
     {
-      "name": "英会話",
-      "instructors": [
-        "ダーシー",
-        "ペリー"
-      ],
-      "room": "演習室",
-      "grade": "2",
-      "department": "ME"
-    },
-    {
-      "name": "化学I",
-      "instructor": "中村",
-      "room": "IE2",
-      "grade": "2",
-      "department": "IE"
-    },
-    {
       "name": "体育",
       "instructor": "北",
       "room": "グラウンド",
@@ -654,16 +533,6 @@
       "room": "グラウンド",
       "grade": "2",
       "departments": "CA"
-    },
-    {
-      "name": "英会話",
-      "instructors": [
-        "ダーシー",
-        "ペリー"
-      ],
-      "room": "演習室",
-      "grade": "2",
-      "department": "IE"
     },
     {
       "name": "構造力学基礎",
@@ -689,13 +558,6 @@
     {
       "name": "総合英語IW",
       "instructor": "長戸",
-      "room": "ME2",
-      "grade": "2",
-      "department": "ME"
-    },
-    {
-      "name": "化学I",
-      "instructor": "中村",
       "room": "ME2",
       "grade": "2",
       "department": "ME"
@@ -747,13 +609,6 @@
     {
       "name": "物理I",
       "instructor": "菊地",
-      "room": "CA2",
-      "grade": "2",
-      "department": "CA"
-    },
-    {
-      "name": "化学I",
-      "instructor": "中村",
       "room": "CA2",
       "grade": "2",
       "department": "CA"
@@ -882,16 +737,6 @@
       "department": "CA"
     },
     {
-      "name": "英会話",
-      "instructors": [
-        "ダーシー",
-        "ペリー"
-      ],
-      "room": "演習室",
-      "grade": "2",
-      "department": "CA"
-    },
-    {
       "name": "段下",
       "instructor": "河野",
       "room": "CA2",
@@ -962,20 +807,6 @@
       "department": "ME"
     },
     {
-      "name": "化学II",
-      "instructor": "吉見",
-      "room": "IE2",
-      "grade": "2",
-      "department": "IE"
-    },
-    {
-      "name": "化学II",
-      "instructor": "吉見",
-      "room": "CA2",
-      "grade": "2",
-      "department": "CA"
-    },
-    {
       "name": "集合と論理",
       "instructor": "義永",
       "room": "IE2",
@@ -1002,13 +833,6 @@
     {
       "name": "国語総合II",
       "instructor": "金",
-      "room": "ME3",
-      "grade": "3",
-      "department": "ME"
-    },
-    {
-      "name": "アクチュエータ",
-      "instructor": "藤本",
       "room": "ME3",
       "grade": "3",
       "department": "ME"
@@ -1143,23 +967,6 @@
       "department": "CA"
     },
     {
-      "name": "機構学",
-      "instructor": "池田光",
-      "room": "1パ",
-      "grade": "3",
-      "department": "ME"
-    },
-    {
-      "name": "設計製図I",
-      "instructors": [
-        "池田光",
-        "張間"
-      ],
-      "room": "2パ",
-      "grade": "3",
-      "department": "ME"
-    },
-    {
       "name": "数学ⅢA",
       "instructor": "上田和",
       "room": "IE3",
@@ -1184,20 +991,7 @@
       "grade": "3",
       "department": "IE"
     },
-    {
-      "name": "測量実習",
-      "instructors": [
-        "渡辺",
-        "段下",
-        "荒木"
-      ],
-      "rooms": [
-        "設計製作",
-        "グラウンド"
-      ],
-      "grade": "3",
-      "department": "CA"
-    },
+
     {
       "name": "基礎工学実験",
       "instructors": [
@@ -1304,25 +1098,6 @@
       "department": "CA"
     },
     {
-      "name": "創造演習II",
-      "instructors": [
-        "鈴木",
-        "池田将",
-        "阿部",
-        "橋爪"
-      ],
-      "room": "CAD",
-      "grade": "3",
-      "department": "ME"
-    },
-    {
-      "name": "工業力学",
-      "instructor": "西村",
-      "room": "ME3",
-      "grade": "3",
-      "department": "ME"
-    },
-    {
       "name": "電子回路I",
       "instructor": "片山",
       "room": "ME3",
@@ -1358,14 +1133,22 @@
       "department": "IE"
     },
     {
-      "name": "CAD基礎",
+      "name": "工学実験I",
       "instructors": [
-        "宇根",
-        "島袋"
+        "石田",
+        "張間",
+        "片山",
+        "池田",
+        "橋爪"
       ],
-      "room": "2パ",
+      "rooms": [
+        "工場",
+        "CAD",
+        "地域生涯",
+        "1パ"
+      ],
       "grade": "3",
-      "department": "CA"
+      "department": "ME"
     },
     {
       "name": "工学デザイン基礎Ⅲ",
@@ -1380,20 +1163,6 @@
         "2パ",
         "1パ"
       ],
-      "grade": "3",
-      "department": "CA"
-    },
-    {
-      "name": "プログラミング応用",
-      "instructor": "石田",
-      "room": "CAD",
-      "grade": "3",
-      "department": "ME"
-    },
-    {
-      "name": "西洋建築史",
-      "instructor": "中川",
-      "room": "設計製作",
       "grade": "3",
       "department": "CA"
     },
@@ -1529,45 +1298,11 @@
       "department": "ME"
     },
     {
-      "name": "関数論",
-      "instructor": "飛車",
-      "room": "CAD",
-      "grade": "4",
-      "department": "ME"
-    },
-    {
       "name": "ベクトル解析",
       "instructor": "杉村",
       "room": "IE4",
       "grade": "4",
       "department": "IE"
-    },
-    {
-      "name": "ディジタル回路応用",
-      "instructor": "新田",
-      "rooms": [
-        "IE電算",
-        "2スタCW"
-      ],
-      "grade": "4",
-      "department": "IE"
-    },
-    {
-      "name": "システムプログラミングII",
-      "instructor": "重村",
-      "rooms": [
-        "IE電算",
-        "2スタCW"
-      ],
-      "grade": "4",
-      "department": "IE"
-    },
-    {
-      "name": "建築施工法△",
-      "instructor": "目山",
-      "room": "CA4",
-      "grade": "4",
-      "department": "CA"
     },
     {
       "name": "鉄筋コンクリート工学",
@@ -1606,20 +1341,6 @@
       "department": "CA"
     },
     {
-      "name": "電気回路II",
-      "instructor": "片山",
-      "room": "1パ",
-      "grade": "4",
-      "department": "ME"
-    },
-    {
-      "name": "確率・統計",
-      "instructor": "飛車",
-      "room": "2パ",
-      "grade": "4",
-      "department": "ME"
-    },
-    {
       "name": "工学実験II",
       "instructors": [
         "石田",
@@ -1649,20 +1370,6 @@
       "department": "IE"
     },
     {
-      "name": "情報理論",
-      "instructor": "宮崎",
-      "room": "メディア",
-      "grade": "4",
-      "department": "IE"
-    },
-    {
-      "name": "ソフトウェア工学",
-      "instructor": "荻原",
-      "room": "IE4",
-      "grade": "4",
-      "department": "IE"
-    },
-    {
       "name": "地盤工学",
       "instructor": "桑嶋",
       "room": "CA4",
@@ -1683,52 +1390,13 @@
       "grade": "4",
       "department": "CA"
     },
-    {
-      "name": "工学セミナー△",
-      "instructor": "CA全員",
-      "rooms": [
-        "演習室",
-        "ICT",
-        "2パ"
-      ],
-      "grade": "4",
-      "department": "CA"
-    },
-    {
-      "name": "電子回路II",
-      "instructor": "櫻本",
-      "room": "ME4",
-      "grade": "4",
-      "department": "ME"
 
-    },
-    {
-      "name": "水力学II",
-      "instructor": "張間",
-      "room": "ME4",
-      "grade": "4",
-      "department": "ME"
-    },
     {
       "name": "応用物理",
       "instructor": "中村",
       "room": "ME4",
       "grade": "4",
       "department": "ME"
-    },
-    {
-      "name": "微分積分学I",
-      "instructor": "河田",
-      "room": " ME4",
-      "grade": "4",
-      "department": "ME"
-    },
-    {
-      "name": "英会話",
-      "instructor": "ダーシー",
-      "room": "IE4",
-      "grade": "4",
-      "department": "IE"
     },
     {
       "name": "微分積分学I",
@@ -1751,29 +1419,8 @@
       "department": "IE"
     },
     {
-      "name": "建築環境工学△",
-      "instructor": "河野",
-      "room": "共同研究室",
-      "grade": "4",
-      "department": "CA"
-    },
-    {
       "name": "応用物理",
       "instructor": "中村",
-      "room": "CA4",
-      "grade": "4",
-      "department": "CA"
-    },
-    {
-      "name": "微分積分学I",
-      "instructor": "島袋",
-      "room": "CA4",
-      "grade": "4",
-      "department": "CA"
-    },
-    {
-      "name": "英会話",
-      "instructor": "ペリー",
       "room": "CA4",
       "grade": "4",
       "department": "CA"
@@ -1784,17 +1431,6 @@
       "room": "ME4",
       "grade": "4",
       "department": "ME"
-    },
-    {
-      "name": "日本語コミュニケーション△",
-      "instructor": "高槻",
-      "room": "ME4",
-      "grade": "4",
-      "departments": [
-        "ME",
-        "IE",
-        "CA"
-      ]
     },
     {
       "name": "中国文学",
@@ -1858,30 +1494,15 @@
       "department": "IE"
     },
     {
-      "name": "環境衛生工学△",
-      "instructor": "段下",
-      "room": "CA4",
+      "name": "人文社会特講△",
+      "instructor": "高槻",
+      "room": "ME4",
       "grade": "4",
-      "department": "CA"
-    },
-    {
-      "name": "創造演習",
-      "instructors": [
-        "西川",
-        "石丸",
-        "江本",
-        "河野",
-        "海田",
-        "段下",
-        "山根"
-      ],
-      "rooms": [
-        "設計製作",
-        "共同研究室",
-        "1パ"
-      ],
-      "grade": "4",
-      "department": "CA"
+      "departments": [
+        "ME",
+        "IE",
+        "CA"
+      ]
     },
     {
       "name": "熱力学",
@@ -1922,20 +1543,6 @@
         "IE",
         "CA"
       ]
-    },
-    {
-      "name": "データベース",
-      "instructor": "義永",
-      "room": "IE4",
-      "grade": "4",
-      "department": "IE"
-    },
-    {
-      "name": "フーリエ・ラプラス変換",
-      "instructor": "室谷",
-      "room": "IE4",
-      "grade": "4",
-      "department": "IE"
     },
     {
       "name": "水理学△",
@@ -2048,21 +1655,6 @@
       "department": "IE"
     },
     {
-      "name": "創造演習",
-      "instructors": [
-        "高山",
-        "浦上",
-        "荻原"
-      ],
-      "rooms": [
-        "IE電算",
-        "IE実験",
-        "2スタCW"
-      ],
-      "grade": "4",
-      "department": "IE"
-    },
-    {
       "name": "工学デザインI",
       "instructors": [
         "中川",
@@ -2116,13 +1708,6 @@
       "department": "IE"
     },
     {
-      "name": "測量学Ⅲ",
-      "instructor": "上",
-      "room": "CA4",
-      "grade": "4",
-      "department": "CA"
-    },
-    {
       "name": "機械力学I",
       "instructor": "櫻本",
       "room": "ME4",
@@ -2171,13 +1756,6 @@
       "department": "CA"
     },
     {
-      "name":"微分積分学II",
-      "instructor": "島袋",
-      "room": "CA4",
-      "grade": "4",
-      "department": "CA"
-    },
-    {
       "name": "情報システムと技術者倫理",
       "instructor": "新田",
       "room": "IE4",
@@ -2198,44 +1776,16 @@
       "department": "CA"
     },
     {
-      "name": "確率統計",
+      "name": "確率・統計",
       "instructor": "段下",
       "room": "CA4",
       "grade": "4",
       "department": "CA"
     },
     {
-      "name": "応用数物演習△",
-      "instructor": "飛車",
-      "room": "1スタCWE",
-      "grade": "5",
-      "departments": [
-        "ME",
-        "IE",
-        "CA"
-      ]
-    },
-    {
       "name": "卒業研究",
       "instructor": "ME全員",
       "room": "各研究室",
-      "grade": "5",
-      "department": "ME"
-    },
-    {
-      "name": "流体力学△",
-      "instructor": "張間",
-      "room": "1スタCWE",
-      "grade": "5",
-      "department": "ME"
-    },
-    {
-      "name": "設計製図Ⅲ",
-      "instructors": [
-        "西村",
-        "張間"
-      ],
-      "room": "CAD",
       "grade": "5",
       "department": "ME"
     },
@@ -2247,43 +1797,6 @@
       "department": "IE"
     },
     {
-      "name": "創造製作",
-      "instructors": [
-        "高山",
-        "浦上",
-        "荻原"
-      ],
-      "rooms": [
-        "IE電算",
-        "IE実験",
-        "2スタCW",
-        "IEソフト"
-      ],
-      "grade": "5",
-      "department": "IE"
-    },
-    {
-      "name": "河海工学II△",
-      "instructor": "渡辺",
-      "room": "演習室",
-      "grade": "5",
-      "department": "IE"
-    },
-    {
-      "name": "日本建築史△",
-      "instructor": "中川",
-      "room": "設計製作",
-      "grade": "5",
-      "department": "CA"
-    },
-    {
-      "name": "測量学特論",
-      "instructor": "佐賀",
-      "room": "共同研究室",
-      "grade": "5",
-      "department": "CA"
-    },
-    {
       "name": "火薬学△",
       "instructor": "大石",
       "room": "共同研究室",
@@ -2291,63 +1804,11 @@
       "department": "CA"
     },
     {
-      "name": "制御工学II",
-      "instructor": "池田将",
-      "room": "1スタCWE",
-      "grade": "5",
-      "department": "ME"
-    },
-    {
-      "name": "総合英語演習II",
-      "instructor": "カート",
-      "room": "1スタCWE",
-      "grade": "5",
-      "department": "ME"
-    },
-    {
-      "name": "熱機関",
-      "instructor": "池田光",
-      "room": "1スタCWE",
-      "grade": "5",
-      "department": "ME"
-    },
-    {
       "name": "計測工学",
       "instructor": "橋爪",
       "room": "1スタCWE",
       "grade": "5",
       "department": "ME"
-    },
-    {
-      "name": "総合英語演習II",
-      "instructor": "カート",
-      "room": "2スタE",
-      "grade": "5",
-      "department": "IE"
-    },
-    {
-      "name": "ネットワークアーキテクチャ",
-      "instructor": "新田",
-      "rooms": [
-        "IE電算",
-        "2スタECW"
-      ],
-      "grade": "5",
-      "department": "IE"
-    },
-    {
-      "name": "電子情報通信システム実験",
-      "instructors": [
-        "原田",
-        "浦上"
-      ],
-      "rooms": [
-        "IE電算",
-        "IE実験",
-        "IEソフト]"
-      ],
-      "grade": "5",
-      "department": "IE"
     },
     {
       "name": "線形代数",
@@ -2374,58 +1835,6 @@
       "department": "CA"
     },
     {
-      "name": "技術者倫理",
-      "instructor": "福田",
-      "rooms": [
-        "1スタCWE",
-        "CAD"
-      ],
-      "grade": "5",
-      "department": "ME"
-    },
-    {
-      "name": "機械力学II",
-      "instructor": "櫻本",
-      "room": "1スタCWE",
-      "grade": "5",
-      "department": "ME"
-    },
-    {
-      "name": "言語処理△",
-      "instructor": "高山",
-      "rooms": [
-        "IE電算",
-        "2スタE"
-      ],
-      "grade": "5",
-      "department": "IE"
-    },
-    {
-      "name": "オペレーティングシステムII",
-      "instructor": "重村",
-      "room": "2スタE",
-      "grade": "5",
-      "department": "IE"
-    },
-    {
-      "name": "総合英語演習II",
-      "instructor": "カート",
-      "room": "共同研究室",
-      "grade": "5",
-      "department": "CA"
-    },
-    {
-      "name": "歴史学△",
-      "instructor": "奥山",
-      "room": "メディア",
-      "grade": "5",
-      "departments": [
-        "ME",
-        "IE",
-        "CA"
-      ]
-    },
-    {
       "name": "人文社会特講△",
       "instructor": "上田真",
       "room": "演習室",
@@ -2448,50 +1857,6 @@
       ]
     },
     {
-      "name": "中国語△",
-      "instructor": "徳永",
-      "room": "ICT",
-      "grade": "5",
-      "departments": [
-        "ME",
-        "IE",
-        "CA"
-      ]
-    },
-    {
-      "name": "弾塑性論",
-      "instructor": "西村",
-      "room": "1スタCWE",
-      "grade": "5",
-      "department": "ME"
-    },
-    {
-      "name": "建築構造設計",
-      "instructor": "山根",
-      "room": "共同研究室",
-      "grade": "5",
-      "department": "CA"
-    },
-    {
-      "name": "創造演習",
-      "instructors": [
-        "西川",
-        "石丸",
-        "江本",
-        "河野",
-        "海田",
-        "段下",
-        "山根"
-      ],
-      "rooms": [
-        "設計製作",
-        "共同研究室",
-        "1パ"
-      ],
-      "grade": "5",
-      "department": "CA"
-    },
-    {
       "name": "工学実験II",
       "instructors": [
         "渡辺",
@@ -2511,84 +1876,11 @@
       "department": "CA"
     },
     {
-      "name": "工業英語II",
-      "instructor": "飛車",
-      "room": "1スタCWE",
-      "grade": "5",
-      "department": "ME"
-    },
-    {
-      "name": "計算力学",
-      "instructor": "福田",
-      "room": "2パ",
-      "grade": "5",
-      "department": "ME"
-    },
-    {
-      "name": "フーリエ変換",
-      "instructor": "飛車",
-      "room": "2パ",
-      "grade": "5",
-      "department": "ME"
-    },
-    {
-      "name": "機能材料△",
-      "instructor": "西村",
-      "room": "1スタCWE",
-      "grade": "5",
-      "department": "ME"
-    },
-    {
-      "name": "集積回路設計I△",
-      "instructor": "柳澤",
-      "room": "2スタE",
-      "grade": "5",
-      "department": "IE"
-    },
-    {
-      "name": "ディジタル信号処理",
-      "instructor": "宮崎",
-      "room": "メディア",
-      "grade": "5",
-      "department": "IE"
-    },
-    {
-      "name": "コンピュータグラフィックス△",
-      "instructor": "力",
-      "rooms": [
-        "IE電算",
-        "2スタE"
-      ],
-      "grade": "5",
-      "department": "IE"
-    },
-    {
-      "name": "鋼構造学II△",
-      "instructor": "海田",
-      "room": "共同研究室",
-      "grade": "5",
-      "department": "CA"
-    },
-    {
-      "name": "プレストレストコンクリート工学△",
-      "instructor": "温品",
-      "room": "共同研究室",
-      "grade": "5",
-      "department": "CA"
-    },
-    {
       "name": "建築設備△",
       "instructors": [
         "清田",
         "河野"
       ],
-      "room": "共同研究室",
-      "grade": "5",
-      "department": "CA"
-    },
-    {
-      "name": "基礎構造学",
-      "instructor": "桑嶋",
       "room": "共同研究室",
       "grade": "5",
       "department": "CA"
@@ -2758,16 +2050,6 @@
       ]
     },
     {
-      "name": "画像工学△",
-      "instructor": "杉村",
-      "rooms": [
-        "IE電算",
-        "2スタE"
-      ],
-      "grade": "5",
-      "department": "IE"
-    },
-    {
       "name": "システム数理工学△",
       "instructor": "高山",
       "room": "2スタE",
@@ -2866,9 +2148,9 @@
       "department": "ME"
     },
     {
-      "name": "情報電子工学専攻総合実験",
-      "instructor": "重村",
-      "room": " IE実験",
+      "name": "応用研究",
+      "instructor": "応用研究担当",
+      "room": "各研究室",
       "grade": "専1",
       "department": "IE"
     },
@@ -2877,45 +2159,7 @@
       "instructor": "応用研究担当",
       "room": "各研究室",
       "grade": "専1",
-      "department": "IE"
-    },
-    {
-      "name": "鉄筋コンクリート特論△",
-      "instructor": "温品",
-      "rooms": [
-        "講義室1",
-        "講義室3"
-      ],
-      "grade": "専1",
       "department": "CA"
-    },
-    {
-      "name": "応用研究",
-      "instructor": "応用研究担当",
-      "room": "各研究室",
-      "grade": "専1",
-      "department": "CA"
-    },
-    {
-      "name": "産業論",
-      "instructors": [
-        "奥山",
-        "浦上"
-      ],
-      "room": "テクノ多目的",
-      "grade": "専1",
-      "departments": [
-        "ME",
-        "IE",
-        "CA"
-      ]
-    },
-    {
-      "name": "フィードバック制御概論△",
-      "instructor": "増井",
-      "room": "講義室2",
-      "grade": "専1",
-      "department": "IE"
     },
     {
       "name": "英語講読",
@@ -2927,6 +2171,13 @@
         "IE",
         "CA"
       ]
+    },
+    {
+      "name": "応用電磁気学",
+      "instructor":"片山",
+      "room": "2パ",
+      "grade": "専1",
+      "department": "ME"
     },
     {
       "name": "物理科学",
@@ -2979,6 +2230,13 @@
       "name": "流体制御工学△",
       "instructor": "張間",
       "room": "講義室3",
+      "grade": "専1",
+      "department": "ME"
+    },
+    {
+      "name": "情報工学特論△",
+      "instructor": "橋爪",
+      "room": "2パ",
       "grade": "専1",
       "department": "ME"
     },
@@ -3061,13 +2319,6 @@
       "department": "CA"
     },
     {
-      "name": "応用計測工学△",
-      "instructor": "橋爪",
-      "room": "講義室3",
-      "grade": "専1",
-      "department": "ME"
-    },
-    {
       "name": "建築生産論△",
       "instructor": "目山",
       "room": "講義室1",
@@ -3079,7 +2330,11 @@
       "instructor": "力",
       "room": "講義室2",
       "grade": "専1",
-      "department": "IE"
+      "departments": [
+        "ME",
+        "IE",
+        "CA"
+      ]
     },
     {
       "name": "HR",
@@ -3108,6 +2363,13 @@
         "IE",
         "CA"
       ]
+    },
+    {
+      "name": "構造設計論△",
+      "instructor": "山根",
+      "room": "2パ",
+      "grade": "専1",
+      "department": "CA"
     },
     {
       "name": "電気音響工学△",
@@ -3169,9 +2431,16 @@
       "department": "CA"
     },
     {
-      "name": "生体機械力学△",
-      "instructor": "櫻本",
-      "room": "講義室3",
+      "name": "特別研究",
+      "instructor": "特別研究担当",
+      "room": "各研究室",
+      "grade": "専2",
+      "department": "IE"
+    },
+    {
+      "name": "情報工学特論△",
+      "instructor": "橋爪",
+      "room": "橋爪",
       "grade": "専2",
       "department": "ME"
     },
@@ -3180,28 +2449,7 @@
       "instructor": "特別研究担当",
       "room": "各研究室",
       "grade": "専2",
-      "department": "IE"
-    },
-    {
-      "name": "都市環境計画学△",
-      "instructor": "江本",
-      "room": "講義室1",
-      "grade": "専2",
-      "department": "CA"
-    },
-    {
-      "name": "特別研究",
-      "instructor": "特別研究担当",
-      "room": "各研究室",
-      "grade": "専2",
       "department": "ME"
-    },
-    {
-      "name": "光情報処理△",
-      "instructor": "原田",
-      "room": "講義室2",
-      "grade": "専2",
-      "department": "IE"
     },
     {
       "name": "特別研究",
@@ -3222,68 +2470,6 @@
       ]
     },
     {
-      "name": "熱流体工学△",
-      "instructor": "池田光",
-      "room": "講義室3",
-      "grade": "専2",
-      "department": "ME"
-    },
-    {
-      "name": "自然言語処理△",
-      "instructor": "高山",
-      "room": "講義室2",
-      "grade": "専2",
-      "department": "IE"
-    },
-    {
-      "name": "半導体電子工学△",
-      "instructor": "室谷",
-      "room": "講義室2",
-      "grade": "専2",
-      "departments": [
-        "ME",
-        "IE"
-      ]
-    },
-    {
-      "name": "土質力学△",
-      "instructor": "荒木",
-      "room": "講義室1",
-      "grade": "専2",
-      "department": "CA"
-    },
-    {
-      "name": "システム制御工学△",
-      "instructor": "池田将",
-      "room": "講義室3",
-      "grade": "専2",
-      "departments": [
-        "ME",
-        "IE"
-      ]
-    },
-    {
-      "name": "計算工学△",
-      "instructor": "原",
-      "rooms": [
-        "講義室1",
-        "2パ"
-      ],
-      "grade": "専2",
-      "department": "CA"
-    },
-    {
-      "name": "技術者の倫理",
-      "instructor": "高橋",
-      "room": "テクノ多目的",
-      "grade": "専2",
-      "departments": [
-        "ME",
-        "IE",
-        "CA"
-      ]
-    },
-    {
       "name": "生命科学",
       "instructor": "天内",
       "room": "各研究室",
@@ -3295,55 +2481,6 @@
       ]
     },
     {
-      "name": "英会話△",
-      "instructor": "カート",
-      "room": "テクノ多目的",
-      "grade": "専2",
-      "departments": [
-        "ME",
-        "IE",
-        "CA"
-      ]
-    },
-    {
-      "name": "CAE△",
-      "instructor": "福田",
-      "rooms": [
-        "2パ",
-        "講義室3"
-      ],
-      "grade": "専2",
-      "department": "ME"
-    },
-    {
-      "name": "材料強度学△",
-      "instructor": "西村",
-      "room": "講義室3",
-      "grade": "専2",
-      "department": "ME"
-    },
-    {
-      "name": "コンピュータ構成学△",
-      "instructor": "柳澤",
-      "room": "講義室2",
-      "grade": "専2",
-      "department": "IE"
-    },
-    {
-      "name": "メディア信号処理△",
-      "instructor": "宮崎",
-      "room": "講義室2",
-      "grade": "専2",
-      "department": "IE"
-    },
-    {
-      "name": "応用水理学△",
-      "instructor": "渡辺",
-      "room": "講義室1",
-      "grade": "専2",
-      "department": "CA"
-    },
-    {
       "name": "HR",
       "instructors": [
         "浦上",
@@ -3353,17 +2490,6 @@
         "山根"
       ],
       "room": "テクノ多目的",
-      "grade": "専2",
-      "departments": [
-        "ME",
-        "IE",
-        "CA"
-      ]
-    },
-    {
-      "name": "Engineerring Mathematics△",
-      "instructor": "飛車",
-      "room": "2パ",
       "grade": "専2",
       "departments": [
         "ME",
