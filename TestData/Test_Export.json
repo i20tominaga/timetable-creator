@@ -1,0 +1,21 @@
+{
+  "Days": [
+    {
+      "Day": "Mon",
+      "Classes": [
+        {
+          "Subject": "機械の基礎",
+          "Teachers": [
+            "池田光",
+            "張間"
+          ],
+          "Rooms": [
+            "CAD"
+          ],
+          "period" : 1,
+          "length" : 2
+        }
+      ]
+    }
+  ]
+}

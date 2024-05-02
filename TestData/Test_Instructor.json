@@ -3,57 +3,60 @@
     {
       "id": "天内",
 			"name": "天内",
-      "period":""
+      "periods": {
+        "day": "火",
+        "period": "3限"
+      }
     },
     {
       "id": "倉増",
 			"name": "倉増",
-      "period":""
+      "periods": []
     },
     {
       "id": "大橋",
 			"name": "大橋",
-      "period":""
+      "periods": []
     },
     {
       "id": "金",
 			"name": "金",
-      "period":""
+      "periods": []
     },
     {
       "id": "米田",
 			"name": "米田",
-      "period":""
+      "periods": []
     },
     {
       "id": "高橋",
 			"name": "高橋",
-      "period":""
+      "periods": []
     },
     {
       "id": "上田和",
 			"name": "上田和",
-      "period":""
+      "periods": []
     },
     {
       "id": "菊地",
 			"name": "菊地",
-      "period":""
+      "periods": []
     },
     {
       "id": "山本",
 			"name": "山本",
-      "period":""
+      "periods": []
     },
     {
       "id": "奥山",
 			"name": "奥山",
-      "period":""
+      "periods": []
     },
     {
       "id": "北",
 			"name": "北",
-      "period":""
+      "periods": []
     },
     {
       "id": "石飛",
@@ -63,332 +66,332 @@
     {
       "id": "伊藤",
 			"name": "伊藤",
-      "period":""
+      "periods": []
     },
     {
       "id": "上田真",
 			"name": "上田真",
-      "period":""
+      "periods": []
     },
     {
       "id": "高槻",
 			"name": "高槻",
-      "period":""
+      "periods": []
     },
     {
       "id": "中村",
 			"name": "中村",
-      "period":""
+      "periods": []
     },
     {
       "id": "櫻本",
 			"name": "櫻本",
-      "period":""
+      "periods": []
     },
     {
       "id": "西村",
 			"name": "西村",
-      "period":""
+      "periods": []
     },
     {
       "id": "池田光",
 			"name": "池田光",
-      "period":""
+      "periods": []
     },
     {
       "id": "張間",
 			"name": "張間",
-      "period":""
+      "periods": []
     },
     {
       "id": "福田",
 			"name": "福田",
-      "period":""
+      "periods": []
     },
     {
       "id": "鈴木",
 			"name": "鈴木",
-      "period":""
+      "periods": []
     },
     {
       "id": "鈴木",
 			"name": "鈴木",
-      "period":""
+      "periods": []
     },
     {
       "id": "藤本",
 			"name": "藤本",
-      "period":""
+      "periods": []
     },
     {
       "id": "石田",
 			"name": "石田",
-      "period":""
+      "periods": []
     },
     {
       "id": "飛車",
 			"name": "飛車",
-      "period":""
+      "periods": []
     },
     {
       "id": "片山",
 			"name": "片山",
-      "period":""
+      "periods": []
     },
     {
       "id": "三浦",
 			"name": "三浦",
-      "period":""
+      "periods": []
     },
     {
       "id": "橋爪",
 			"name": "橋爪",
-      "period":""
+      "periods": []
     },
     {
       "id": "池田将",
 			"name": "池田将",
-      "period":""
+      "periods": []
     },
     {
       "id": "高山",
 			"name": "高山",
-      "period":""
+      "periods": []
     },
     {
       "id": "重村",
 			"name": "重村",
-      "period":""
+      "periods": []
     },
     {
       "id": "原田",
 			"name": "原田",
-      "period":""
+      "periods": []
     },
     {
       "id": "浦上",
 			"name": "浦上",
-      "period":""
+      "periods": []
     },
     {
       "id": "新田",
 			"name": "新田",
-      "period":""
+      "periods": []
     },
     {
       "id": "室谷",
 			"name": "室谷",
-      "period":""
+      "periods": []
     },
     {
       "id": "義永",
 			"name": "義永",
-      "period":""
+      "periods": []
     },
     {
       "id": "杉村",
 			"name": "杉村",
-      "period":""
+      "periods": []
     },
     {
       "id": "柳澤",
 			"name": "柳澤",
-      "period":""
+      "periods": []
     },
     {
       "id": "宮崎",
 			"name": "宮崎",
-      "period":""
+      "periods": []
     },
     {
       "id": "力",
 			"name": "力",
-      "period":""
+      "periods": []
     },
     {
       "id": "増井",
 			"name": "増井",
-      "period":""
+      "periods": []
     },
     {
       "id": "荻原",
 			"name": "荻原",
-      "period":""
+      "periods": []
     },
     {
       "id": "渡辺",
 			"name": "渡辺",
-      "period":""
+      "periods": []
     },
     {
       "id": "中川",
 			"name": "中川",
-      "period":""
+      "periods": []
     },
     {
       "id": "島袋",
 			"name": "島袋",
-      "period":""
+      "periods": []
     },
     {
       "id": "海田",
 			"name": "海田",
-      "period":""
+      "periods": []
     },
     {
       "id": "古田",
 			"name": "古田",
-      "period":""
+      "periods": []
     },
     {
       "id": "目山",
 			"name": "目山",
-      "period":""
+      "periods": []
     },
     {
       "id": "桑嶋",
 			"name": "桑嶋",
-      "period":""
+      "periods": []
     },
     {
       "id": "河野",
 			"name": "河野",
-      "period":""
+      "periods": []
     },
     {
       "id": "荒木",
 			"name": "荒木",
-      "period":""
+      "periods": []
     },
     {
       "id": "江本",
 			"name": "江本",
-      "period":""
+      "periods": []
     },
     {
       "id": "温品",
 			"name": "温品",
-      "period":""
+      "periods": []
     },
     {
       "id": "段下",
 			"name": "段下",
-      "period":""
+      "periods": []
     },
     {
       "id": "宇根",
 			"name": "宇根",
-      "period":""
+      "periods": []
     },
     {
       "id": "山根",
 			"name": "山根",
-      "period":""
+      "periods": []
     },
     {
       "id": "上",
 			"name": "上",
-      "period":""
+      "periods": []
     },
     {
       "id": "ダーシー",
 			"name": "ダーシー",
-      "period":""
+      "periods": []
     },
     {
       "id": "ペリー",
 			"name": "ペリー",
-      "period":""
+      "periods": []
     },
     {
       "id": "瀬尾",
 			"name": "瀬尾",
-      "period":""
+      "periods": []
     },
     {
       "id": "カート",
 			"name": "カート",
-      "period":""
+      "periods": []
     },
     {
       "id": "佐賀",
 			"name": "佐賀",
-      "period":""
+      "periods": []
     },
     {
       "id": "大石",
 			"name": "大石",
-      "period":""
+      "periods": []
     },
     {
       "id": "原",
 			"name": "原",
-      "period":""
+      "periods": []
     },
     {
       "id": "岩本",
 			"name": "岩本",
-      "period":""
+      "periods": []
     },
     {
       "id": "狭間",
 			"name": "狭間",
-      "period":""
+      "periods": []
     },
     {
       "id": "永岩",
 			"name": "永岩",
-      "period":""
+      "periods": []
     },
     {
       "id": "山本伸",
 			"name": "山本伸",
-      "period":""
+      "periods": []
     },
     {
       "id": "山田哲",
 			"name": "山田哲",
-      "period":""
+      "periods": []
     },
     {
       "id": "佐古",
 			"name": "佐古",
-      "period":""
+      "periods": []
     },
     {
       "id": "古川",
 			"name": "古川",
-      "period":""
+      "periods": []
     },
     {
       "id": "吉見",
 			"name": "吉見",
-      "period":""
+      "periods": []
     },
     {
       "id": "清田",
 			"name": "清田",
-      "period":""
+      "periods": []
     },
     {
       "id": "応用研究担当",
 			"name": "応用研究担当",
-      "period":""
+      "periods": []
     },
     {
       "id": "ME全員",
 			"name": "ME全員",
-      "period":""
+      "periods": []
     },
     {
       "id": "IE全員",
 			"name": "IE全員",
-      "period":""
+      "periods": []
     },
     {
       "id": "CA全員",
 			"name": "CA全員",
-      "period":""
+      "periods": []
     }
   ]
 }
