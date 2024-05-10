@@ -1,48 +1,90 @@
 "use strict";
+// TimetableAPI.ts
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.create = void 0;
+exports.loadTeachers = exports.loadCourses = exports.write = exports.convert = void 0;
 const fs_1 = __importDefault(require("fs"));
-// ファイルからJSONデータを読み込む関数
-const loadJSONFile = (filename) => {
-    try {
-        const data = fs_1.default.readFileSync(filename, 'utf-8');
-        return JSON.parse(data);
+// 出力形式を要求された形式に変換する関数
+function convert(timetableData) {
+    const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    const days = [];
+    const courses = timetableData.Courses.Courses;
+    const instructors = timetableData.Instructors.Instructors;
+    for (let i = 0; i < daysOfWeek.length; i++) {
+        const dayOfWeek = daysOfWeek[i];
+        const classes = [];
+        for (let j = 0; j < 8; j++) {
+            classes.push({
+                subject: courses[i].name,
+                teachers: courses[i].instructors,
+                rooms: [courses[i].rooms],
+                period: j + 1,
+                length: 1
+            });
+        }
+        days.push({
+            Day: dayOfWeek,
+            Classes: classes
+        });
     }
-    catch (error) {
-        console.error('JSONファイルの読み込みエラー:', error);
-        return null;
-    }
-};
-// JSONファイルにデータを書き込む関数
-const writeJSONFile = (filename, data) => {
-    fs_1.default.writeFileSync(filename, JSON.stringify(data, null, 2));
-};
-//時間割作成API
-function create(req, res, course_file) {
-    try {
-        // リクエストボディから授業データの配列を取得
-        const coursesData = req.body;
-        // JSONファイルから既存のデータを読み込む
-        const existingCoursesData = loadJSONFile(course_file);
-        // 新しい授業データを追加
-        const newCourses = coursesData.map((newCourse) => ({
-            name: newCourse.name,
-            instructors: newCourse.instructors,
-            rooms: newCourse.rooms,
-            periods: newCourse.periods
-        }));
-        // 既存のデータに新しい授業データを結合
-        existingCoursesData.Courses.push(...newCourses);
-        // 更新されたデータをJSONファイルに書き込む
-        writeJSONFile(course_file, existingCoursesData);
-        res.status(201).json({ message: '授業が作成されました。' });
-    }
-    catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'エラーが発生しました。' });
-    }
+    return { Days: days };
 }
-exports.create = create;
+exports.convert = convert;
+// ファイルに書き込む関数
+function write(data) {
+    return new Promise((resolve, reject) => {
+        fs_1.default.writeFile('/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/TestData/Test2.json', JSON.stringify(data), (err) => {
+            if (err) {
+                reject(err);
+            }
+            else {
+                resolve();
+            }
+        });
+    });
+}
+exports.write = write;
+// JSONファイルからデータを読み込む関数
+function loadCourses() {
+    return new Promise((resolve, reject) => {
+        // ファイルパスを修正する
+        fs_1.default.readFile('/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/TestData/Test_Courses.json', 'utf8', (err, data) => {
+            if (err) {
+                reject(err);
+            }
+            else {
+                try {
+                    const jsonData = JSON.parse(data);
+                    resolve(jsonData);
+                }
+                catch (parseError) {
+                    reject(parseError);
+                }
+            }
+        });
+    });
+}
+exports.loadCourses = loadCourses;
+// JSONファイルからデータを読み込む関数
+function loadTeachers() {
+    return new Promise((resolve, reject) => {
+        // ファイルパスを修正する
+        fs_1.default.readFile('/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/TestData/Test_Instructor.json', 'utf8', (err, data) => {
+            if (err) {
+                reject(err);
+            }
+            else {
+                try {
+                    const jsonData = JSON.parse(data);
+                    resolve(jsonData);
+                }
+                catch (parseError) {
+                    reject(parseError);
+                }
+            }
+        });
+    });
+}
+exports.loadTeachers = loadTeachers;

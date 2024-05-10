@@ -1,0 +1,437 @@
+{
+  "Days": [
+    {
+      "Day": "Monday",
+      "Classes": [
+        {
+          "subject": "機械の基礎",
+          "teachers": [
+            "池田光",
+            "張間"
+          ],
+          "rooms": [
+            "CAD"
+          ],
+          "period": 1,
+          "length": 1
+        },
+        {
+          "subject": "機械の基礎",
+          "teachers": [
+            "池田光",
+            "張間"
+          ],
+          "rooms": [
+            "CAD"
+          ],
+          "period": 2,
+          "length": 1
+        },
+        {
+          "subject": "機械の基礎",
+          "teachers": [
+            "池田光",
+            "張間"
+          ],
+          "rooms": [
+            "CAD"
+          ],
+          "period": 3,
+          "length": 1
+        },
+        {
+          "subject": "機械の基礎",
+          "teachers": [
+            "池田光",
+            "張間"
+          ],
+          "rooms": [
+            "CAD"
+          ],
+          "period": 4,
+          "length": 1
+        },
+        {
+          "subject": "機械の基礎",
+          "teachers": [
+            "池田光",
+            "張間"
+          ],
+          "rooms": [
+            "CAD"
+          ],
+          "period": 5,
+          "length": 1
+        },
+        {
+          "subject": "機械の基礎",
+          "teachers": [
+            "池田光",
+            "張間"
+          ],
+          "rooms": [
+            "CAD"
+          ],
+          "period": 6,
+          "length": 1
+        },
+        {
+          "subject": "機械の基礎",
+          "teachers": [
+            "池田光",
+            "張間"
+          ],
+          "rooms": [
+            "CAD"
+          ],
+          "period": 7,
+          "length": 1
+        },
+        {
+          "subject": "機械の基礎",
+          "teachers": [
+            "池田光",
+            "張間"
+          ],
+          "rooms": [
+            "CAD"
+          ],
+          "period": 8,
+          "length": 1
+        }
+      ]
+    },
+    {
+      "Day": "Tuesday",
+      "Classes": [
+        {
+          "subject": "数学IB",
+          "teachers": "伊藤",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 1,
+          "length": 1
+        },
+        {
+          "subject": "数学IB",
+          "teachers": "伊藤",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 2,
+          "length": 1
+        },
+        {
+          "subject": "数学IB",
+          "teachers": "伊藤",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 3,
+          "length": 1
+        },
+        {
+          "subject": "数学IB",
+          "teachers": "伊藤",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 4,
+          "length": 1
+        },
+        {
+          "subject": "数学IB",
+          "teachers": "伊藤",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 5,
+          "length": 1
+        },
+        {
+          "subject": "数学IB",
+          "teachers": "伊藤",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 6,
+          "length": 1
+        },
+        {
+          "subject": "数学IB",
+          "teachers": "伊藤",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 7,
+          "length": 1
+        },
+        {
+          "subject": "数学IB",
+          "teachers": "伊藤",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 8,
+          "length": 1
+        }
+      ]
+    },
+    {
+      "Day": "Wednesday",
+      "Classes": [
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 1,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 2,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 3,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 4,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 5,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 6,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 7,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "ME1"
+          ],
+          "period": 8,
+          "length": 1
+        }
+      ]
+    },
+    {
+      "Day": "Thursday",
+      "Classes": [
+        {
+          "subject": "基礎プログラミングI",
+          "teachers": [
+            "宮崎",
+            "荻原"
+          ],
+          "rooms": [
+            "1パ"
+          ],
+          "period": 1,
+          "length": 1
+        },
+        {
+          "subject": "基礎プログラミングI",
+          "teachers": [
+            "宮崎",
+            "荻原"
+          ],
+          "rooms": [
+            "1パ"
+          ],
+          "period": 2,
+          "length": 1
+        },
+        {
+          "subject": "基礎プログラミングI",
+          "teachers": [
+            "宮崎",
+            "荻原"
+          ],
+          "rooms": [
+            "1パ"
+          ],
+          "period": 3,
+          "length": 1
+        },
+        {
+          "subject": "基礎プログラミングI",
+          "teachers": [
+            "宮崎",
+            "荻原"
+          ],
+          "rooms": [
+            "1パ"
+          ],
+          "period": 4,
+          "length": 1
+        },
+        {
+          "subject": "基礎プログラミングI",
+          "teachers": [
+            "宮崎",
+            "荻原"
+          ],
+          "rooms": [
+            "1パ"
+          ],
+          "period": 5,
+          "length": 1
+        },
+        {
+          "subject": "基礎プログラミングI",
+          "teachers": [
+            "宮崎",
+            "荻原"
+          ],
+          "rooms": [
+            "1パ"
+          ],
+          "period": 6,
+          "length": 1
+        },
+        {
+          "subject": "基礎プログラミングI",
+          "teachers": [
+            "宮崎",
+            "荻原"
+          ],
+          "rooms": [
+            "1パ"
+          ],
+          "period": 7,
+          "length": 1
+        },
+        {
+          "subject": "基礎プログラミングI",
+          "teachers": [
+            "宮崎",
+            "荻原"
+          ],
+          "rooms": [
+            "1パ"
+          ],
+          "period": 8,
+          "length": 1
+        }
+      ]
+    },
+    {
+      "Day": "Friday",
+      "Classes": [
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "IE1"
+          ],
+          "period": 1,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "IE1"
+          ],
+          "period": 2,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "IE1"
+          ],
+          "period": 3,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "IE1"
+          ],
+          "period": 4,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "IE1"
+          ],
+          "period": 5,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "IE1"
+          ],
+          "period": 6,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "IE1"
+          ],
+          "period": 7,
+          "length": 1
+        },
+        {
+          "subject": "化学基礎",
+          "teachers": "大橋",
+          "rooms": [
+            "IE1"
+          ],
+          "period": 8,
+          "length": 1
+        }
+      ]
+    }
+  ]
+}

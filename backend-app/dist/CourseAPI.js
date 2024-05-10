@@ -12,9 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.write = exports.load = exports.course_file = void 0;
+exports.write = exports.load = exports.teacher_file = exports.course_file = void 0;
 const fs_1 = __importDefault(require("fs"));
 exports.course_file = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/TestData/Test_Courses.json'; // JSONファイルのパス
+exports.teacher_file = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/TestData/Test_Instructors.json'; // JSONファイルのパス
 // ファイルからJSONデータを非同期で読み込む関数
 function load() {
     return __awaiter(this, void 0, void 0, function* () {

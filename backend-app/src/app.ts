@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import * as courseAPI from './CourseAPI';
+import * as timetableAPI from './TimetableAPI';
 
 const app = express();
 const port = 3000;
@@ -113,11 +114,26 @@ app.delete('/api/courses/deleteAll', async (req: Request, res: Response) => {
     res.json({ message: '全ての授業が削除されました。' });
 });
 
-//時間割作成API
+// 時間割作成API
 app.post('/api/timetable/create', async (req: Request, res: Response) => {
+    try {
+        // JSONファイルからデータを読み込む
+        const coursesData = await timetableAPI.loadCourses();
+        const instructorsData = await timetableAPI.loadTeachers();
 
+        // 出力形式に変換する
+        const timetableData = { Courses: coursesData, Instructors: instructorsData };
+        const outputData = timetableAPI.convert(timetableData);
+
+        // ファイルに書き込む
+        await timetableAPI.write(outputData);
+
+        res.status(201).json({ message: '時間割が作成されました。' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
 });
-
 
 // サーバーを起動
 app.listen(port, () => {

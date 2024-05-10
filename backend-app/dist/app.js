@@ -37,6 +37,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const courseAPI = __importStar(require("./CourseAPI"));
+const timetableAPI = __importStar(require("./TimetableAPI"));
 const app = (0, express_1.default)();
 const port = 3000;
 // ExpressのミドルウェアとしてJSONパースを使用する
@@ -137,11 +138,17 @@ app.delete('/api/courses/deleteAll', (req, res) => __awaiter(void 0, void 0, voi
     yield courseAPI.write(coursesData);
     res.json({ message: '全ての授業が削除されました。' });
 }));
-//時間割作成API
+// 時間割作成API
 app.post('/api/timetable/create', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const timetableData = req.body;
-        yield courseAPI.write(timetableData);
+        // JSONファイルからデータを読み込む
+        const coursesData = yield timetableAPI.loadCourses();
+        const instructorsData = yield timetableAPI.loadTeachers();
+        // 出力形式に変換する
+        const timetableData = { Courses: coursesData, Instructors: instructorsData };
+        const outputData = timetableAPI.convert(timetableData);
+        // ファイルに書き込む
+        yield timetableAPI.write(outputData);
         res.status(201).json({ message: '時間割が作成されました。' });
     }
     catch (error) {
