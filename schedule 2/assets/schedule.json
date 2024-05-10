@@ -1,0 +1,98 @@
+{
+    "teachers": [
+        {
+            "name": "Miyazaki",
+            "periods": [
+                {
+                    "day": 1,
+                    "period": 1
+                },
+                {
+                    "day": 1,
+                    "period": 2
+                },
+                {
+                    "day": 1,
+                    "period": 3
+                },
+                {
+                    "day": 1,
+                    "period": 4
+                },
+                {
+                    "day": 1,
+                    "period": 5
+                },
+                {
+                    "day": 1,
+                    "period": 6
+                },
+                {
+                    "day": 1,
+                    "period": 7
+                },
+                {
+                    "day": 1,
+                    "period": 8
+                }
+            ]
+        },
+        {
+            "name": "Gisawa",
+            "periods": [
+                {
+                    "day": 1,
+                    "period": 5
+                },
+                {
+                    "day": 1,
+                    "period": 6
+                },
+                {
+                    "day": 1,
+                    "period": 7
+                },
+                {
+                    "day": 1,
+                    "period": 8
+                }
+            ]
+        }
+    ],
+    "tasks": [
+        {
+            "name": "ディジタル信号処理",
+            "teachers": ["Miyazaki"],
+            "targets": ["IE5"],
+            "rooms": ["a"],
+            "length": 2,
+            "periods": [
+                {
+                    "day": 1,
+                    "period": 1
+                },
+                {
+                    "day": 1,
+                    "period": 5
+                }
+            ]
+        },
+        {
+            "name": "ディジタル信号処理",
+            "teachers": ["Miyazaki", "Gisawa"],
+            "targets": ["IE5"],
+            "rooms": ["a"],
+            "length": 2,
+            "periods": [
+                {
+                    "day": 1,
+                    "period": 1
+                },
+                {
+                    "day": 1,
+                    "period": 5
+                }
+            ]
+        }
+    ]
+}
