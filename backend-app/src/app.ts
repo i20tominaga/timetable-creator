@@ -5,46 +5,52 @@ import * as timetableAPI from './TimetableAPI';
 const app = express();
 const port = 3000;
 
-// ExpressのミドルウェアとしてJSONパースを使用する
 app.use(express.json());
 
 // 全授業取得API
 app.get('/api/courses/getAll', async (req: Request, res: Response) => {
-    const coursesData = await courseAPI.load();
-    const courseData = coursesData.Courses.map((course: any) => ({
-        name: course.name,
-        instructors: course.instructors,
-        rooms: course.rooms,
-        periods: course.periods.map((period: any) => ({
-            day: period.day,
-            period: period.period
-        }))
-    }));
+    try {
+        const coursesData = await courseAPI.load();
+        const courseData = coursesData.Courses.map((course: any) => ({
+            name: course.name,
+            instructors: course.instructors,
+            rooms: course.rooms,
+            periods: course.periods.map((period: any) => ({
+                day: period.day,
+                period: period.period
+            }))
+        }));
 
-    res.json(courseData);
+        res.json(courseData);
+    } catch (error) {
+        console.error('Error fetching all courses:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
 });
 
-//特定の授業取得API
+// 特定の授業取得API
 app.get('/api/courses/get/:courseName', async (req: Request, res: Response) => {
-    const courseName = req.params.courseName;
-    const coursesData = await courseAPI.load();
-    const courseData = coursesData.Courses.find((course: any) => course.name === courseName);
+    try {
+        const courseName = req.params.courseName;
+        const coursesData = await courseAPI.load();
+        const courseData = coursesData.Courses.find((course: any) => course.name === courseName);
 
-    if (courseData) {
-        res.json(courseData);
-    } else {
-        res.status(404).send('Course not found');
+        if (courseData) {
+            res.json(courseData);
+        } else {
+            res.status(404).send('Course not found');
+        }
+    } catch (error) {
+        console.error('Error fetching course by name:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
     }
 });
 
 // 授業作成API
 app.post('/api/courses/create', async (req: Request, res: Response) => {
     try {
-        // リクエストボディから授業データの配列を取得
         const coursesData = req.body;
-        // JSONファイルから既存のデータを読み込む
         const existingCoursesData = await courseAPI.load();
-        // 新しい授業データを追加
         const newCourses = coursesData.map((newCourse: any) => ({
             name: newCourse.name,
             instructors: newCourse.instructors,
@@ -55,20 +61,18 @@ app.post('/api/courses/create', async (req: Request, res: Response) => {
             }))
         }));
 
-        // 既存のデータに新しい授業データを結合
         existingCoursesData.Courses.push(...newCourses);
 
-        // 更新されたデータをJSONファイルに書き込む
         await courseAPI.write(existingCoursesData);
 
         res.status(201).json({ message: '授業が作成されました。' });
     } catch (error) {
-        console.error(error);
+        console.error('Error creating course:', error);
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 });
 
-//授業更新API
+// 授業更新API
 app.put('/api/courses/update/:courseName', async (req: Request, res: Response) => {
     try {
         const courseName = req.params.courseName;
@@ -88,54 +92,58 @@ app.put('/api/courses/update/:courseName', async (req: Request, res: Response) =
             res.status(404).send('Course not found');
         }
     } catch (error) {
+        console.error('Error updating course:', error);
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 });
 
-//特定の授業削除API
+// 特定の授業削除API
 app.delete('/api/courses/delete/:courseName', async (req: Request, res: Response) => {
-    const courseName = req.params.courseName;
-    const coursesData = await courseAPI.load();
-    const filteredCourses = coursesData.Courses.filter((course: any) => course.name !== courseName);
+    try {
+        const courseName = req.params.courseName;
+        const coursesData = await courseAPI.load();
+        const filteredCourses = coursesData.Courses.filter((course: any) => course.name !== courseName);
 
-    if (filteredCourses.length < coursesData.Courses.length) {
-        coursesData.Courses = filteredCourses;
-        await courseAPI.write(coursesData);
-        res.json({ message: '授業が削除されました。' });
-    } else {
-        res.status(404).send('Course not found');
+        if (filteredCourses.length < coursesData.Courses.length) {
+            coursesData.Courses = filteredCourses;
+            await courseAPI.write(coursesData);
+            res.json({ message: '授業が削除されました。' });
+        } else {
+            res.status(404).send('Course not found');
+        }
+    } catch (error) {
+        console.error('Error deleting course:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
     }
 });
 
-//全授業削除API
+// 全授業削除API
 app.delete('/api/courses/deleteAll', async (req: Request, res: Response) => {
-    const coursesData = { Courses: [] };
-    await courseAPI.write(coursesData);
-    res.json({ message: '全ての授業が削除されました。' });
+    try {
+        const coursesData = { Courses: [] };
+        await courseAPI.write(coursesData);
+        res.json({ message: '全ての授業が削除されました。' });
+    } catch (error) {
+        console.error('Error deleting all courses:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
 });
 
-// 時間割作成API
+// 時間割作成API (timetableAPI)
 app.post('/api/timetable/create', async (req: Request, res: Response) => {
     try {
-        // JSONファイルからデータを読み込む
-        const coursesData = await timetableAPI.loadCourses();
-        const instructorsData = await timetableAPI.loadTeachers();
+        const coursesData =  await timetableAPI.loadCourses(); // loadCourses関数を修正
+        const instructorData = await timetableAPI.loadInstructors(); // loadInstructors関数を追加
+        const convertedData = timetableAPI.convert(coursesData, instructorData); // convert関数を利用してデータを変換
 
-        // 出力形式に変換する
-        const timetableData = { Courses: coursesData, Instructors: instructorsData };
-        const outputData = timetableAPI.convert(timetableData);
-
-        // ファイルに書き込む
-        await timetableAPI.write(outputData);
-
-        res.status(201).json({ message: '時間割が作成されました。' });
+        // レスポンスを返す
+        res.status(201).json(convertedData);
     } catch (error) {
-        console.error(error);
+        console.error('Error creating timetable:', error);
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 });
 
-// サーバーを起動
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });

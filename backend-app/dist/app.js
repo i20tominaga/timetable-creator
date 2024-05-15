@@ -40,42 +40,50 @@ const courseAPI = __importStar(require("./CourseAPI"));
 const timetableAPI = __importStar(require("./TimetableAPI"));
 const app = (0, express_1.default)();
 const port = 3000;
-// ExpressのミドルウェアとしてJSONパースを使用する
 app.use(express_1.default.json());
 // 全授業取得API
 app.get('/api/courses/getAll', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const coursesData = yield courseAPI.load();
-    const courseData = coursesData.Courses.map((course) => ({
-        name: course.name,
-        instructors: course.instructors,
-        rooms: course.rooms,
-        periods: course.periods.map((period) => ({
-            day: period.day,
-            period: period.period
-        }))
-    }));
-    res.json(courseData);
-}));
-//特定の授業取得API
-app.get('/api/courses/get/:courseName', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const courseName = req.params.courseName;
-    const coursesData = yield courseAPI.load();
-    const courseData = coursesData.Courses.find((course) => course.name === courseName);
-    if (courseData) {
+    try {
+        const coursesData = yield courseAPI.load();
+        const courseData = coursesData.Courses.map((course) => ({
+            name: course.name,
+            instructors: course.instructors,
+            rooms: course.rooms,
+            periods: course.periods.map((period) => ({
+                day: period.day,
+                period: period.period
+            }))
+        }));
         res.json(courseData);
     }
-    else {
-        res.status(404).send('Course not found');
+    catch (error) {
+        console.error('Error fetching all courses:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+}));
+// 特定の授業取得API
+app.get('/api/courses/get/:courseName', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const courseName = req.params.courseName;
+        const coursesData = yield courseAPI.load();
+        const courseData = coursesData.Courses.find((course) => course.name === courseName);
+        if (courseData) {
+            res.json(courseData);
+        }
+        else {
+            res.status(404).send('Course not found');
+        }
+    }
+    catch (error) {
+        console.error('Error fetching course by name:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));
 // 授業作成API
 app.post('/api/courses/create', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // リクエストボディから授業データの配列を取得
         const coursesData = req.body;
-        // JSONファイルから既存のデータを読み込む
         const existingCoursesData = yield courseAPI.load();
-        // 新しい授業データを追加
         const newCourses = coursesData.map((newCourse) => ({
             name: newCourse.name,
             instructors: newCourse.instructors,
@@ -85,18 +93,16 @@ app.post('/api/courses/create', (req, res) => __awaiter(void 0, void 0, void 0, 
                 period: period.period
             }))
         }));
-        // 既存のデータに新しい授業データを結合
         existingCoursesData.Courses.push(...newCourses);
-        // 更新されたデータをJSONファイルに書き込む
         yield courseAPI.write(existingCoursesData);
         res.status(201).json({ message: '授業が作成されました。' });
     }
     catch (error) {
-        console.error(error);
+        console.error('Error creating course:', error);
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));
-//授業更新API
+// 授業更新API
 app.put('/api/courses/update/:courseName', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const courseName = req.params.courseName;
@@ -115,48 +121,56 @@ app.put('/api/courses/update/:courseName', (req, res) => __awaiter(void 0, void 
         }
     }
     catch (error) {
+        console.error('Error updating course:', error);
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));
-//特定の授業削除API
+// 特定の授業削除API
 app.delete('/api/courses/delete/:courseName', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const courseName = req.params.courseName;
-    const coursesData = yield courseAPI.load();
-    const filteredCourses = coursesData.Courses.filter((course) => course.name !== courseName);
-    if (filteredCourses.length < coursesData.Courses.length) {
-        coursesData.Courses = filteredCourses;
-        yield courseAPI.write(coursesData);
-        res.json({ message: '授業が削除されました。' });
-    }
-    else {
-        res.status(404).send('Course not found');
-    }
-}));
-//全授業削除API
-app.delete('/api/courses/deleteAll', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const coursesData = { Courses: [] };
-    yield courseAPI.write(coursesData);
-    res.json({ message: '全ての授業が削除されました。' });
-}));
-// 時間割作成API
-app.post('/api/timetable/create', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // JSONファイルからデータを読み込む
-        const coursesData = yield timetableAPI.loadCourses();
-        const instructorsData = yield timetableAPI.loadTeachers();
-        // 出力形式に変換する
-        const timetableData = { Courses: coursesData, Instructors: instructorsData };
-        const outputData = timetableAPI.convert(timetableData);
-        // ファイルに書き込む
-        yield timetableAPI.write(outputData);
-        res.status(201).json({ message: '時間割が作成されました。' });
+        const courseName = req.params.courseName;
+        const coursesData = yield courseAPI.load();
+        const filteredCourses = coursesData.Courses.filter((course) => course.name !== courseName);
+        if (filteredCourses.length < coursesData.Courses.length) {
+            coursesData.Courses = filteredCourses;
+            yield courseAPI.write(coursesData);
+            res.json({ message: '授業が削除されました。' });
+        }
+        else {
+            res.status(404).send('Course not found');
+        }
     }
     catch (error) {
-        console.error(error);
+        console.error('Error deleting course:', error);
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));
-// サーバーを起動
+// 全授業削除API
+app.delete('/api/courses/deleteAll', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const coursesData = { Courses: [] };
+        yield courseAPI.write(coursesData);
+        res.json({ message: '全ての授業が削除されました。' });
+    }
+    catch (error) {
+        console.error('Error deleting all courses:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+}));
+// 時間割作成API (timetableAPI)
+app.post('/api/timetable/create', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const coursesData = yield timetableAPI.loadCourses(); // loadCourses関数を修正
+        const instructorData = yield timetableAPI.loadInstructors(); // loadInstructors関数を追加
+        const convertedData = timetableAPI.convert(coursesData, instructorData); // convert関数を利用してデータを変換
+        // レスポンスを返す
+        res.status(201).json(convertedData);
+    }
+    catch (error) {
+        console.error('Error creating timetable:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+}));
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });

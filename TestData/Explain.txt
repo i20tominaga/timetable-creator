@@ -1,0 +1,5 @@
+Test_Courses.json
+・periodsは開講可能な時間
+
+Test_Instructors.json
+・periodsは担当可能な時間

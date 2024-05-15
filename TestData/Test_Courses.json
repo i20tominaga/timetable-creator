@@ -6,7 +6,7 @@
         "池田光",
         "張間"
       ],
-      "rooms": "CAD",
+      "rooms": ["CAD"],
       "periods": [
         {
           "day": 1,
@@ -16,8 +16,8 @@
     },
     {
       "name": "数学IB",
-      "instructors": "伊藤",
-      "rooms": "ME1",
+      "instructors": ["伊藤"],
+      "rooms": ["ME1"],
       "periods": [
         {
           "day": 1,
@@ -27,8 +27,8 @@
     },
     {
       "name": "化学基礎",
-      "instructors": "大橋",
-      "rooms": "ME1",
+      "instructors": ["大橋"],
+      "rooms": ["ME1"],
       "periods": [
         {
           "day": 1,
@@ -42,7 +42,7 @@
         "宮崎",
         "荻原"
       ],
-      "rooms": "1パ",
+      "rooms": ["1パ"],
       "periods": [
         {
           "day": 1,
@@ -52,8 +52,8 @@
     },
     {
       "name": "化学基礎",
-      "instructors": "大橋",
-      "rooms": "IE1",
+      "instructors": ["大橋"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -63,8 +63,8 @@
     },
     {
       "name": "ライフサイエンス・アースサイエンス",
-      "instructors": "天内",
-      "rooms": "IE1",
+      "instructors": ["天内"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -79,7 +79,7 @@
         "伊藤",
         "上田和"
       ],
-      "rooms": "IE1",
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -89,8 +89,8 @@
     },
     {
       "name": "測量学I",
-      "instructors": "段下",
-      "rooms": "CA1",
+      "instructors": ["段下"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -100,8 +100,8 @@
     },
     {
       "name": "歴史",
-      "instructors": "奥山",
-      "rooms": "CA1",
+      "instructors": ["奥山"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -111,8 +111,8 @@
     },
     {
       "name": "数学IB",
-      "instructors": "伊藤",
-      "rooms": "CA1",
+      "instructors": ["伊藤"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -128,7 +128,7 @@
         "池田将",
         "橋爪"
       ],
-      "rooms": "CAD",
+      "rooms": ["CAD"],
       "periods": [
         {
           "day": 1,
@@ -138,8 +138,8 @@
     },
     {
       "name": "基礎英語W",
-      "instructors": "倉増",
-      "rooms": "IE1",
+      "instructors": ["倉増"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -149,8 +149,8 @@
     },
     {
       "name": "ライフサイエンス・アースサイエンス",
-      "instructors": "天内",
-      "rooms": "ME1",
+      "instructors": ["天内"],
+      "rooms": ["ME1"],
       "periods": [
         {
           "day": 1,
@@ -160,7 +160,7 @@
     },
     {
       "name": "コンピュータ演習",
-      "instructors": "重村",
+      "instructors": ["重村"],
       "rooms": [
         "1パ",
         "IE電算"
@@ -174,8 +174,8 @@
     },
     {
       "name": "総合英語W",
-      "instructors": "倉増",
-      "rooms": "IE1",
+      "instructors": ["倉増"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -185,8 +185,8 @@
     },
     {
       "name": "国語IA",
-      "instructors": "高槻",
-      "rooms": "IE1",
+      "instructors": ["高槻"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -196,8 +196,8 @@
     },
     {
       "name": "数学IB",
-      "instructors": "伊藤",
-      "rooms": "IE1",
+      "instructors": ["伊藤"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -214,7 +214,7 @@
         "江本",
         "河野"
       ],
-      "rooms": "設計製作",
+      "rooms": ["設計製作"],
       "periods": [
         {
           "day": 1,
@@ -224,8 +224,8 @@
     },
     {
       "name": "基礎英語R",
-      "instructors": "上田真",
-      "rooms": "CA1",
+      "instructors": ["上田真"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -235,8 +235,8 @@
     },
     {
       "name": "化学基礎",
-      "instructors": "大橋",
-      "rooms": "CA1",
+      "instructors": ["大橋"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -246,8 +246,8 @@
     },
     {
       "name": "基礎英語W",
-      "instructors": "倉増",
-      "rooms": "CA1",
+      "instructors": ["倉増"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -257,8 +257,8 @@
     },
     {
       "name": "国語IB",
-      "instructors": "高槻",
-      "rooms": "ME1",
+      "instructors": ["高槻"],
+      "rooms": ["ME1"],
       "periods": [
         {
           "day": 1,
@@ -272,7 +272,7 @@
         "光田",
         "高橋"
       ],
-      "rooms": "ME1",
+      "rooms": ["ME1"],
       "periods": [
         {
           "day": 1,
@@ -282,8 +282,8 @@
     },
     {
       "name": "数学IA",
-      "instructors": "上田和",
-      "rooms": "ME1",
+      "instructors": ["上田和"],
+      "rooms": ["ME1"],
       "periods": [
         {
           "day": 1,
@@ -293,8 +293,8 @@
     },
     {
       "name": "基礎英語R",
-      "instructors": "上田真",
-      "rooms": "ME1",
+      "instructors": ["上田真"],
+      "rooms": ["ME1"],
       "periods": [
         {
           "day": 1,
@@ -304,8 +304,8 @@
     },
     {
       "name": "基礎英語W",
-      "instructors": "倉増",
-      "rooms": "ME1",
+      "instructors": ["倉増"],
+      "rooms": ["ME1"],
       "periods": [
         {
           "day": 1,
@@ -315,8 +315,8 @@
     },
     {
       "name": "歴史",
-      "instructors": "奥山",
-      "rooms": "IE1",
+      "instructors": ["奥山"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -330,7 +330,7 @@
         "光田",
         "高橋"
       ],
-      "rooms": "IE1",
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -340,8 +340,8 @@
     },
     {
       "name": "国語IB",
-      "instructors": "高槻",
-      "rooms": "IE1",
+      "instructors": ["高槻"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -351,8 +351,8 @@
     },
     {
       "name": "ライフサイエンス・アースサイエンス",
-      "instructors": "天内",
-      "rooms": "CA1",
+      "instructors": ["天内"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -362,8 +362,8 @@
     },
     {
       "name": "数学IA",
-      "instructors": "上田和",
-      "rooms": "CA1",
+      "instructors": ["上田和"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -373,8 +373,8 @@
     },
     {
       "name": "国語IB",
-      "instructors": "高槻",
-      "rooms": "CA1",
+      "instructors": ["高槻"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -388,7 +388,7 @@
         "光田",
         "高橋"
       ],
-      "rooms": "CA1",
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -402,7 +402,7 @@
         "張間",
         "三浦"
       ],
-      "rooms": "2パ",
+      "rooms": ["2パ"],
       "periods": [
         {
           "day": 1,
@@ -416,7 +416,7 @@
         "飛車",
         "三浦"
       ],
-      "rooms": "2パ",
+      "rooms": ["2パ"],
       "periods": [
         {
           "day": 1,
@@ -426,8 +426,8 @@
     },
     {
       "name": "国語IA",
-      "instructors": "高槻",
-      "rooms": "CA1",
+      "instructors": ["高槻"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -437,8 +437,8 @@
     },
     {
       "name": "HR",
-      "instructors": "北",
-      "rooms": "ME1",
+      "instructors": ["北"],
+      "rooms": ["ME1"],
       "periods": [
         {
           "day": 1,
@@ -448,8 +448,8 @@
     },
     {
       "name": "基礎コンピュータ工学",
-      "instructors": "重村",
-      "rooms": "IE1",
+      "instructors": ["重村"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -459,8 +459,8 @@
     },
     {
       "name": "基礎電気回路",
-      "instructors": "室谷",
-      "rooms": "IE実験",
+      "instructors": ["室谷"],
+      "rooms": ["IE実験"],
       "periods": [
         {
           "day": 1,
@@ -470,8 +470,8 @@
     },
     {
       "name": "基礎英語R",
-      "instructors": "上田真",
-      "rooms": "IE1",
+      "instructors": ["上田真"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -481,8 +481,8 @@
     },
     {
       "name": "HR",
-      "instructors": "上田真",
-      "rooms": "IE1",
+      "instructors": ["上田真"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -496,7 +496,7 @@
         "海田",
         "山根"
       ],
-      "rooms": "設計製作",
+      "rooms": ["設計製作"],
       "periods": [
         {
           "day": 1,
@@ -506,8 +506,8 @@
     },
     {
       "name": "HR",
-      "instructors": "伊藤",
-      "rooms": "CA1",
+      "instructors": ["伊藤"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -517,8 +517,8 @@
     },
     {
       "name": "歴史",
-      "instructors": "奥山",
-      "rooms": "ME1",
+      "instructors": ["奥山"],
+      "rooms": ["ME1"],
       "periods": [
         {
           "day": 1,
@@ -528,8 +528,8 @@
     },
     {
       "name": "ライフサイエンス・アースサイエンス",
-      "instructors": "天内",
-      "rooms": "メディア",
+      "instructors": ["天内"],
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -539,8 +539,8 @@
     },
     {
       "name": "工作実習I",
-      "instructors": "三浦",
-      "rooms": "工場",
+      "instructors": ["三浦"],
+      "rooms": ["工場"],
       "periods": [
         {
           "day": 1,
@@ -550,8 +550,8 @@
     },
     {
       "name": "体育",
-      "instructors": "北",
-      "rooms": "グラウンド",
+      "instructors": ["北"],
+      "rooms": ["グラウンド"],
       "periods": [
         {
           "day": 1,
@@ -561,8 +561,8 @@
     },
     {
       "name": "体育",
-      "instructors": "北",
-      "rooms": "グラウンド",
+      "instructors": ["北"],
+      "rooms": ["グラウンド"],
       "periods": [
         {
           "day": 1,
@@ -572,8 +572,8 @@
     },
     {
       "name": "体育",
-      "instructors": "北",
-      "rooms": "グラウンド",
+      "instructors": ["北"],
+      "rooms": ["グラウンド"],
       "periods": [
         {
           "day": 1,
@@ -583,8 +583,8 @@
     },
     {
       "name": "数学IA",
-      "instructors": "上田和",
-      "rooms": "IE1",
+      "instructors": ["上田和"],
+      "rooms": ["IE1"],
       "periods": [
         {
           "day": 1,
@@ -594,8 +594,8 @@
     },
     {
       "name": "国語IA",
-      "instructors": "高槻",
-      "rooms": "CA1",
+      "instructors": ["高槻"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -611,7 +611,7 @@
         "江本",
         "中川"
       ],
-      "rooms": "設計製作",
+      "rooms": ["設計製作"],
       "periods": [
         {
           "day": 1,
@@ -625,7 +625,7 @@
         "目山",
         "河野"
       ],
-      "rooms": "設計製作",
+      "rooms": ["設計製作"],
       "periods": [
         {
           "day": 1,
@@ -635,8 +635,8 @@
     },
     {
       "name": "測量学I",
-      "instructors": "段下",
-      "rooms": "CA1",
+      "instructors": ["段下"],
+      "rooms": ["CA1"],
       "periods": [
         {
           "day": 1,
@@ -646,8 +646,8 @@
     },
     {
       "name": "建築材料",
-      "instructors": "島袋",
-      "rooms": "設計製作",
+      "instructors": ["島袋"],
+      "rooms": ["設計製作"],
       "periods": [
         {
           "day": 1,
@@ -657,8 +657,8 @@
     },
     {
       "name": "物理I",
-      "instructors": "中村",
-      "rooms": "ME2",
+      "instructors": ["中村"],
+      "rooms": ["ME2"],
       "periods": [
         {
           "day": 1,
@@ -668,8 +668,8 @@
     },
     {
       "name": "数学IIB",
-      "instructors": "唐松",
-      "rooms": "メディア",
+      "instructors": ["唐松"],
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -679,8 +679,8 @@
     },
     {
       "name": "歴史",
-      "instructors": "奥山",
-      "rooms": "ME2",
+      "instructors": ["奥山"],
+      "rooms": ["ME2"],
       "periods": [
         {
           "day": 1,
@@ -690,8 +690,8 @@
     },
     {
       "name": "工作実習II",
-      "instructors": "石田",
-      "rooms": "工場",
+      "instructors": ["石田"],
+      "rooms": ["工場"],
       "periods": [
         {
           "day": 1,
@@ -701,8 +701,8 @@
     },
     {
       "name": "数学IIB",
-      "instructors": "米田",
-      "rooms": "メディア",
+      "instructors": ["米田"],
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -712,8 +712,8 @@
     },
     {
       "name": "プログラミング言語",
-      "instructors": "高山",
-      "rooms": "IE2",
+      "instructors": ["高山"],
+      "rooms": ["IE2"],
       "periods": [
         {
           "day": 1,
@@ -723,8 +723,8 @@
     },
     {
       "name": "数学IIA",
-      "instructors": "山本",
-      "rooms": "IE2",
+      "instructors": ["山本"],
+      "rooms": ["IE2"],
       "periods": [
         {
           "day": 1,
@@ -734,8 +734,8 @@
     },
     {
       "name": "歴史",
-      "instructors": "奥山",
-      "rooms": "CA2",
+      "instructors": ["奥山"],
+      "rooms": ["CA2"],
       "periods": [
         {
           "day": 1,
@@ -745,8 +745,8 @@
     },
     {
       "name": "数学IIA",
-      "instructors": "山本",
-      "rooms": "CA2",
+      "instructors": ["山本"],
+      "rooms": ["CA2"],
       "periods": [
         {
           "day": 1,
@@ -756,8 +756,8 @@
     },
     {
       "name": "数学IIB",
-      "instructors": "唐松",
-      "rooms": "メディア",
+      "instructors": ["唐松"],
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -789,7 +789,7 @@
         "張間",
         "三浦"
       ],
-      "rooms": "CAD",
+      "rooms": ["CAD"],
       "periods": [
         {
           "day": 1,
@@ -803,7 +803,7 @@
         "ダーシー",
         "ペリー"
       ],
-      "rooms": "演習室",
+      "rooms": ["演習室"],
       "periods": [
         {
           "day": 1,
@@ -813,8 +813,8 @@
     },
     {
       "name": "化学I",
-      "instructors": "中村",
-      "rooms": "IE2",
+      "instructors": ["中村"],
+      "rooms": ["IE2"],
       "periods": [
         {
           "day": 1,
@@ -824,8 +824,8 @@
     },
     {
       "name": "体育",
-      "instructors": "北",
-      "rooms": "グラウンド",
+      "instructors": ["北"],
+      "rooms": ["グラウンド"],
       "periods": [
         {
           "day": 1,
@@ -835,8 +835,8 @@
     },
     {
       "name": "体育",
-      "instructors": "北",
-      "rooms": "グラウンド",
+      "instructors": ["北"],
+      "rooms": ["グラウンド"],
       "periods": [
         {
           "day": 1,
@@ -846,8 +846,8 @@
     },
     {
       "name": "体育",
-      "instructors": "北",
-      "rooms": "グラウンド",
+      "instructors": ["北"],
+      "rooms": ["グラウンド"],
       "periods": [
         {
           "day": 1,
@@ -861,7 +861,7 @@
         "ダーシー",
         "ペリー"
       ],
-      "rooms": "演習室",
+      "rooms": ["演習室"],
       "periods": [
         {
           "day": 1,
@@ -871,8 +871,8 @@
     },
     {
       "name": "構造力学基礎",
-      "instructors": "海田",
-      "rooms": "CA2",
+      "instructors": ["海田"],
+      "rooms": ["CA2"],
       "periods": [
         {
           "day": 1,
@@ -882,8 +882,8 @@
     },
     {
       "name": "総合英語IW",
-      "instructors": "長戸",
-      "rooms": "CA2",
+      "instructors": ["長戸"],
+      "rooms": ["CA2"],
       "periods": [
         {
           "day": 1,
@@ -893,8 +893,8 @@
     },
     {
       "name": "国語総合II",
-      "instructors": "金",
-      "rooms": "ME2",
+      "instructors": ["金"],
+      "rooms": ["ME2"],
       "periods": [
         {
           "day": 1,
@@ -904,8 +904,8 @@
     },
     {
       "name": "総合英語IW",
-      "instructors": "長戸",
-      "rooms": "ME2",
+      "instructors": ["長戸"],
+      "rooms": ["ME2"],
       "periods": [
         {
           "day": 1,
@@ -915,8 +915,8 @@
     },
     {
       "name": "化学I",
-      "instructors": "中村",
-      "rooms": "ME2",
+      "instructors": ["中村"],
+      "rooms": ["ME2"],
       "periods": [
         {
           "day": 1,
@@ -946,8 +946,8 @@
     },
     {
       "name": "歴史",
-      "instructors": "奥山",
-      "rooms": "IE2",
+      "instructors": ["奥山"],
+      "rooms": ["IE2"],
       "periods": [
         {
           "day": 1,
@@ -957,8 +957,8 @@
     },
     {
       "name": "国語総合II",
-      "instructors": "金",
-      "rooms": "IE2",
+      "instructors": ["金"],
+      "rooms": ["IE2"],
       "periods": [
         {
           "day": 1,
@@ -968,8 +968,8 @@
     },
     {
       "name": "総合英語IW",
-      "instructors": "長戸",
-      "rooms": "IE2",
+      "instructors": ["長戸"],
+      "rooms": ["IE2"],
       "periods": [
         {
           "day": 1,
@@ -979,8 +979,8 @@
     },
     {
       "name": "物理I",
-      "instructors": "菊地",
-      "rooms": "IE2",
+      "instructors": ["菊地"],
+      "rooms": ["IE2"],
       "periods": [
         {
           "day": 1,
@@ -990,8 +990,8 @@
     },
     {
       "name": "物理I",
-      "instructors": "菊地",
-      "rooms": "CA2",
+      "instructors": ["菊地"],
+      "rooms": ["CA2"],
       "periods": [
         {
           "day": 1,
@@ -1001,8 +1001,8 @@
     },
     {
       "name": "化学I",
-      "instructors": "中村",
-      "rooms": "CA2",
+      "instructors": ["中村"],
+      "rooms": ["CA2"],
       "periods": [
         {
           "day": 1,
@@ -1012,8 +1012,8 @@
     },
     {
       "name": "測量学II",
-      "instructors": "上",
-      "rooms": "CA2",
+      "instructors": ["上"],
+      "rooms": ["CA2"],
       "periods": [
         {
           "day": 1,
@@ -1044,8 +1044,8 @@
     },
     {
       "name": "数学IIA",
-      "instructors": "山本",
-      "rooms": "ME2",
+      "instructors": ["山本"],
+      "rooms": ["ME2"],
       "periods": [
         {
           "day": 1,
@@ -1055,8 +1055,8 @@
     },
     {
       "name": "書道△",
-      "instructors": "山本伸",
-      "rooms": "演習室",
+      "instructors": ["山本伸"],
+      "rooms": ["演習室"],
       "periods": [
         {
           "day": 1,
@@ -1066,8 +1066,8 @@
     },
     {
       "name": "工芸△",
-      "instructors": "山田哲",
-      "rooms": "地域生涯",
+      "instructors": ["山田哲"],
+      "rooms": ["地域生涯"],
       "periods": [
         {
           "day": 1,
@@ -1077,8 +1077,8 @@
     },
     {
       "name": "美術△",
-      "instructors": "佐古",
-      "rooms": "IE2",
+      "instructors": ["佐古"],
+      "rooms": ["IE2"],
       "periods": [
         {
           "day": 1,
@@ -1088,7 +1088,7 @@
     },
     {
       "name": "音楽△",
-      "instructors": "古川",
+      "instructors": ["古川"],
       "rooms": [
         "メディア",
         "1パ"
@@ -1102,8 +1102,8 @@
     },
     {
       "name": "プログラミング応用",
-      "instructors": "石田",
-      "rooms": "CAD",
+      "instructors": ["石田"],
+      "rooms": ["CAD"],
       "periods": [
         {
           "day": 1,
@@ -1113,8 +1113,8 @@
     },
     {
       "name": "HR",
-      "instructors": "橋爪",
-      "rooms": "ME2",
+      "instructors": ["橋爪"],
+      "rooms": ["ME2"],
       "periods": [
         {
           "day": 1,
@@ -1124,7 +1124,7 @@
     },
     {
       "name": "コンピュータ工学",
-      "instructors": "浦上",
+      "instructors": ["浦上"],
       "rooms": [
         "IE電算",
         "2スタCW"
@@ -1138,8 +1138,8 @@
     },
     {
       "name": "電気回路",
-      "instructors": "室谷",
-      "rooms": "IE実験",
+      "instructors": ["室谷"],
+      "rooms": ["IE実験"],
       "periods": [
         {
           "day": 1,
@@ -1149,8 +1149,8 @@
     },
     {
       "name": "HR",
-      "instructors": "杉村",
-      "rooms": "IE2",
+      "instructors": ["杉村"],
+      "rooms": ["IE2"],
       "periods": [
         {
           "day": 1,
@@ -1160,8 +1160,8 @@
     },
     {
       "name": "国語総合II",
-      "instructors": "金",
-      "rooms": "CA2",
+      "instructors": ["金"],
+      "rooms": ["CA2"],
       "periods": [
         {
           "day": 1,
@@ -1175,7 +1175,7 @@
         "ダーシー",
         "ペリー"
       ],
-      "rooms": "演習室",
+      "rooms": ["演習室"],
       "periods": [
         {
           "day": 1,
@@ -1185,8 +1185,8 @@
     },
     {
       "name": "段下",
-      "instructors": "河野",
-      "rooms": "CA2",
+      "instructors": ["河野"],
+      "rooms": ["CA2"],
       "periods": [
         {
           "day": 1,
@@ -1196,8 +1196,8 @@
     },
     {
       "name": "総合英語IR",
-      "instructors": "倉増",
-      "rooms": "ME2",
+      "instructors": ["倉増"],
+      "rooms": ["ME2"],
       "periods": [
         {
           "day": 1,
@@ -1207,8 +1207,8 @@
     },
     {
       "name": "倫理",
-      "instructors": "高橋",
-      "rooms": "ME2",
+      "instructors": ["高橋"],
+      "rooms": ["ME2"],
       "periods": [
         {
           "day": 1,
@@ -1218,8 +1218,8 @@
     },
     {
       "name": "プログラミング",
-      "instructors": "力",
-      "rooms": "1パ",
+      "instructors": ["力"],
+      "rooms": ["1パ"],
       "periods": [
         {
           "day": 1,
@@ -1229,8 +1229,8 @@
     },
     {
       "name": "倫理",
-      "instructors": "高橋",
-      "rooms": "IE2",
+      "instructors": ["高橋"],
+      "rooms": ["IE2"],
       "periods": [
         {
           "day": 1,
@@ -1240,8 +1240,8 @@
     },
     {
       "name": "総合英語IR",
-      "instructors": "倉増",
-      "rooms": "IE2",
+      "instructors": ["倉増"],
+      "rooms": ["IE2"],
       "periods": [
         {
           "day": 1,
@@ -1251,8 +1251,8 @@
     },
     {
       "name": "倫理",
-      "instructors": "高橋",
-      "rooms": "CA2",
+      "instructors": ["高橋"],
+      "rooms": ["CA2"],
       "periods": [
         {
           "day": 1,
@@ -1262,8 +1262,8 @@
     },
     {
       "name": "総合英語IR",
-      "instructors": "倉増",
-      "rooms": "CA2",
+      "instructors": ["倉増"],
+      "rooms": ["CA2"],
       "periods": [
         {
           "day": 1,
@@ -1273,8 +1273,8 @@
     },
     {
       "name": "加工学",
-      "instructors": "福田",
-      "rooms": "CAD",
+      "instructors": ["福田"],
+      "rooms": ["CAD"],
       "periods": [
         {
           "day": 1,
@@ -1284,8 +1284,8 @@
     },
     {
       "name": "国語総合II",
-      "instructors": "金",
-      "rooms": "ME3",
+      "instructors": ["金"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1295,8 +1295,8 @@
     },
     {
       "name": "アクチュエータ",
-      "instructors": "藤本",
-      "rooms": "ME3",
+      "instructors": ["藤本"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1306,8 +1306,8 @@
     },
     {
       "name": "材料学I",
-      "instructors": "西村",
-      "rooms": "ME3",
+      "instructors": ["西村"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1317,8 +1317,8 @@
     },
     {
       "name": "数学ⅢB",
-      "instructors": "長廣",
-      "rooms": "IE3",
+      "instructors": ["長廣"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1328,8 +1328,8 @@
     },
     {
       "name": "哲学",
-      "instructors": "高橋",
-      "rooms": "IE3",
+      "instructors": ["高橋"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1339,8 +1339,8 @@
     },
     {
       "name": "国語総合II",
-      "instructors": "金",
-      "rooms": "IE3",
+      "instructors": ["金"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1350,8 +1350,8 @@
     },
     {
       "name": "構造力学基礎",
-      "instructors": "海田",
-      "rooms": "CA3",
+      "instructors": ["海田"],
+      "rooms": ["CA3"],
       "periods": [
         {
           "day": 1,
@@ -1361,8 +1361,8 @@
     },
     {
       "name": "国語総合II",
-      "instructors": "金",
-      "rooms": "CA3",
+      "instructors": ["金"],
+      "rooms": ["CA3"],
       "periods": [
         {
           "day": 1,
@@ -1372,8 +1372,8 @@
     },
     {
       "name": "哲学",
-      "instructors": "高橋",
-      "rooms": "CA3",
+      "instructors": ["高橋"],
+      "rooms": ["CA3"],
       "periods": [
         {
           "day": 1,
@@ -1387,7 +1387,7 @@
         "渡辺",
         "島袋"
       ],
-      "rooms": "2パ",
+      "rooms": ["2パ"],
       "periods": [
         {
           "day": 1,
@@ -1397,8 +1397,8 @@
     },
     {
       "name": "体育",
-      "instructors": "石飛",
-      "rooms": "グラウンド",
+      "instructors": ["石飛"],
+      "rooms": ["グラウンド"],
       "periods": [
         {
           "day": 1,
@@ -1408,8 +1408,8 @@
     },
     {
       "name": "体育",
-      "instructors": "石飛",
-      "rooms": "グラウンド",
+      "instructors": ["石飛"],
+      "rooms": ["グラウンド"],
       "periods": [
         {
           "day": 1,
@@ -1419,8 +1419,8 @@
     },
     {
       "name": "体育",
-      "instructors": "石飛",
-      "rooms": "グラウンド",
+      "instructors": ["石飛"],
+      "rooms": ["グラウンド"],
       "periods": [
         {
           "day": 1,
@@ -1448,8 +1448,8 @@
     },
     {
       "name": "哲学",
-      "instructors": "高橋",
-      "rooms": "ME3",
+      "instructors": ["高橋"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1459,8 +1459,8 @@
     },
     {
       "name": "物理II",
-      "instructors": "菊地",
-      "rooms": "IE3",
+      "instructors": ["菊地"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1470,8 +1470,8 @@
     },
     {
       "name": "ディジタル回路",
-      "instructors": "新田",
-      "rooms": "IE3",
+      "instructors": ["新田"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1481,8 +1481,8 @@
     },
     {
       "name": "建築計画I",
-      "instructors": "江本",
-      "rooms": "CA3",
+      "instructors": ["江本"],
+      "rooms": ["CA3"],
       "periods": [
         {
           "day": 1,
@@ -1492,8 +1492,8 @@
     },
     {
       "name": "数学ⅢA",
-      "instructors": "上田和",
-      "rooms": "CA3",
+      "instructors": ["上田和"],
+      "rooms": ["CA3"],
       "periods": [
         {
           "day": 1,
@@ -1503,8 +1503,8 @@
     },
     {
       "name": "機構学",
-      "instructors": "池田光",
-      "rooms": "1パ",
+      "instructors": ["池田光"],
+      "rooms": ["1パ"],
       "periods": [
         {
           "day": 1,
@@ -1518,7 +1518,7 @@
         "池田光",
         "張間"
       ],
-      "rooms": "2パ",
+      "rooms": ["2パ"],
       "periods": [
         {
           "day": 1,
@@ -1528,8 +1528,8 @@
     },
     {
       "name": "数学ⅢA",
-      "instructors": "上田和",
-      "rooms": "IE3",
+      "instructors": ["上田和"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1539,8 +1539,8 @@
     },
     {
       "name": "計測工学",
-      "instructors": "室谷",
-      "rooms": "IE3",
+      "instructors": ["室谷"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1555,7 +1555,7 @@
         "増井",
         "杉村"
       ],
-      "rooms": "IE実験",
+      "rooms": ["IE実験"],
       "periods": [
         {
           "day": 1,
@@ -1591,7 +1591,7 @@
         "山根",
         "荒木"
       ],
-      "rooms": "2パ",
+      "rooms": ["2パ"],
       "periods": [
         {
           "day": 1,
@@ -1601,8 +1601,8 @@
     },
     {
       "name": "水理学基礎",
-      "instructors": "渡辺",
-      "rooms": "CA3",
+      "instructors": ["渡辺"],
+      "rooms": ["CA3"],
       "periods": [
         {
           "day": 1,
@@ -1612,8 +1612,8 @@
     },
     {
       "name": "数学ⅢA",
-      "instructors": "上田和",
-      "rooms": "ME3",
+      "instructors": ["上田和"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1623,8 +1623,8 @@
     },
     {
       "name": "物理II",
-      "instructors": "菊地",
-      "rooms": "ME3",
+      "instructors": ["菊地"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1634,8 +1634,8 @@
     },
     {
       "name": "数学ⅢB",
-      "instructors": "長廣",
-      "rooms": "ME3",
+      "instructors": ["長廣"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1645,8 +1645,8 @@
     },
     {
       "name": "HR",
-      "instructors": "三浦",
-      "rooms": "ME3",
+      "instructors": ["三浦"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1656,8 +1656,8 @@
     },
     {
       "name": "コンピュータシステム概論",
-      "instructors": "力",
-      "rooms": "IE3",
+      "instructors": ["力"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1667,8 +1667,8 @@
     },
     {
       "name": "確率",
-      "instructors": "宮崎",
-      "rooms": "メディア",
+      "instructors": ["宮崎"],
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -1678,8 +1678,8 @@
     },
     {
       "name": "情報数学",
-      "instructors": "荻原",
-      "rooms": "IE3",
+      "instructors": ["荻原"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1689,8 +1689,8 @@
     },
     {
       "name": "HR",
-      "instructors": "増井",
-      "rooms": "IE3",
+      "instructors": ["増井"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1700,8 +1700,8 @@
     },
     {
       "name": "地盤工学基礎",
-      "instructors": "荒木",
-      "rooms": "CA3",
+      "instructors": ["荒木"],
+      "rooms": ["CA3"],
       "periods": [
         {
           "day": 1,
@@ -1711,8 +1711,8 @@
     },
     {
       "name": "数学ⅢB",
-      "instructors": "長廣",
-      "rooms": "CA3",
+      "instructors": ["長廣"],
+      "rooms": ["CA3"],
       "periods": [
         {
           "day": 1,
@@ -1722,8 +1722,8 @@
     },
     {
       "name": "物理II",
-      "instructors": "菊地",
-      "rooms": "CA3",
+      "instructors": ["菊地"],
+      "rooms": ["CA3"],
       "periods": [
         {
           "day": 1,
@@ -1733,8 +1733,8 @@
     },
     {
       "name": "電気回路I",
-      "instructors": "藤本",
-      "rooms": "ME3",
+      "instructors": ["藤本"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1744,8 +1744,8 @@
     },
     {
       "name": "HR",
-      "instructors": "温品",
-      "rooms": "CA3",
+      "instructors": ["温品"],
+      "rooms": ["CA3"],
       "periods": [
         {
           "day": 1,
@@ -1761,7 +1761,7 @@
         "阿部",
         "橋爪"
       ],
-      "rooms": "CAD",
+      "rooms": ["CAD"],
       "periods": [
         {
           "day": 1,
@@ -1771,8 +1771,8 @@
     },
     {
       "name": "工業力学",
-      "instructors": "西村",
-      "rooms": "ME3",
+      "instructors": ["西村"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1782,8 +1782,8 @@
     },
     {
       "name": "電子回路I",
-      "instructors": "片山",
-      "rooms": "ME3",
+      "instructors": ["片山"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1793,8 +1793,8 @@
     },
     {
       "name": "総合英語IIR",
-      "instructors": "東",
-      "rooms": "ME3",
+      "instructors": ["東"],
+      "rooms": ["ME3"],
       "periods": [
         {
           "day": 1,
@@ -1804,8 +1804,8 @@
     },
     {
       "name": "アルゴリズムとデータ構造",
-      "instructors": "浦上",
-      "rooms": "メディア",
+      "instructors": ["浦上"],
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -1815,8 +1815,8 @@
     },
     {
       "name": "総合英語IIR",
-      "instructors": "東",
-      "rooms": "IE3",
+      "instructors": ["東"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1826,8 +1826,8 @@
     },
     {
       "name": "アナログ回路",
-      "instructors": "増井",
-      "rooms": "IE3",
+      "instructors": ["増井"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1841,7 +1841,7 @@
         "宇根",
         "島袋"
       ],
-      "rooms": "2パ",
+      "rooms": ["2パ"],
       "periods": [
         {
           "day": 1,
@@ -1871,8 +1871,8 @@
     },
     {
       "name": "プログラミング応用",
-      "instructors": "石田",
-      "rooms": "CAD",
+      "instructors": ["石田"],
+      "rooms": ["CAD"],
       "periods": [
         {
           "day": 1,
@@ -1882,8 +1882,8 @@
     },
     {
       "name": "西洋建築史",
-      "instructors": "中川",
-      "rooms": "設計製作",
+      "instructors": ["中川"],
+      "rooms": ["設計製作"],
       "periods": [
         {
           "day": 1,
@@ -1893,8 +1893,8 @@
     },
     {
       "name": "総合英語IIR",
-      "instructors": "東",
-      "rooms": "CA3",
+      "instructors": ["東"],
+      "rooms": ["CA3"],
       "periods": [
         {
           "day": 1,
@@ -1904,7 +1904,7 @@
     },
     {
       "name": "システムプログラミングI",
-      "instructors": "高山",
+      "instructors": ["高山"],
       "rooms": [
         "IE電算",
         "2スタCW"
@@ -1918,8 +1918,8 @@
     },
     {
       "name": "知的財産論",
-      "instructors": "高山",
-      "rooms": "IE3",
+      "instructors": ["高山"],
+      "rooms": ["IE3"],
       "periods": [
         {
           "day": 1,
@@ -1929,8 +1929,8 @@
     },
     {
       "name": "電磁気学",
-      "instructors": "片山",
-      "rooms": "ME4",
+      "instructors": ["片山"],
+      "rooms": ["ME4"],
       "periods": [
         {
           "day": 1,
@@ -1958,8 +1958,8 @@
     },
     {
       "name": "関数論",
-      "instructors": "飛車",
-      "rooms": "CAD",
+      "instructors": ["飛車"],
+      "rooms": ["CAD"],
       "periods": [
         {
           "day": 1,
@@ -1969,8 +1969,8 @@
     },
     {
       "name": "ベクトル解析",
-      "instructors": "杉村",
-      "rooms": "IE4",
+      "instructors": ["杉村"],
+      "rooms": ["IE4"],
       "periods": [
         {
           "day": 1,
@@ -1980,7 +1980,7 @@
     },
     {
       "name": "ディジタル回路応用",
-      "instructors": "新田",
+      "instructors": ["新田"],
       "rooms": [
         "IE電算",
         "2スタCW"
@@ -1994,7 +1994,7 @@
     },
     {
       "name": "システムプログラミングII",
-      "instructors": "重村",
+      "instructors": ["重村"],
       "rooms": [
         "IE電算",
         "2スタCW"
@@ -2008,8 +2008,8 @@
     },
     {
       "name": "建築施工法△",
-      "instructors": "目山",
-      "rooms": "CA4",
+      "instructors": ["目山"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2019,8 +2019,8 @@
     },
     {
       "name": "鉄筋コンクリート工学",
-      "instructors": "温品",
-      "rooms": "CA4",
+      "instructors": ["温品"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2049,8 +2049,8 @@
     },
     {
       "name": "道路工学I△",
-      "instructors": "目山",
-      "rooms": "CA4",
+      "instructors": ["目山"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2060,8 +2060,8 @@
     },
     {
       "name": "確立・統計",
-      "instructors": "段下",
-      "rooms": "CA4",
+      "instructors": ["段下"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2071,8 +2071,8 @@
     },
     {
       "name": "電気回路II",
-      "instructors": "片山",
-      "rooms": "1パ",
+      "instructors": ["片山"],
+      "rooms": ["1パ"],
       "periods": [
         {
           "day": 1,
@@ -2082,8 +2082,8 @@
     },
     {
       "name": "確率・統計",
-      "instructors": "飛車",
-      "rooms": "2パ",
+      "instructors": ["飛車"],
+      "rooms": ["2パ"],
       "periods": [
         {
           "day": 1,
@@ -2119,8 +2119,8 @@
     },
     {
       "name": "応用物理",
-      "instructors": "中村",
-      "rooms": "IE4",
+      "instructors": ["中村"],
+      "rooms": ["IE4"],
       "periods": [
         {
           "day": 1,
@@ -2130,8 +2130,8 @@
     },
     {
       "name": "情報理論",
-      "instructors": "宮崎",
-      "rooms": "メディア",
+      "instructors": ["宮崎"],
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -2141,8 +2141,8 @@
     },
     {
       "name": "ソフトウェア工学",
-      "instructors": "荻原",
-      "rooms": "IE4",
+      "instructors": ["荻原"],
+      "rooms": ["IE4"],
       "periods": [
         {
           "day": 1,
@@ -2152,8 +2152,8 @@
     },
     {
       "name": "地盤工学",
-      "instructors": "桑嶋",
-      "rooms": "CA4",
+      "instructors": ["桑嶋"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2163,8 +2163,8 @@
     },
     {
       "name": "総合英語演習I",
-      "instructors": "新枝",
-      "rooms": "CA4",
+      "instructors": ["新枝"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2174,8 +2174,8 @@
     },
     {
       "name": "構造力学",
-      "instructors": "山根",
-      "rooms": "CA4",
+      "instructors": ["山根"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2185,7 +2185,7 @@
     },
     {
       "name": "工学セミナー△",
-      "instructors": "CA全員",
+      "instructors": ["CA全員"],
       "rooms": [
         "演習室",
         "ICT",
@@ -2200,8 +2200,8 @@
     },
     {
       "name": "電子回路II",
-      "instructors": "櫻本",
-      "rooms": "ME4",
+      "instructors": ["櫻本"],
+      "rooms": ["ME4"],
       "periods": [
         {
           "day": 1,
@@ -2211,8 +2211,8 @@
     },
     {
       "name": "水力学II",
-      "instructors": "張間",
-      "rooms": "ME4",
+      "instructors": ["張間"],
+      "rooms": ["ME4"],
       "periods": [
         {
           "day": 1,
@@ -2222,8 +2222,8 @@
     },
     {
       "name": "応用物理",
-      "instructors": "中村",
-      "rooms": "ME4",
+      "instructors": ["中村"],
+      "rooms": ["ME4"],
       "periods": [
         {
           "day": 1,
@@ -2233,8 +2233,8 @@
     },
     {
       "name": "微分積分学I",
-      "instructors": "河田",
-      "rooms": " ME4",
+      "instructors": ["河田"],
+      "rooms": [" ME4"],
       "periods": [
         {
           "day": 1,
@@ -2244,8 +2244,8 @@
     },
     {
       "name": "英会話",
-      "instructors": "ダーシー",
-      "rooms": "IE4",
+      "instructors": ["ダーシー"],
+      "rooms": ["IE4"],
       "periods": [
         {
           "day": 1,
@@ -2255,8 +2255,8 @@
     },
     {
       "name": "微分積分学I",
-      "instructors": "原田",
-      "rooms": "IE4",
+      "instructors": ["原田"],
+      "rooms": ["IE4"],
       "periods": [
         {
           "day": 1,
@@ -2283,8 +2283,8 @@
     },
     {
       "name": "建築環境工学△",
-      "instructors": "河野",
-      "rooms": "共同研究室",
+      "instructors": ["河野"],
+      "rooms": ["共同研究室"],
       "periods": [
         {
           "day": 1,
@@ -2294,8 +2294,8 @@
     },
     {
       "name": "応用物理",
-      "instructors": "中村",
-      "rooms": "CA4",
+      "instructors": ["中村"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2305,8 +2305,8 @@
     },
     {
       "name": "微分積分学I",
-      "instructors": "島袋",
-      "rooms": "CA4",
+      "instructors": ["島袋"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2316,8 +2316,8 @@
     },
     {
       "name": "英会話",
-      "instructors": "ペリー",
-      "rooms": "CA4",
+      "instructors": ["ペリー"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2327,8 +2327,8 @@
     },
     {
       "name": "材料力学II",
-      "instructors": "福田",
-      "rooms": "ME4",
+      "instructors": ["福田"],
+      "rooms": ["ME4"],
       "periods": [
         {
           "day": 1,
@@ -2338,8 +2338,8 @@
     },
     {
       "name": "日本語コミュニケーション△",
-      "instructors": "高槻",
-      "rooms": "ME4",
+      "instructors": ["高槻"],
+      "rooms": ["ME4"],
       "periods": [
         {
           "day": 1,
@@ -2349,8 +2349,8 @@
     },
     {
       "name": "中国文学",
-      "instructors": "谷本",
-      "rooms": "IE4",
+      "instructors": ["谷本"],
+      "rooms": ["IE4"],
       "periods": [
         {
           "day": 1,
@@ -2360,8 +2360,8 @@
     },
     {
       "name": "ドイツ語",
-      "instructors": "新枝",
-      "rooms": "CA4",
+      "instructors": ["新枝"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2371,8 +2371,8 @@
     },
     {
       "name": "中国語△",
-      "instructors": "徳永",
-      "rooms": "ICT",
+      "instructors": ["徳永"],
+      "rooms": ["ICT"],
       "periods": [
         {
           "day": 1,
@@ -2382,8 +2382,8 @@
     },
     {
       "name": "機械設計論I",
-      "instructors": "西村",
-      "rooms": "ME4",
+      "instructors": ["西村"],
+      "rooms": ["ME4"],
       "periods": [
         {
           "day": 1,
@@ -2393,8 +2393,8 @@
     },
     {
       "name": "総合英語演習I",
-      "instructors": "田中",
-      "rooms": "ME4",
+      "instructors": ["田中"],
+      "rooms": ["ME4"],
       "periods": [
         {
           "day": 1,
@@ -2404,8 +2404,8 @@
     },
     {
       "name": "コンピュータアーキテクチャ",
-      "instructors": "柳澤",
-      "rooms": "IE4",
+      "instructors": ["柳澤"],
+      "rooms": ["IE4"],
       "periods": [
         {
           "day": 1,
@@ -2415,8 +2415,8 @@
     },
     {
       "name": "総合英語演習I",
-      "instructors": "新枝",
-      "rooms": "IE4",
+      "instructors": ["新枝"],
+      "rooms": ["IE4"],
       "periods": [
         {
           "day": 1,
@@ -2426,8 +2426,8 @@
     },
     {
       "name": "環境衛生工学△",
-      "instructors": "段下",
-      "rooms": "CA4",
+      "instructors": ["段下"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2460,8 +2460,8 @@
     },
     {
       "name": "熱力学",
-      "instructors": "池田光",
-      "rooms": "ME4",
+      "instructors": ["池田光"],
+      "rooms": ["ME4"],
       "periods": [
         {
           "day": 1,
@@ -2476,7 +2476,7 @@
         "宇野",
         "瀬尾"
       ],
-      "rooms": "グラウンド",
+      "rooms": ["グラウンド"],
       "periods": [
         {
           "day": 1,
@@ -2486,8 +2486,8 @@
     },
     {
       "name": "材料学II",
-      "instructors": "西村",
-      "rooms": "ME4",
+      "instructors": ["西村"],
+      "rooms": ["ME4"],
       "periods": [
         {
           "day": 1,
@@ -2497,8 +2497,8 @@
     },
     {
       "name": "応用解析学概論△",
-      "instructors": "山本",
-      "rooms": "演習室",
+      "instructors": ["山本"],
+      "rooms": ["演習室"],
       "periods": [
         {
           "day": 1,
@@ -2508,8 +2508,8 @@
     },
     {
       "name": "データベース",
-      "instructors": "義永",
-      "rooms": "IE4",
+      "instructors": ["義永"],
+      "rooms": ["IE4"],
       "periods": [
         {
           "day": 1,
@@ -2519,8 +2519,8 @@
     },
     {
       "name": "フーリエ・ラプラス変換",
-      "instructors": "室谷",
-      "rooms": "IE4",
+      "instructors": ["室谷"],
+      "rooms": ["IE4"],
       "periods": [
         {
           "day": 1,
@@ -2530,8 +2530,8 @@
     },
     {
       "name": "水理学△",
-      "instructors": "渡辺",
-      "rooms": "CA4",
+      "instructors": ["渡辺"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2541,8 +2541,8 @@
     },
     {
       "name": "建築計画II△",
-      "instructors": "江本",
-      "rooms": "メディア",
+      "instructors": ["江本"],
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -2552,8 +2552,8 @@
     },
     {
       "name": "都市計画",
-      "instructors": "目山",
-      "rooms": "CA4",
+      "instructors": ["目山"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2563,8 +2563,8 @@
     },
     {
       "name": "ベクトル解析",
-      "instructors": "飛車",
-      "rooms": "CAD",
+      "instructors": ["飛車"],
+      "rooms": ["CAD"],
       "periods": [
         {
           "day": 1,
@@ -2574,8 +2574,8 @@
     },
     {
       "name": "電磁気学",
-      "instructors": "杉村",
-      "rooms": "IE4",
+      "instructors": ["杉村"],
+      "rooms": ["IE4"],
       "periods": [
         {
           "day": 1,
@@ -2603,8 +2603,8 @@
     },
     {
       "name": "測量学Ⅲ",
-      "instructors": "上",
-      "rooms": "CA4",
+      "instructors": ["上"],
+      "rooms": ["CA4"],
       "periods": [
         {
           "day": 1,
@@ -2614,8 +2614,8 @@
     },
     {
       "name": "応用数物演習△",
-      "instructors": "飛車",
-      "rooms": "1スタCWE",
+      "instructors": ["飛車"],
+      "rooms": ["1スタCWE"],
       "periods": [
         {
           "day": 1,
@@ -2625,8 +2625,8 @@
     },
     {
       "name": "卒業研究",
-      "instructors": "ME全員",
-      "rooms": "各研究室",
+      "instructors": ["ME全員"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -2636,8 +2636,8 @@
     },
     {
       "name": "流体力学△",
-      "instructors": "張間",
-      "rooms": "1スタCWE",
+      "instructors": ["張間"],
+      "rooms": ["1スタCWE"],
       "periods": [
         {
           "day": 1,
@@ -2651,7 +2651,7 @@
         "西村",
         "張間"
       ],
-      "rooms": "CAD",
+      "rooms": ["CAD"],
       "periods": [
         {
           "day": 1,
@@ -2661,8 +2661,8 @@
     },
     {
       "name": "卒業研究",
-      "instructors": "IE全員",
-      "rooms": "各研究室",
+      "instructors": ["IE全員"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -2692,8 +2692,8 @@
     },
     {
       "name": "河海工学II△",
-      "instructors": "渡辺",
-      "rooms": "演習室",
+      "instructors": ["渡辺"],
+      "rooms": ["演習室"],
       "periods": [
         {
           "day": 1,
@@ -2703,8 +2703,8 @@
     },
     {
       "name": "日本建築史△",
-      "instructors": "中川",
-      "rooms": "設計製作",
+      "instructors": ["中川"],
+      "rooms": ["設計製作"],
       "periods": [
         {
           "day": 1,
@@ -2714,8 +2714,8 @@
     },
     {
       "name": "測量学特論",
-      "instructors": "佐賀",
-      "rooms": "共同研究室",
+      "instructors": ["佐賀"],
+      "rooms": ["共同研究室"],
       "periods": [
         {
           "day": 1,
@@ -2725,8 +2725,8 @@
     },
     {
       "name": "火薬学△",
-      "instructors": "大石",
-      "rooms": "共同研究室",
+      "instructors": ["大石"],
+      "rooms": ["共同研究室"],
       "periods": [
         {
           "day": 1,
@@ -2736,8 +2736,8 @@
     },
     {
       "name": "制御工学II",
-      "instructors": "池田将",
-      "rooms": "1スタCWE",
+      "instructors": ["池田将"],
+      "rooms": ["1スタCWE"],
       "periods": [
         {
           "day": 1,
@@ -2747,8 +2747,8 @@
     },
     {
       "name": "総合英語演習II",
-      "instructors": "カート",
-      "rooms": "1スタCWE",
+      "instructors": ["カート"],
+      "rooms": ["1スタCWE"],
       "periods": [
         {
           "day": 1,
@@ -2758,8 +2758,8 @@
     },
     {
       "name": "熱機関",
-      "instructors": "池田光",
-      "rooms": "1スタCWE",
+      "instructors": ["池田光"],
+      "rooms": ["1スタCWE"],
       "periods": [
         {
           "day": 1,
@@ -2769,8 +2769,8 @@
     },
     {
       "name": "計測工学",
-      "instructors": "橋爪",
-      "rooms": "1スタCWE",
+      "instructors": ["橋爪"],
+      "rooms": ["1スタCWE"],
       "periods": [
         {
           "day": 1,
@@ -2780,8 +2780,8 @@
     },
     {
       "name": "総合英語演習II",
-      "instructors": "カート",
-      "rooms": "2スタE",
+      "instructors": ["カート"],
+      "rooms": ["2スタE"],
       "periods": [
         {
           "day": 1,
@@ -2791,7 +2791,7 @@
     },
     {
       "name": "ネットワークアーキテクチャ",
-      "instructors": "新田",
+      "instructors": ["新田"],
       "rooms": [
         "IE電算",
         "2スタECW"
@@ -2823,8 +2823,8 @@
     },
     {
       "name": "線形代数",
-      "instructors": "宇根",
-      "rooms": "共同研究室",
+      "instructors": ["宇根"],
+      "rooms": ["共同研究室"],
       "periods": [
         {
           "day": 1,
@@ -2834,8 +2834,8 @@
     },
     {
       "name": "卒業研究",
-      "instructors": "CA全員",
-      "rooms": "各研究室",
+      "instructors": ["CA全員"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -2849,7 +2849,7 @@
         "原",
         "山根"
       ],
-      "rooms": "1パ",
+      "rooms": ["1パ"],
       "periods": [
         {
           "day": 1,
@@ -2859,7 +2859,7 @@
     },
     {
       "name": "技術者倫理",
-      "instructors": "福田",
+      "instructors": ["福田"],
       "rooms": [
         "1スタCWE",
         "CAD"
@@ -2873,8 +2873,8 @@
     },
     {
       "name": "機械力学II",
-      "instructors": "櫻本",
-      "rooms": "1スタCWE",
+      "instructors": ["櫻本"],
+      "rooms": ["1スタCWE"],
       "periods": [
         {
           "day": 1,
@@ -2884,7 +2884,7 @@
     },
     {
       "name": "言語処理△",
-      "instructors": "高山",
+      "instructors": ["高山"],
       "rooms": [
         "IE電算",
         "2スタE"
@@ -2898,8 +2898,8 @@
     },
     {
       "name": "オペレーティングシステムII",
-      "instructors": "重村",
-      "rooms": "2スタE",
+      "instructors": ["重村"],
+      "rooms": ["2スタE"],
       "periods": [
         {
           "day": 1,
@@ -2909,8 +2909,8 @@
     },
     {
       "name": "総合英語演習II",
-      "instructors": "カート",
-      "rooms": "共同研究室",
+      "instructors": ["カート"],
+      "rooms": ["共同研究室"],
       "periods": [
         {
           "day": 1,
@@ -2920,8 +2920,8 @@
     },
     {
       "name": "歴史学△",
-      "instructors": "奥山",
-      "rooms": "メディア",
+      "instructors": ["奥山"],
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -2931,8 +2931,8 @@
     },
     {
       "name": "人文社会特講△",
-      "instructors": "上田真",
-      "rooms": "演習室",
+      "instructors": ["上田真"],
+      "rooms": ["演習室"],
       "periods": [
         {
           "day": 1,
@@ -2942,8 +2942,8 @@
     },
     {
       "name": "ドイツ語△",
-      "instructors": "新枝",
-      "rooms": "演習室",
+      "instructors": ["新枝"],
+      "rooms": ["演習室"],
       "periods": [
         {
           "day": 1,
@@ -2953,8 +2953,8 @@
     },
     {
       "name": "中国語△",
-      "instructors": "徳永",
-      "rooms": "ICT",
+      "instructors": ["徳永"],
+      "rooms": ["ICT"],
       "periods": [
         {
           "day": 1,
@@ -2964,8 +2964,8 @@
     },
     {
       "name": "弾塑性論",
-      "instructors": "西村",
-      "rooms": "1スタCWE",
+      "instructors": ["西村"],
+      "rooms": ["1スタCWE"],
       "periods": [
         {
           "day": 1,
@@ -2975,8 +2975,8 @@
     },
     {
       "name": "建築構造設計",
-      "instructors": "山根",
-      "rooms": "共同研究室",
+      "instructors": ["山根"],
+      "rooms": ["共同研究室"],
       "periods": [
         {
           "day": 1,
@@ -3051,8 +3051,8 @@
     },
     {
       "name": "工業英語II",
-      "instructors": "飛車",
-      "rooms": "1スタCWE",
+      "instructors": ["飛車"],
+      "rooms": ["1スタCWE"],
       "periods": [
         {
           "day": 1,
@@ -3062,8 +3062,8 @@
     },
     {
       "name": "計算力学",
-      "instructors": "福田",
-      "rooms": "2パ",
+      "instructors": ["福田"],
+      "rooms": ["2パ"],
       "periods": [
         {
           "day": 1,
@@ -3073,8 +3073,8 @@
     },
     {
       "name": "フーリエ変換",
-      "instructors": "飛車",
-      "rooms": "2パ",
+      "instructors": ["飛車"],
+      "rooms": ["2パ"],
       "periods": [
         {
           "day": 1,
@@ -3084,8 +3084,8 @@
     },
     {
       "name": "機能材料△",
-      "instructors": "西村",
-      "rooms": "1スタCWE",
+      "instructors": ["西村"],
+      "rooms": ["1スタCWE"],
       "periods": [
         {
           "day": 1,
@@ -3095,8 +3095,8 @@
     },
     {
       "name": "集積回路設計I△",
-      "instructors": "柳澤",
-      "rooms": "2スタE",
+      "instructors": ["柳澤"],
+      "rooms": ["2スタE"],
       "periods": [
         {
           "day": 1,
@@ -3106,8 +3106,8 @@
     },
     {
       "name": "ディジタル信号処理",
-      "instructors": "宮崎",
-      "rooms": "メディア",
+      "instructors": ["宮崎"],
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -3117,7 +3117,7 @@
     },
     {
       "name": "コンピュータグラフィックス△",
-      "instructors": "力",
+      "instructors": ["力"],
       "rooms": [
         "IE電算",
         "2スタE"
@@ -3131,8 +3131,8 @@
     },
     {
       "name": "鋼構造学II△",
-      "instructors": "海田",
-      "rooms": "共同研究室",
+      "instructors": ["海田"],
+      "rooms": ["共同研究室"],
       "periods": [
         {
           "day": 1,
@@ -3142,8 +3142,8 @@
     },
     {
       "name": "プレストレストコンクリート工学△",
-      "instructors": "温品",
-      "rooms": "共同研究室",
+      "instructors": ["温品"],
+      "rooms": ["共同研究室"],
       "periods": [
         {
           "day": 1,
@@ -3157,7 +3157,7 @@
         "清田",
         "河野"
       ],
-      "rooms": "共同研究室",
+      "rooms": ["共同研究室"],
       "periods": [
         {
           "day": 1,
@@ -3167,8 +3167,8 @@
     },
     {
       "name": "基礎構造学",
-      "instructors": "桑嶋",
-      "rooms": "共同研究室",
+      "instructors": ["桑嶋"],
+      "rooms": ["共同研究室"],
       "periods": [
         {
           "day": 1,
@@ -3178,8 +3178,8 @@
     },
     {
       "name": "心理学△",
-      "instructors": "羽渕",
-      "rooms": "1スタCWE",
+      "instructors": ["羽渕"],
+      "rooms": ["1スタCWE"],
       "periods": [
         {
           "day": 1,
@@ -3189,7 +3189,7 @@
     },
     {
       "name": "画像工学△",
-      "instructors": "杉村",
+      "instructors": ["杉村"],
       "rooms": [
         "IE電算",
         "2スタE"
@@ -3203,8 +3203,8 @@
     },
     {
       "name": "人文社会特講△",
-      "instructors": "上田",
-      "rooms": "メディア",
+      "instructors": ["上田"],
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -3214,8 +3214,8 @@
     },
     {
       "name": "応用研究",
-      "instructors": "応用研究担当",
-      "rooms": "各研究室",
+      "instructors": ["応用研究担当"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -3225,8 +3225,8 @@
     },
     {
       "name": "情報電子工学専攻総合実験",
-      "instructors": "重村",
-      "rooms": " IE実験",
+      "instructors": ["重村"],
+      "rooms": [" IE実験"],
       "periods": [
         {
           "day": 1,
@@ -3236,8 +3236,8 @@
     },
     {
       "name": "応用研究",
-      "instructors": "応用研究担当",
-      "rooms": "各研究室",
+      "instructors": ["応用研究担当"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -3247,7 +3247,7 @@
     },
     {
       "name": "鉄筋コンクリート特論△",
-      "instructors": "温品",
+      "instructors": ["温品"],
       "rooms": [
         "講義室1",
         "講義室3"
@@ -3261,8 +3261,8 @@
     },
     {
       "name": "応用研究",
-      "instructors": "応用研究担当",
-      "rooms": "各研究室",
+      "instructors": ["応用研究担当"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -3276,7 +3276,7 @@
         "奥山",
         "浦上"
       ],
-      "rooms": "テクノ多目的",
+      "rooms": ["テクノ多目的"],
       "periods": [
         {
           "day": 1,
@@ -3286,8 +3286,8 @@
     },
     {
       "name": "フィードバック制御概論△",
-      "instructors": "増井",
-      "rooms": "講義室2",
+      "instructors": ["増井"],
+      "rooms": ["講義室2"],
       "periods": [
         {
           "day": 1,
@@ -3297,8 +3297,8 @@
     },
     {
       "name": "英語講読",
-      "instructors": "応用研究担当",
-      "rooms": "各研究室",
+      "instructors": ["応用研究担当"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -3308,8 +3308,8 @@
     },
     {
       "name": "物理科学",
-      "instructors": "菊地",
-      "rooms": "テクノ多目的",
+      "instructors": ["菊地"],
+      "rooms": ["テクノ多目的"],
       "periods": [
         {
           "day": 1,
@@ -3319,8 +3319,8 @@
     },
     {
       "name": "応用統計学△",
-      "instructors": "飛車",
-      "rooms": "2パ",
+      "instructors": ["飛車"],
+      "rooms": ["2パ"],
       "periods": [
         {
           "day": 1,
@@ -3330,8 +3330,8 @@
     },
     {
       "name": "工学解析△",
-      "instructors": "原",
-      "rooms": "1パ",
+      "instructors": ["原"],
+      "rooms": ["1パ"],
       "periods": [
         {
           "day": 1,
@@ -3341,8 +3341,8 @@
     },
     {
       "name": "流体制御工学△",
-      "instructors": "張間",
-      "rooms": "講義室3",
+      "instructors": ["張間"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3352,8 +3352,8 @@
     },
     {
       "name": "一般化学",
-      "instructors": "大橋",
-      "rooms": "テクノ多目的",
+      "instructors": ["大橋"],
+      "rooms": ["テクノ多目的"],
       "periods": [
         {
           "day": 1,
@@ -3363,8 +3363,8 @@
     },
     {
       "name": "弾性力学△",
-      "instructors": "福田",
-      "rooms": "講義室3",
+      "instructors": ["福田"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3374,8 +3374,8 @@
     },
     {
       "name": "総合英語",
-      "instructors": "カート",
-      "rooms": "テクノ多目的",
+      "instructors": ["カート"],
+      "rooms": ["テクノ多目的"],
       "periods": [
         {
           "day": 1,
@@ -3385,8 +3385,8 @@
     },
     {
       "name": "電気電子工学特論△",
-      "instructors": "三浦",
-      "rooms": "講義室3",
+      "instructors": ["三浦"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3396,8 +3396,8 @@
     },
     {
       "name": "回路応用設計△",
-      "instructors": "石田",
-      "rooms": "講義室3",
+      "instructors": ["石田"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3407,8 +3407,8 @@
     },
     {
       "name": "応用計測工学△",
-      "instructors": "橋爪",
-      "rooms": "講義室3",
+      "instructors": ["橋爪"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3425,7 +3425,7 @@
         "力",
         "荒木"
       ],
-      "rooms": "メディア",
+      "rooms": ["メディア"],
       "periods": [
         {
           "day": 1,
@@ -3435,8 +3435,8 @@
     },
     {
       "name": "日本語表現法",
-      "instructors": "高槻",
-      "rooms": "テクノ多目的",
+      "instructors": ["高槻"],
+      "rooms": ["テクノ多目的"],
       "periods": [
         {
           "day": 1,
@@ -3446,8 +3446,8 @@
     },
     {
       "name": "応用計測工学△",
-      "instructors": "橋爪",
-      "rooms": "講義室3",
+      "instructors": ["橋爪"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3457,8 +3457,8 @@
     },
     {
       "name": "英語講読",
-      "instructors": "応用研究担当",
-      "rooms": "各研究室",
+      "instructors": ["応用研究担当"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -3468,8 +3468,8 @@
     },
     {
       "name": "電気音響工学△",
-      "instructors": "鈴木",
-      "rooms": "講義室3",
+      "instructors": ["鈴木"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3479,8 +3479,8 @@
     },
     {
       "name": "オートマンと計算論△",
-      "instructors": "義永",
-      "rooms": "講義室2",
+      "instructors": ["義永"],
+      "rooms": ["講義室2"],
       "periods": [
         {
           "day": 1,
@@ -3490,8 +3490,8 @@
     },
     {
       "name": "生体機械力学△",
-      "instructors": "櫻本",
-      "rooms": "講義室3",
+      "instructors": ["櫻本"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3501,8 +3501,8 @@
     },
     {
       "name": "特別研究",
-      "instructors": "特別研究担当",
-      "rooms": "各研究室",
+      "instructors": ["特別研究担当"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -3512,8 +3512,8 @@
     },
     {
       "name": "都市環境計画学△",
-      "instructors": "江本",
-      "rooms": "講義室1",
+      "instructors": ["江本"],
+      "rooms": ["講義室1"],
       "periods": [
         {
           "day": 1,
@@ -3523,8 +3523,8 @@
     },
     {
       "name": "特別研究",
-      "instructors": "特別研究担当",
-      "rooms": "各研究室",
+      "instructors": ["特別研究担当"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -3534,8 +3534,8 @@
     },
     {
       "name": "光情報処理△",
-      "instructors": "原田",
-      "rooms": "講義室2",
+      "instructors": ["原田"],
+      "rooms": ["講義室2"],
       "periods": [
         {
           "day": 1,
@@ -3545,8 +3545,8 @@
     },
     {
       "name": "特別研究",
-      "instructors": "特別研究担当",
-      "rooms": "各研究室",
+      "instructors": ["特別研究担当"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -3556,8 +3556,8 @@
     },
     {
       "name": "TA",
-      "instructors": "全員",
-      "rooms": "各研究室",
+      "instructors": ["全員"],
+      "rooms": ["各研究室"],
       "periods": [
         {
           "day": 1,
@@ -3567,8 +3567,8 @@
     },
     {
       "name": "熱流体工学△",
-      "instructors": "池田光",
-      "rooms": "講義室3",
+      "instructors": ["池田光"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3578,8 +3578,8 @@
     },
     {
       "name": "自然言語処理△",
-      "instructors": "高山",
-      "rooms": "講義室2",
+      "instructors": ["高山"],
+      "rooms": ["講義室2"],
       "periods": [
         {
           "day": 1,
@@ -3589,8 +3589,8 @@
     },
     {
       "name": "半導体電子工学△",
-      "instructors": "室谷",
-      "rooms": "講義室2",
+      "instructors": ["室谷"],
+      "rooms": ["講義室2"],
       "periods": [
         {
           "day": 1,
@@ -3600,8 +3600,8 @@
     },
     {
       "name": "土質力学△",
-      "instructors": "荒木",
-      "rooms": "講義室1",
+      "instructors": ["荒木"],
+      "rooms": ["講義室1"],
       "periods": [
         {
           "day": 1,
@@ -3611,8 +3611,8 @@
     },
     {
       "name": "システム制御工学△",
-      "instructors": "池田将",
-      "rooms": "講義室3",
+      "instructors": ["池田将"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3622,7 +3622,7 @@
     },
     {
       "name": "計算工学△",
-      "instructors": "原",
+      "instructors": ["原"],
       "rooms": [
         "講義室1",
         "2パ"
@@ -3636,8 +3636,8 @@
     },
     {
       "name": "技術者の倫理",
-      "instructors": "高橋",
-      "rooms": "テクノ多目的",
+      "instructors": ["高橋"],
+      "rooms": ["テクノ多目的"],
       "periods": [
         {
           "day": 1,
@@ -3647,8 +3647,8 @@
     },
     {
       "name": "英会話△",
-      "instructors": "カート",
-      "rooms": "テクノ多目的",
+      "instructors": ["カート"],
+      "rooms": ["テクノ多目的"],
       "periods": [
         {
           "day": 1,
@@ -3658,7 +3658,7 @@
     },
     {
       "name": "CAE△",
-      "instructors": "福田",
+      "instructors": ["福田"],
       "rooms": [
         "2パ",
         "講義室3"
@@ -3672,8 +3672,8 @@
     },
     {
       "name": "材料強度学△",
-      "instructors": "西村",
-      "rooms": "講義室3",
+      "instructors": ["西村"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3683,8 +3683,8 @@
     },
     {
       "name": "コンピュータ構成学△",
-      "instructors": "柳澤",
-      "rooms": "講義室2",
+      "instructors": ["柳澤"],
+      "rooms": ["講義室2"],
       "periods": [
         {
           "day": 1,
@@ -3694,8 +3694,8 @@
     },
     {
       "name": "メディア信号処理△",
-      "instructors": "宮崎",
-      "rooms": "講義室2",
+      "instructors": ["宮崎"],
+      "rooms": ["講義室2"],
       "periods": [
         {
           "day": 1,
@@ -3705,8 +3705,8 @@
     },
     {
       "name": "応用水理学△",
-      "instructors": "渡辺",
-      "rooms": "講義室1",
+      "instructors": ["渡辺"],
+      "rooms": ["講義室1"],
       "periods": [
         {
           "day": 1,
@@ -3723,7 +3723,7 @@
         "力",
         "山根"
       ],
-      "rooms": "テクノ多目的",
+      "rooms": ["テクノ多目的"],
       "periods": [
         {
           "day": 1,
@@ -3733,8 +3733,8 @@
     },
     {
       "name": "Engineerring Mathematics△",
-      "instructors": "飛車",
-      "rooms": "2パ",
+      "instructors": ["飛車"],
+      "rooms": ["2パ"],
       "periods": [
         {
           "day": 1,
@@ -3744,7 +3744,7 @@
     },
     {
       "name": "機械制御工学専攻総合演習",
-      "instructors": "池田光",
+      "instructors": ["池田光"],
       "rooms": [
         "講義室3",
         "CAD"
@@ -3758,8 +3758,8 @@
     },
     {
       "name": "情報電子工学専攻総合演習",
-      "instructors": "重村",
-      "rooms": "IE実験",
+      "instructors": ["重村"],
+      "rooms": ["IE実験"],
       "periods": [
         {
           "day": 1,
@@ -3795,7 +3795,7 @@
         "西村",
         "永岩(広島)"
       ],
-      "rooms": "テクノ多目的",
+      "rooms": ["テクノ多目的"],
       "periods": [
         {
           "day": 1,
@@ -3805,8 +3805,8 @@
     },
     {
       "name": "電気電子工学特論△",
-      "instructors": "三浦",
-      "rooms": "講義室3",
+      "instructors": ["三浦"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
@@ -3816,8 +3816,8 @@
     },
     {
       "name": "電気音響工学△",
-      "instructors": "鈴木",
-      "rooms": "講義室3",
+      "instructors": ["鈴木"],
+      "rooms": ["講義室3"],
       "periods": [
         {
           "day": 1,
