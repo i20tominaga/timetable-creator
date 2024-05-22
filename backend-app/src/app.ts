@@ -129,15 +129,19 @@ app.delete('/api/courses/deleteAll', async (req: Request, res: Response) => {
     }
 });
 
-// 時間割作成API (timetableAPI)
+// 時間割作成API
 app.post('/api/timetable/create', async (req: Request, res: Response) => {
     try {
-        const coursesData =  await timetableAPI.loadCourses(); // loadCourses関数を修正
-        const instructorData = await timetableAPI.loadInstructors(); // loadInstructors関数を追加
-        const convertedData = timetableAPI.convert(coursesData, instructorData); // convert関数を利用してデータを変換
+        const startTime = Date.now();
+        const coursesData =  await timetableAPI.loadCourses(); //授業データを取得
+        const instructorData = await timetableAPI.loadInstructors(); //教員データを取得
+        const convertedData = timetableAPI.convert(coursesData, instructorData); //データを出力形式に変換
 
+        await timetableAPI.write(convertedData); // write関数を利用してデータを書き込む
         // レスポンスを返す
         res.status(201).json(convertedData);
+        const endTime = Date.now();
+        console.log(`Time taken: ${endTime - startTime}ms`);
     } catch (error) {
         console.error('Error creating timetable:', error);
         res.status(500).json({ message: 'エラーが発生しました。' });
