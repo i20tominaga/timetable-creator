@@ -14,7 +14,6 @@ export function loadCourses() {
             } else {
                 try {
                     const jsonData = JSON.parse(data);
-                    console.log('Courses Data Loaded:', jsonData); // デバッグログ
                     resolve(jsonData.Courses);
                 } catch (parseError) {
                     reject(parseError);
@@ -55,46 +54,77 @@ function shuffleArray(array: any[]) {
     return array;
 }
 
-// 出力形式に変換する関数
+// インデックス取得用のマップ
+const gradeGroups = ['ME1', 'IE1', 'CA1', 'ME2', 'IE2', 'CA2', 'ME3', 'IE3', 'CA3', 'ME4', 'IE4', 'CA4', 'ME5', 'IE5', 'CA5'];
+const groupIndex = (grade: string) => gradeGroups.indexOf(grade);
+
+function addCourseToSchedule(course: any, period: number, scheduleMatrix: string[][], usedInstructors: Set<string>) {
+    if (!scheduleMatrix[period - 1]) {
+        scheduleMatrix[period - 1] = Array(21).fill(null);
+    }
+
+    for (const target of course.targets) {
+        const colIndex = groupIndex(target);
+        if (colIndex === -1) continue;
+
+        for (const instructor of course.instructors) {
+            if (usedInstructors.has(instructor)) {
+                return false; // コンフリクトがある場合は追加しない
+            }
+        }
+
+        scheduleMatrix[period - 1][colIndex] = course.instructors.join(', ');
+    }
+
+    for (const instructor of course.instructors) {
+        usedInstructors.add(instructor);
+    }
+
+    return true;
+}
+
 export function convert(coursesData: any[], instructorsData: any[]) {
     const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     const days: any[] = [];
-    const shuffledCourses = shuffleArray([...coursesData]); // コースデータをシャッフル
-
-    // 学年ごとにターゲットグループを定義
     const gradeGroups: { [key: number]: string[] } = {
         1: ['ME1', 'IE1', 'CA1'],
         2: ['ME2', 'IE2', 'CA2'],
         3: ['ME3', 'IE3', 'CA3'],
         4: ['ME4', 'IE4', 'CA4'],
         5: ['ME5', 'IE5', 'CA5'],
-        // 追加の学年があればここに追加
     };
 
     try {
         for (let i = 0; i < daysOfWeek.length; i++) {
             const dayOfWeek = daysOfWeek[i];
             const classes: any[] = [];
+            const scheduleMatrix: string[][] = Array.from({ length: 4 }, () => Array(21).fill(null));
+            const usedInstructors = new Set<string>();
+            const shuffledCourses = shuffleArray([...coursesData]);
 
-            // 各学年ごとにループ
             for (const gradeStr in gradeGroups) {
                 const grade = Number(gradeStr);
                 const targetGroups = gradeGroups[grade];
 
                 for (const target of targetGroups) {
+                    let currentPeriod = 1;
                     let targetCount = 0;
+
                     for (let j = 0; j < shuffledCourses.length && targetCount < 4; j++) {
                         const course = shuffledCourses[j];
-                        if (course.targets.includes(target)) {
-                            classes.push({
-                                Subject: course.name,
-                                Instructors: course.instructors,
-                                targets: course.targets,
-                                Rooms: course.rooms,
-                                Periods: 1,
-                                Length: 2
-                            });
-                            targetCount++;
+                        if (course && course.targets && course.targets.includes(target)) {
+                            if (addCourseToSchedule(course, currentPeriod, scheduleMatrix, usedInstructors)) {
+                                classes.push({
+                                    Subject: course.name,
+                                    Instructors: course.instructors,
+                                    Targets: course.targets,
+                                    Rooms: course.rooms,
+                                    Periods: currentPeriod,
+                                    Length: 2
+                                });
+                                targetCount++;
+                                currentPeriod += 2;
+                            }
                         }
                     }
                 }
@@ -105,6 +135,7 @@ export function convert(coursesData: any[], instructorsData: any[]) {
                 Classes: classes
             });
         }
+
         return { Days: days };
     } catch (error) {
         console.error('Error converting data:', error);

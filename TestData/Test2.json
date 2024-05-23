@@ -4,64 +4,35 @@
       "Day": "Monday",
       "Classes": [
         {
-          "Subject": "創造演習",
+          "Subject": "中国語△",
           "Instructors": [
-            "西川",
-            "石丸",
-            "江本",
-            "河野",
-            "海田",
-            "段下",
-            "山根"
+            "徳永"
           ],
           "Rooms": [
-            "設計製作",
-            "共同研究室",
-            "1パ"
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "国語総合II",
+          "Subject": "人文社会特講△",
           "Instructors": [
-            "金"
+            "上田真"
           ],
           "Rooms": [
-            "CA2"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "総合英語IIR",
+          "Subject": "技術者倫理",
           "Instructors": [
-            "東"
+            "福田"
           ],
           "Rooms": [
-            "IE3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "HR",
-          "Instructors": [
-            "増井"
-          ],
-          "Rooms": [
-            "IE3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "日本語表現法",
-          "Instructors": [
-            "高槻"
-          ],
-          "Rooms": [
-            "テクノ多目的"
+            "1スタCWE",
+            "CAD"
           ],
           "Periods": 1,
           "Length": 2
@@ -78,189 +49,12 @@
           "Length": 2
         },
         {
-          "Subject": "力と変形",
+          "Subject": "中国語△",
           "Instructors": [
-            "海田",
-            "山根"
+            "徳永"
           ],
           "Rooms": [
-            "設計製作"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "土質力学△",
-          "Instructors": [
-            "荒木"
-          ],
-          "Rooms": [
-            "講義室1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "物理I",
-          "Instructors": [
-            "菊地"
-          ],
-          "Rooms": [
-            "IE2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "コンピュータアーキテクチャ",
-          "Instructors": [
-            "柳澤"
-          ],
-          "Rooms": [
-            "IE4"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "歴史",
-          "Instructors": [
-            "奥山"
-          ],
-          "Rooms": [
-            "CA1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "ディジタル信号処理",
-          "Instructors": [
-            "宮崎"
-          ],
-          "Rooms": [
-            "メディア"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "プログラミング応用",
-          "Instructors": [
-            "石田"
-          ],
-          "Rooms": [
-            "CAD"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "人文社会特講△",
-          "Instructors": [
-            "上田"
-          ],
-          "Rooms": [
-            "メディア"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "自然言語処理△",
-          "Instructors": [
-            "高山"
-          ],
-          "Rooms": [
-            "講義室2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "英会話",
-          "Instructors": [
-            "ペリー"
-          ],
-          "Rooms": [
-            "CA4"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "電気回路I",
-          "Instructors": [
-            "藤本"
-          ],
-          "Rooms": [
-            "ME3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IIA",
-          "Instructors": [
-            "山本"
-          ],
-          "Rooms": [
-            "CA2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IA",
-          "Instructors": [
-            "上田和"
-          ],
-          "Rooms": [
-            "CA1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "構造力学基礎",
-          "Instructors": [
-            "海田"
-          ],
-          "Rooms": [
-            "CA2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "ドイツ語△",
-          "Instructors": [
-            "新枝"
-          ],
-          "Rooms": [
-            "演習室"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IB",
-          "Instructors": [
-            "伊藤"
-          ],
-          "Rooms": [
-            "IE1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "制御工学II",
-          "Instructors": [
-            "池田将"
-          ],
-          "Rooms": [
-            "1スタCWE"
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
@@ -277,49 +71,71 @@
           "Length": 2
         },
         {
-          "Subject": "フーリエ変換",
+          "Subject": "人文社会特講△",
           "Instructors": [
-            "飛車"
+            "上田真"
           ],
           "Rooms": [
-            "2パ"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "計算力学",
+          "Subject": "電子情報通信システム実験",
           "Instructors": [
-            "福田"
-          ],
-          "Rooms": [
-            "2パ"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "創造演習",
-          "Instructors": [
-            "高山",
-            "浦上",
-            "荻原"
+            "原田",
+            "浦上"
           ],
           "Rooms": [
             "IE電算",
             "IE実験",
-            "2スタCW"
+            "IEソフト]"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "体育",
+          "Subject": "中国語△",
           "Instructors": [
-            "北"
+            "徳永"
           ],
           "Rooms": [
-            "グラウンド"
+            "ICT"
+          ],
+          "Periods": 1,
+          "Length": 2
+        },
+        {
+          "Subject": "人文社会特講△",
+          "Instructors": [
+            "上田真"
+          ],
+          "Rooms": [
+            "演習室"
+          ],
+          "Periods": 1,
+          "Length": 2
+        },
+        {
+          "Subject": "ドイツ語△",
+          "Instructors": [
+            "新枝"
+          ],
+          "Rooms": [
+            "演習室"
+          ],
+          "Periods": 1,
+          "Length": 2
+        },
+        {
+          "Subject": "建築設備△",
+          "Instructors": [
+            "清田",
+            "河野"
+          ],
+          "Rooms": [
+            "共同研究室"
           ],
           "Periods": 1,
           "Length": 2
@@ -330,12 +146,35 @@
       "Day": "Tuesday",
       "Classes": [
         {
-          "Subject": "日本語表現法",
+          "Subject": "中国語△",
           "Instructors": [
-            "高槻"
+            "徳永"
           ],
           "Rooms": [
-            "テクノ多目的"
+            "ICT"
+          ],
+          "Periods": 1,
+          "Length": 2
+        },
+        {
+          "Subject": "人文社会特講△",
+          "Instructors": [
+            "上田真"
+          ],
+          "Rooms": [
+            "演習室"
+          ],
+          "Periods": 1,
+          "Length": 2
+        },
+        {
+          "Subject": "技術者倫理",
+          "Instructors": [
+            "福田"
+          ],
+          "Rooms": [
+            "1スタCWE",
+            "CAD"
           ],
           "Periods": 1,
           "Length": 2
@@ -352,189 +191,12 @@
           "Length": 2
         },
         {
-          "Subject": "力と変形",
+          "Subject": "中国語△",
           "Instructors": [
-            "海田",
-            "山根"
+            "徳永"
           ],
           "Rooms": [
-            "設計製作"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "土質力学△",
-          "Instructors": [
-            "荒木"
-          ],
-          "Rooms": [
-            "講義室1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "物理I",
-          "Instructors": [
-            "菊地"
-          ],
-          "Rooms": [
-            "IE2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "コンピュータアーキテクチャ",
-          "Instructors": [
-            "柳澤"
-          ],
-          "Rooms": [
-            "IE4"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "歴史",
-          "Instructors": [
-            "奥山"
-          ],
-          "Rooms": [
-            "CA1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "ディジタル信号処理",
-          "Instructors": [
-            "宮崎"
-          ],
-          "Rooms": [
-            "メディア"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "プログラミング応用",
-          "Instructors": [
-            "石田"
-          ],
-          "Rooms": [
-            "CAD"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "人文社会特講△",
-          "Instructors": [
-            "上田"
-          ],
-          "Rooms": [
-            "メディア"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "自然言語処理△",
-          "Instructors": [
-            "高山"
-          ],
-          "Rooms": [
-            "講義室2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "英会話",
-          "Instructors": [
-            "ペリー"
-          ],
-          "Rooms": [
-            "CA4"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "電気回路I",
-          "Instructors": [
-            "藤本"
-          ],
-          "Rooms": [
-            "ME3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IIA",
-          "Instructors": [
-            "山本"
-          ],
-          "Rooms": [
-            "CA2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IA",
-          "Instructors": [
-            "上田和"
-          ],
-          "Rooms": [
-            "CA1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "構造力学基礎",
-          "Instructors": [
-            "海田"
-          ],
-          "Rooms": [
-            "CA2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "ドイツ語△",
-          "Instructors": [
-            "新枝"
-          ],
-          "Rooms": [
-            "演習室"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IB",
-          "Instructors": [
-            "伊藤"
-          ],
-          "Rooms": [
-            "IE1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "制御工学II",
-          "Instructors": [
-            "池田将"
-          ],
-          "Rooms": [
-            "1スタCWE"
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
@@ -551,93 +213,71 @@
           "Length": 2
         },
         {
-          "Subject": "フーリエ変換",
+          "Subject": "人文社会特講△",
           "Instructors": [
-            "飛車"
+            "上田真"
           ],
           "Rooms": [
-            "2パ"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "計算力学",
+          "Subject": "電子情報通信システム実験",
           "Instructors": [
-            "福田"
-          ],
-          "Rooms": [
-            "2パ"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "創造演習",
-          "Instructors": [
-            "高山",
-            "浦上",
-            "荻原"
+            "原田",
+            "浦上"
           ],
           "Rooms": [
             "IE電算",
             "IE実験",
-            "2スタCW"
+            "IEソフト]"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "体育",
+          "Subject": "中国語△",
           "Instructors": [
-            "北"
+            "徳永"
           ],
           "Rooms": [
-            "グラウンド"
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "数学IIB",
+          "Subject": "人文社会特講△",
           "Instructors": [
-            "唐松"
+            "上田真"
           ],
           "Rooms": [
-            "ME2"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "歴史",
+          "Subject": "ドイツ語△",
           "Instructors": [
-            "奥山"
+            "新枝"
           ],
           "Rooms": [
-            "IE2"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "ディジタル回路",
+          "Subject": "建築設備△",
           "Instructors": [
-            "新田"
+            "清田",
+            "河野"
           ],
           "Rooms": [
-            "IE3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "総合英語IIR",
-          "Instructors": [
-            "東"
-          ],
-          "Rooms": [
-            "ME3"
+            "共同研究室"
           ],
           "Periods": 1,
           "Length": 2
@@ -648,56 +288,12 @@
       "Day": "Wednesday",
       "Classes": [
         {
-          "Subject": "物理I",
+          "Subject": "中国語△",
           "Instructors": [
-            "菊地"
+            "徳永"
           ],
           "Rooms": [
-            "IE2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "コンピュータアーキテクチャ",
-          "Instructors": [
-            "柳澤"
-          ],
-          "Rooms": [
-            "IE4"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "歴史",
-          "Instructors": [
-            "奥山"
-          ],
-          "Rooms": [
-            "CA1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "ディジタル信号処理",
-          "Instructors": [
-            "宮崎"
-          ],
-          "Rooms": [
-            "メディア"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "プログラミング応用",
-          "Instructors": [
-            "石田"
-          ],
-          "Rooms": [
-            "CAD"
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
@@ -705,84 +301,7 @@
         {
           "Subject": "人文社会特講△",
           "Instructors": [
-            "上田"
-          ],
-          "Rooms": [
-            "メディア"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "自然言語処理△",
-          "Instructors": [
-            "高山"
-          ],
-          "Rooms": [
-            "講義室2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "英会話",
-          "Instructors": [
-            "ペリー"
-          ],
-          "Rooms": [
-            "CA4"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "電気回路I",
-          "Instructors": [
-            "藤本"
-          ],
-          "Rooms": [
-            "ME3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IIA",
-          "Instructors": [
-            "山本"
-          ],
-          "Rooms": [
-            "CA2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IA",
-          "Instructors": [
-            "上田和"
-          ],
-          "Rooms": [
-            "CA1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "構造力学基礎",
-          "Instructors": [
-            "海田"
-          ],
-          "Rooms": [
-            "CA2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "ドイツ語△",
-          "Instructors": [
-            "新枝"
+            "上田真"
           ],
           "Rooms": [
             "演習室"
@@ -791,23 +310,35 @@
           "Length": 2
         },
         {
-          "Subject": "数学IB",
+          "Subject": "技術者倫理",
           "Instructors": [
-            "伊藤"
+            "福田"
           ],
           "Rooms": [
-            "IE1"
+            "1スタCWE",
+            "CAD"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "制御工学II",
+          "Subject": "機械力学II",
           "Instructors": [
-            "池田将"
+            "櫻本"
           ],
           "Rooms": [
             "1スタCWE"
+          ],
+          "Periods": 1,
+          "Length": 2
+        },
+        {
+          "Subject": "中国語△",
+          "Instructors": [
+            "徳永"
+          ],
+          "Rooms": [
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
@@ -824,137 +355,71 @@
           "Length": 2
         },
         {
-          "Subject": "フーリエ変換",
+          "Subject": "人文社会特講△",
           "Instructors": [
-            "飛車"
+            "上田真"
           ],
           "Rooms": [
-            "2パ"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "計算力学",
+          "Subject": "電子情報通信システム実験",
           "Instructors": [
-            "福田"
-          ],
-          "Rooms": [
-            "2パ"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "創造演習",
-          "Instructors": [
-            "高山",
-            "浦上",
-            "荻原"
+            "原田",
+            "浦上"
           ],
           "Rooms": [
             "IE電算",
             "IE実験",
-            "2スタCW"
+            "IEソフト]"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "体育",
+          "Subject": "中国語△",
           "Instructors": [
-            "北"
+            "徳永"
           ],
           "Rooms": [
-            "グラウンド"
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "数学IIB",
+          "Subject": "人文社会特講△",
           "Instructors": [
-            "唐松"
+            "上田真"
           ],
           "Rooms": [
-            "ME2"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "歴史",
+          "Subject": "ドイツ語△",
           "Instructors": [
-            "奥山"
+            "新枝"
           ],
           "Rooms": [
-            "IE2"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "ディジタル回路",
+          "Subject": "建築設備△",
           "Instructors": [
-            "新田"
+            "清田",
+            "河野"
           ],
           "Rooms": [
-            "IE3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "総合英語IIR",
-          "Instructors": [
-            "東"
-          ],
-          "Rooms": [
-            "ME3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "総合英語IW",
-          "Instructors": [
-            "長戸"
-          ],
-          "Rooms": [
-            "ME2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IIA",
-          "Instructors": [
-            "山本"
-          ],
-          "Rooms": [
-            "ME2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "応用物理",
-          "Instructors": [
-            "中村"
-          ],
-          "Rooms": [
-            "CA4"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "基礎英語W",
-          "Instructors": [
-            "倉増"
-          ],
-          "Rooms": [
-            "ME1"
+            "共同研究室"
           ],
           "Periods": 1,
           "Length": 2
@@ -965,12 +430,12 @@
       "Day": "Thursday",
       "Classes": [
         {
-          "Subject": "プログラミング応用",
+          "Subject": "中国語△",
           "Instructors": [
-            "石田"
+            "徳永"
           ],
           "Rooms": [
-            "CAD"
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
@@ -978,84 +443,7 @@
         {
           "Subject": "人文社会特講△",
           "Instructors": [
-            "上田"
-          ],
-          "Rooms": [
-            "メディア"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "自然言語処理△",
-          "Instructors": [
-            "高山"
-          ],
-          "Rooms": [
-            "講義室2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "英会話",
-          "Instructors": [
-            "ペリー"
-          ],
-          "Rooms": [
-            "CA4"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "電気回路I",
-          "Instructors": [
-            "藤本"
-          ],
-          "Rooms": [
-            "ME3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IIA",
-          "Instructors": [
-            "山本"
-          ],
-          "Rooms": [
-            "CA2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IA",
-          "Instructors": [
-            "上田和"
-          ],
-          "Rooms": [
-            "CA1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "構造力学基礎",
-          "Instructors": [
-            "海田"
-          ],
-          "Rooms": [
-            "CA2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "ドイツ語△",
-          "Instructors": [
-            "新枝"
+            "上田真"
           ],
           "Rooms": [
             "演習室"
@@ -1064,23 +452,35 @@
           "Length": 2
         },
         {
-          "Subject": "数学IB",
+          "Subject": "技術者倫理",
           "Instructors": [
-            "伊藤"
+            "福田"
           ],
           "Rooms": [
-            "IE1"
+            "1スタCWE",
+            "CAD"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "制御工学II",
+          "Subject": "機械力学II",
           "Instructors": [
-            "池田将"
+            "櫻本"
           ],
           "Rooms": [
             "1スタCWE"
+          ],
+          "Periods": 1,
+          "Length": 2
+        },
+        {
+          "Subject": "中国語△",
+          "Instructors": [
+            "徳永"
+          ],
+          "Rooms": [
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
@@ -1097,178 +497,68 @@
           "Length": 2
         },
         {
-          "Subject": "フーリエ変換",
+          "Subject": "人文社会特講△",
           "Instructors": [
-            "飛車"
+            "上田真"
           ],
           "Rooms": [
-            "2パ"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "計算力学",
+          "Subject": "電子情報通信システム実験",
           "Instructors": [
-            "福田"
-          ],
-          "Rooms": [
-            "2パ"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "創造演習",
-          "Instructors": [
-            "高山",
-            "浦上",
-            "荻原"
+            "原田",
+            "浦上"
           ],
           "Rooms": [
             "IE電算",
             "IE実験",
-            "2スタCW"
+            "IEソフト]"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "体育",
+          "Subject": "中国語△",
           "Instructors": [
-            "北"
+            "徳永"
           ],
           "Rooms": [
-            "グラウンド"
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "数学IIB",
+          "Subject": "人文社会特講△",
           "Instructors": [
-            "唐松"
+            "上田真"
           ],
           "Rooms": [
-            "ME2"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "歴史",
+          "Subject": "ドイツ語△",
           "Instructors": [
-            "奥山"
+            "新枝"
           ],
           "Rooms": [
-            "IE2"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "ディジタル回路",
+          "Subject": "建築設備△",
           "Instructors": [
-            "新田"
-          ],
-          "Rooms": [
-            "IE3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "総合英語IIR",
-          "Instructors": [
-            "東"
-          ],
-          "Rooms": [
-            "ME3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "総合英語IW",
-          "Instructors": [
-            "長戸"
-          ],
-          "Rooms": [
-            "ME2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IIA",
-          "Instructors": [
-            "山本"
-          ],
-          "Rooms": [
-            "ME2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "応用物理",
-          "Instructors": [
-            "中村"
-          ],
-          "Rooms": [
-            "CA4"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "基礎英語W",
-          "Instructors": [
-            "倉増"
-          ],
-          "Rooms": [
-            "ME1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "英会話△",
-          "Instructors": [
-            "カート"
-          ],
-          "Rooms": [
-            "テクノ多目的"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "物理II",
-          "Instructors": [
-            "菊地"
-          ],
-          "Rooms": [
-            "ME3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "流体力学△",
-          "Instructors": [
-            "張間"
-          ],
-          "Rooms": [
-            "1スタCWE"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "建築構造設計",
-          "Instructors": [
-            "山根"
+            "清田",
+            "河野"
           ],
           "Rooms": [
             "共同研究室"
@@ -1282,53 +572,20 @@
       "Day": "Friday",
       "Classes": [
         {
-          "Subject": "電気回路I",
+          "Subject": "中国語△",
           "Instructors": [
-            "藤本"
+            "徳永"
           ],
           "Rooms": [
-            "ME3"
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "数学IIA",
+          "Subject": "人文社会特講△",
           "Instructors": [
-            "山本"
-          ],
-          "Rooms": [
-            "CA2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IA",
-          "Instructors": [
-            "上田和"
-          ],
-          "Rooms": [
-            "CA1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "構造力学基礎",
-          "Instructors": [
-            "海田"
-          ],
-          "Rooms": [
-            "CA2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "ドイツ語△",
-          "Instructors": [
-            "新枝"
+            "上田真"
           ],
           "Rooms": [
             "演習室"
@@ -1337,23 +594,35 @@
           "Length": 2
         },
         {
-          "Subject": "数学IB",
+          "Subject": "技術者倫理",
           "Instructors": [
-            "伊藤"
+            "福田"
           ],
           "Rooms": [
-            "IE1"
+            "1スタCWE",
+            "CAD"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "制御工学II",
+          "Subject": "機械力学II",
           "Instructors": [
-            "池田将"
+            "櫻本"
           ],
           "Rooms": [
             "1スタCWE"
+          ],
+          "Periods": 1,
+          "Length": 2
+        },
+        {
+          "Subject": "中国語△",
+          "Instructors": [
+            "徳永"
+          ],
+          "Rooms": [
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
@@ -1370,229 +639,71 @@
           "Length": 2
         },
         {
-          "Subject": "フーリエ変換",
+          "Subject": "人文社会特講△",
           "Instructors": [
-            "飛車"
+            "上田真"
           ],
           "Rooms": [
-            "2パ"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "計算力学",
+          "Subject": "電子情報通信システム実験",
           "Instructors": [
-            "福田"
-          ],
-          "Rooms": [
-            "2パ"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "創造演習",
-          "Instructors": [
-            "高山",
-            "浦上",
-            "荻原"
+            "原田",
+            "浦上"
           ],
           "Rooms": [
             "IE電算",
             "IE実験",
-            "2スタCW"
+            "IEソフト]"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "体育",
+          "Subject": "中国語△",
           "Instructors": [
-            "北"
+            "徳永"
           ],
           "Rooms": [
-            "グラウンド"
+            "ICT"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "数学IIB",
+          "Subject": "人文社会特講△",
           "Instructors": [
-            "唐松"
+            "上田真"
           ],
           "Rooms": [
-            "ME2"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "歴史",
+          "Subject": "ドイツ語△",
           "Instructors": [
-            "奥山"
+            "新枝"
           ],
           "Rooms": [
-            "IE2"
+            "演習室"
           ],
           "Periods": 1,
           "Length": 2
         },
         {
-          "Subject": "ディジタル回路",
+          "Subject": "建築設備△",
           "Instructors": [
-            "新田"
-          ],
-          "Rooms": [
-            "IE3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "総合英語IIR",
-          "Instructors": [
-            "東"
-          ],
-          "Rooms": [
-            "ME3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "総合英語IW",
-          "Instructors": [
-            "長戸"
-          ],
-          "Rooms": [
-            "ME2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "数学IIA",
-          "Instructors": [
-            "山本"
-          ],
-          "Rooms": [
-            "ME2"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "応用物理",
-          "Instructors": [
-            "中村"
-          ],
-          "Rooms": [
-            "CA4"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "基礎英語W",
-          "Instructors": [
-            "倉増"
-          ],
-          "Rooms": [
-            "ME1"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "英会話△",
-          "Instructors": [
-            "カート"
-          ],
-          "Rooms": [
-            "テクノ多目的"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "物理II",
-          "Instructors": [
-            "菊地"
-          ],
-          "Rooms": [
-            "ME3"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "流体力学△",
-          "Instructors": [
-            "張間"
-          ],
-          "Rooms": [
-            "1スタCWE"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "建築構造設計",
-          "Instructors": [
-            "山根"
+            "清田",
+            "河野"
           ],
           "Rooms": [
             "共同研究室"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "物理科学",
-          "Instructors": [
-            "菊地"
-          ],
-          "Rooms": [
-            "テクノ多目的"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "ディジタル回路応用",
-          "Instructors": [
-            "新田"
-          ],
-          "Rooms": [
-            "IE電算",
-            "2スタCW"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "確率",
-          "Instructors": [
-            "宮崎"
-          ],
-          "Rooms": [
-            "メディア"
-          ],
-          "Periods": 1,
-          "Length": 2
-        },
-        {
-          "Subject": "工学デザイン基礎I",
-          "Instructors": [
-            "目山",
-            "河野",
-            "江本",
-            "中川"
-          ],
-          "Rooms": [
-            "設計製作"
           ],
           "Periods": 1,
           "Length": 2
