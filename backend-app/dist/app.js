@@ -163,7 +163,9 @@ app.post('/api/timetable/create', (req, res) => __awaiter(void 0, void 0, void 0
         const startTime = Date.now();
         const coursesData = yield timetableAPI.loadCourses(); //授業データを取得
         const instructorData = yield timetableAPI.loadInstructors(); //教員データを取得
-        const convertedData = timetableAPI.convert(coursesData, instructorData); //データを出力形式に変換
+        const roomData = yield timetableAPI.loadRooms(); //教室データを取得
+        const convertedData = timetableAPI.convert2(coursesData, instructorData, roomData); //データを出力形式に変換
+        console.log(coursesData.length);
         yield timetableAPI.write(convertedData); // write関数を利用してデータを書き込む
         // レスポンスを返す
         res.status(201).json(convertedData);
