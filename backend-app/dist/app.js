@@ -165,7 +165,6 @@ app.post('/api/timetable/create', (req, res) => __awaiter(void 0, void 0, void 0
         const instructorData = yield timetableAPI.loadInstructors(); //教員データを取得
         const roomData = yield timetableAPI.loadRooms(); //教室データを取得
         const convertedData = timetableAPI.convert2(coursesData, instructorData, roomData); //データを出力形式に変換
-        console.log(coursesData.length);
         yield timetableAPI.write(convertedData); // write関数を利用してデータを書き込む
         // レスポンスを返す
         res.status(201).json(convertedData);
@@ -174,6 +173,72 @@ app.post('/api/timetable/create', (req, res) => __awaiter(void 0, void 0, void 0
     }
     catch (error) {
         console.error('Error creating timetable:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+}));
+//全時間割削除API
+app.delete('/api/timetable/deleteAll', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield timetableAPI.writeList([]);
+        res.json({ message: '全ての時間割が削除されました。' });
+    }
+    catch (error) {
+        console.error('Error deleting all timetables:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+}));
+//時間割削除API
+app.delete('/api/timetable/delete/:timetableName', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const name = req.params.timetableName;
+        const data = yield timetableAPI.loadList();
+        if (Array.isArray(data)) {
+            const timetableData = data.find((timetable) => timetable.name === name);
+            if (!timetableData) {
+                res.status(404).send('Timetable not found');
+            }
+            else {
+                const filteredData = data.filter((timetable) => timetable.name !== name);
+                yield timetableAPI.writeList(filteredData);
+                res.json({ message: '時間割が削除されました。' });
+            }
+        }
+    }
+    catch (error) {
+        console.error('Error deleting timetable:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+}));
+// 特定の時間割の詳細を取得するAPI
+app.get('/api/timetable/get/:timetableName', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const name = req.params.timetableName;
+        const data = yield timetableAPI.loadList();
+        if (Array.isArray(data)) {
+            const timetableData = data.find((timetable) => timetable.name === name);
+            console.log(timetableData);
+            if (!timetableData) {
+                res.status(404).send('Timetable not found');
+            }
+            else {
+                const rst = yield timetableAPI.loadDetail(timetableData.file);
+                res.json(rst);
+            }
+        }
+    }
+    catch (error) {
+        console.error('時間割表の取得中にエラーが発生しました:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+}));
+//全時間割取得API
+app.get('/api/timetable/getAll', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const timetables = yield timetableAPI.loadList();
+        res.json(timetables);
+    }
+    catch (error) {
+        console.error('Error fetching all timetables:', error);
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));

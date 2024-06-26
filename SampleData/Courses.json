@@ -619,28 +619,11 @@
             ]
         },
         {
-            "name": "日本語コミュニケーション△",
+            "name": "4年言語△",
             "instructors": [
-                "高槻"
-            ],
-            "targets": [
-                "ME4",
-                "IE4",
-                "CA4"
-            ],
-            "rooms": [
-                "ME4"
-            ],
-            "periods": [
-                {
-                    "day": 1,
-                    "period": 2
-                }
-            ]
-        },
-        {
-            "name": "中国文学△",
-            "instructors": [
+                "新枝",
+                "高槻",
+                "徳永",
                 "谷本"
             ],
             "targets": [
@@ -649,46 +632,9 @@
                 "CA4"
             ],
             "rooms": [
-                "IE4"
-            ],
-            "periods": [
-                {
-                    "day": 1,
-                    "period": 2
-                }
-            ]
-        },
-        {
-            "name": "ドイツ語△",
-            "instructors": [
-                "新枝"
-            ],
-            "targets": [
-                "ME4",
+                "CA4",
                 "IE4",
-                "CA4"
-            ],
-            "rooms": [
-                "CA4"
-            ],
-            "periods": [
-                {
-                    "day": 1,
-                    "period": 2
-                }
-            ]
-        },
-        {
-            "name": "中国語△",
-            "instructors": [
-                "徳永"
-            ],
-            "targets": [
                 "ME4",
-                "IE4",
-                "CA4"
-            ],
-            "rooms": [
                 "ICT"
             ],
             "periods": [
@@ -1523,28 +1469,11 @@
             ]
         },
         {
-            "name": "歴史学△",
+            "name": "5年言語△",
             "instructors": [
-                "奥山"
-            ],
-            "targets": [
-                "ME5",
-                "IE5",
-                "CA5"
-            ],
-            "rooms": [
-                "メディア"
-            ],
-            "periods": [
-                {
-                    "day": 1,
-                    "period": 2
-                }
-            ]
-        },
-        {
-            "name": "人文社会特講△",
-            "instructors": [
+                "徳永",
+                "奥山",
+                "新枝",
                 "上田真"
             ],
             "targets": [
@@ -1553,47 +1482,10 @@
                 "CA5"
             ],
             "rooms": [
-                "演習室"
-            ],
-            "periods": [
-                {
-                    "day": 1,
-                    "period": 2
-                }
-            ]
-        },
-        {
-            "name": "ドイツ語△",
-            "instructors": [
-                "新枝"
-            ],
-            "targets": [
-                "ME5",
-                "IE5",
-                "CA5"
-            ],
-            "rooms": [
-                "演習室"
-            ],
-            "periods": [
-                {
-                    "day": 1,
-                    "period": 2
-                }
-            ]
-        },
-        {
-            "name": "中国語△",
-            "instructors": [
-                "徳永"
-            ],
-            "targets": [
-                "ME5",
-                "IE5",
-                "CA5"
-            ],
-            "rooms": [
-                "ICT"
+                "ICT",
+                "演習室",
+                "1スタCWE",
+                "メディア"
             ],
             "periods": [
                 {
@@ -1943,26 +1835,6 @@
             "rooms": [
                 "IE電算",
                 "2スタE"
-            ],
-            "periods": [
-                {
-                    "day": 1,
-                    "period": 2
-                }
-            ]
-        },
-        {
-            "name": "人文社会特講△",
-            "instructors": [
-                "上田"
-            ],
-            "targets": [
-                "ME5",
-                "IE5",
-                "CA5"
-            ],
-            "rooms": [
-                "メディア"
             ],
             "periods": [
                 {

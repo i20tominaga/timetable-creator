@@ -13,9 +13,11 @@ def print_teacher_schedule_to_file(input_file, output_file):
             for entry in day['Classes']:
                 subject = entry['Subject']
                 target = entry['Targets']
+                room = entry['Rooms']
+                instructor = entry['Instructors']
                 if previous_class is not None and target != previous_class["Targets"]:  # クラスが変わったら空行を挿入
                     file.write('\n')  # 前のクラスがある場合にのみ空行を挿入
-                file.write(f'{subject} ({target})\n')
+                file.write(f'{subject} クラス{target} 部屋{room} 先生{instructor}\n')
                 previous_class = entry  # 前のクラスを更新
             file.write('\n')  # 日付ごとに空行を挿入
             file.write('\n')
