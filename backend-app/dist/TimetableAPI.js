@@ -177,12 +177,12 @@ function convert2(coursesData, instructorsData, roomsData) {
                 if (course.targets.includes(grade) && gradeClassesCount < maxClassesPerDay && dayClassesCount < maxClassesPerDay * gradeGroups.length) {
                     const period = gradeClassesCount; // periodを設定
                     const roomAvailableValue = roomAvailable(course.rooms[0], day, period, roomSchedule);
-                    const instructorAvailableValue = course.instructors.every(instructor => {
+                    /*const instructorAvailableValue = course.instructors.every(instructor => {
                         const available = instructorAvailable(instructor, dayIndex + 1, period + 1, instructorsData);
                         logAvailableInstructors(instructor, dayIndex + 1, period + 1, available);
                         return available;
-                    });
-                    if (roomAvailableValue && instructorAvailableValue) {
+                    });*/
+                    if (roomAvailableValue /*&& instructorAvailableValue*/) {
                         // 各教室を使用中としてマークする
                         if (!roomSchedule[day][period]) {
                             roomSchedule[day][period] = [];
