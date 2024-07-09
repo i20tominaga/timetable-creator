@@ -2,60 +2,11 @@
     "Days": [
         {
             "Day": "Monday",
-            "Classes": []
-        },
-        {
-            "Day": "Tuesday",
-            "Classes": []
-        },
-        {
-            "Day": "Wednesday",
-            "Classes": []
-        },
-        {
-            "Day": "Thursday",
             "Classes": [
                 {
-                    "Subject": "総合英語演習I",
+                    "Subject": "電磁気学",
                     "Instructors": [
-                        "新枝"
-                    ],
-                    "Rooms": [
-                        "IE4"
-                    ],
-                    "Targets": [
-                        "IE4"
-                    ],
-                    "periods": {
-                        "period": 0,
-                        "length": 2
-                    }
-                },
-                {
-                    "Subject": "総合英語演習I",
-                    "Instructors": [
-                        "新枝"
-                    ],
-                    "Rooms": [
-                        "CA4"
-                    ],
-                    "Targets": [
-                        "CA4"
-                    ],
-                    "periods": {
-                        "period": 0,
-                        "length": 2
-                    }
-                }
-            ]
-        },
-        {
-            "Day": "Friday",
-            "Classes": [
-                {
-                    "Subject": "微分積分学I",
-                    "Instructors": [
-                        "河田"
+                        "片山"
                     ],
                     "Rooms": [
                         "ME4"
@@ -69,9 +20,194 @@
                     }
                 },
                 {
-                    "Subject": "心理学△",
+                    "Subject": "創造製作II",
                     "Instructors": [
-                        "羽渕"
+                        "石田",
+                        "池田将",
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "CAD",
+                        "工場"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "関数論",
+                    "Instructors": [
+                        "飛車"
+                    ],
+                    "Rooms": [
+                        "CAD"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "電気回路II",
+                    "Instructors": [
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "1パ"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "ベクトル解析",
+                    "Instructors": [
+                        "杉村"
+                    ],
+                    "Rooms": [
+                        "IE4"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "ディジタル回路応用",
+                    "Instructors": [
+                        "新田"
+                    ],
+                    "Rooms": [
+                        "IE電算",
+                        "2スタCW"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "システムプログラミングII",
+                    "Instructors": [
+                        "重村"
+                    ],
+                    "Rooms": [
+                        "IE電算",
+                        "2スタCW"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "応用物理",
+                    "Instructors": [
+                        "中村"
+                    ],
+                    "Rooms": [
+                        "IE4"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "建築施工法△",
+                    "Instructors": [
+                        "目山"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "鉄筋コンクリート工学",
+                    "Instructors": [
+                        "温品"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "工学デザイン基礎I",
+                    "Instructors": [
+                        "中川",
+                        "古田",
+                        "島袋",
+                        "洞崎"
+                    ],
+                    "Rooms": [
+                        "設計製作",
+                        "1パ"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "道路工学I△",
+                    "Instructors": [
+                        "目山"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "応用数物演習△",
+                    "Instructors": [
+                        "飛車"
                     ],
                     "Rooms": [
                         "1スタCWE"
@@ -83,6 +219,1827 @@
                     ],
                     "periods": {
                         "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "卒業研究",
+                    "Instructors": [
+                        "ME全員"
+                    ],
+                    "Rooms": [
+                        "各研究室"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "流体力学△",
+                    "Instructors": [
+                        "張間"
+                    ],
+                    "Rooms": [
+                        "1スタCWE"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "設計製図Ⅲ",
+                    "Instructors": [
+                        "西村",
+                        "張間"
+                    ],
+                    "Rooms": [
+                        "CAD"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "卒業研究",
+                    "Instructors": [
+                        "IE全員"
+                    ],
+                    "Rooms": [
+                        "各研究室"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "総合英語演習II",
+                    "Instructors": [
+                        "カート"
+                    ],
+                    "Rooms": [
+                        "2スタE"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "オペレーティングシステムII",
+                    "Instructors": [
+                        "重村"
+                    ],
+                    "Rooms": [
+                        "2スタE"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "5年言語△",
+                    "Instructors": [
+                        "徳永",
+                        "奥山",
+                        "新枝",
+                        "上田真"
+                    ],
+                    "Rooms": [
+                        "ICT",
+                        "演習室",
+                        "1スタCWE",
+                        "メディア"
+                    ],
+                    "Targets": [
+                        "ME5",
+                        "IE5",
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "河海工学II△",
+                    "Instructors": [
+                        "渡辺"
+                    ],
+                    "Rooms": [
+                        "演習室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "日本建築史△",
+                    "Instructors": [
+                        "中川"
+                    ],
+                    "Rooms": [
+                        "設計製作"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "測量学特論",
+                    "Instructors": [
+                        "佐賀"
+                    ],
+                    "Rooms": [
+                        "共同研究室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "火薬学△",
+                    "Instructors": [
+                        "大石"
+                    ],
+                    "Rooms": [
+                        "共同研究室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                }
+            ]
+        },
+        {
+            "Day": "Tuesday",
+            "Classes": [
+                {
+                    "Subject": "電磁気学",
+                    "Instructors": [
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "ME4"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "創造製作II",
+                    "Instructors": [
+                        "石田",
+                        "池田将",
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "CAD",
+                        "工場"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "関数論",
+                    "Instructors": [
+                        "飛車"
+                    ],
+                    "Rooms": [
+                        "CAD"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "電気回路II",
+                    "Instructors": [
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "1パ"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "ベクトル解析",
+                    "Instructors": [
+                        "杉村"
+                    ],
+                    "Rooms": [
+                        "IE4"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "ディジタル回路応用",
+                    "Instructors": [
+                        "新田"
+                    ],
+                    "Rooms": [
+                        "IE電算",
+                        "2スタCW"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "システムプログラミングII",
+                    "Instructors": [
+                        "重村"
+                    ],
+                    "Rooms": [
+                        "IE電算",
+                        "2スタCW"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "応用物理",
+                    "Instructors": [
+                        "中村"
+                    ],
+                    "Rooms": [
+                        "IE4"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "建築施工法△",
+                    "Instructors": [
+                        "目山"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "鉄筋コンクリート工学",
+                    "Instructors": [
+                        "温品"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "工学デザイン基礎I",
+                    "Instructors": [
+                        "中川",
+                        "古田",
+                        "島袋",
+                        "洞崎"
+                    ],
+                    "Rooms": [
+                        "設計製作",
+                        "1パ"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "道路工学I△",
+                    "Instructors": [
+                        "目山"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "応用数物演習△",
+                    "Instructors": [
+                        "飛車"
+                    ],
+                    "Rooms": [
+                        "1スタCWE"
+                    ],
+                    "Targets": [
+                        "ME5",
+                        "IE5",
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "卒業研究",
+                    "Instructors": [
+                        "ME全員"
+                    ],
+                    "Rooms": [
+                        "各研究室"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "流体力学△",
+                    "Instructors": [
+                        "張間"
+                    ],
+                    "Rooms": [
+                        "1スタCWE"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "設計製図Ⅲ",
+                    "Instructors": [
+                        "西村",
+                        "張間"
+                    ],
+                    "Rooms": [
+                        "CAD"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "卒業研究",
+                    "Instructors": [
+                        "IE全員"
+                    ],
+                    "Rooms": [
+                        "各研究室"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "総合英語演習II",
+                    "Instructors": [
+                        "カート"
+                    ],
+                    "Rooms": [
+                        "2スタE"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "オペレーティングシステムII",
+                    "Instructors": [
+                        "重村"
+                    ],
+                    "Rooms": [
+                        "2スタE"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "5年言語△",
+                    "Instructors": [
+                        "徳永",
+                        "奥山",
+                        "新枝",
+                        "上田真"
+                    ],
+                    "Rooms": [
+                        "ICT",
+                        "演習室",
+                        "1スタCWE",
+                        "メディア"
+                    ],
+                    "Targets": [
+                        "ME5",
+                        "IE5",
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "河海工学II△",
+                    "Instructors": [
+                        "渡辺"
+                    ],
+                    "Rooms": [
+                        "演習室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "日本建築史△",
+                    "Instructors": [
+                        "中川"
+                    ],
+                    "Rooms": [
+                        "設計製作"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "測量学特論",
+                    "Instructors": [
+                        "佐賀"
+                    ],
+                    "Rooms": [
+                        "共同研究室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "火薬学△",
+                    "Instructors": [
+                        "大石"
+                    ],
+                    "Rooms": [
+                        "共同研究室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                }
+            ]
+        },
+        {
+            "Day": "Wednesday",
+            "Classes": [
+                {
+                    "Subject": "電磁気学",
+                    "Instructors": [
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "ME4"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "創造製作II",
+                    "Instructors": [
+                        "石田",
+                        "池田将",
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "CAD",
+                        "工場"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "関数論",
+                    "Instructors": [
+                        "飛車"
+                    ],
+                    "Rooms": [
+                        "CAD"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "電気回路II",
+                    "Instructors": [
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "1パ"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "ベクトル解析",
+                    "Instructors": [
+                        "杉村"
+                    ],
+                    "Rooms": [
+                        "IE4"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "ディジタル回路応用",
+                    "Instructors": [
+                        "新田"
+                    ],
+                    "Rooms": [
+                        "IE電算",
+                        "2スタCW"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "システムプログラミングII",
+                    "Instructors": [
+                        "重村"
+                    ],
+                    "Rooms": [
+                        "IE電算",
+                        "2スタCW"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "応用物理",
+                    "Instructors": [
+                        "中村"
+                    ],
+                    "Rooms": [
+                        "IE4"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "建築施工法△",
+                    "Instructors": [
+                        "目山"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "鉄筋コンクリート工学",
+                    "Instructors": [
+                        "温品"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "工学デザイン基礎I",
+                    "Instructors": [
+                        "中川",
+                        "古田",
+                        "島袋",
+                        "洞崎"
+                    ],
+                    "Rooms": [
+                        "設計製作",
+                        "1パ"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "道路工学I△",
+                    "Instructors": [
+                        "目山"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "応用数物演習△",
+                    "Instructors": [
+                        "飛車"
+                    ],
+                    "Rooms": [
+                        "1スタCWE"
+                    ],
+                    "Targets": [
+                        "ME5",
+                        "IE5",
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "卒業研究",
+                    "Instructors": [
+                        "ME全員"
+                    ],
+                    "Rooms": [
+                        "各研究室"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "流体力学△",
+                    "Instructors": [
+                        "張間"
+                    ],
+                    "Rooms": [
+                        "1スタCWE"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "設計製図Ⅲ",
+                    "Instructors": [
+                        "西村",
+                        "張間"
+                    ],
+                    "Rooms": [
+                        "CAD"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "卒業研究",
+                    "Instructors": [
+                        "IE全員"
+                    ],
+                    "Rooms": [
+                        "各研究室"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "総合英語演習II",
+                    "Instructors": [
+                        "カート"
+                    ],
+                    "Rooms": [
+                        "2スタE"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "オペレーティングシステムII",
+                    "Instructors": [
+                        "重村"
+                    ],
+                    "Rooms": [
+                        "2スタE"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "5年言語△",
+                    "Instructors": [
+                        "徳永",
+                        "奥山",
+                        "新枝",
+                        "上田真"
+                    ],
+                    "Rooms": [
+                        "ICT",
+                        "演習室",
+                        "1スタCWE",
+                        "メディア"
+                    ],
+                    "Targets": [
+                        "ME5",
+                        "IE5",
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "河海工学II△",
+                    "Instructors": [
+                        "渡辺"
+                    ],
+                    "Rooms": [
+                        "演習室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "日本建築史△",
+                    "Instructors": [
+                        "中川"
+                    ],
+                    "Rooms": [
+                        "設計製作"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "測量学特論",
+                    "Instructors": [
+                        "佐賀"
+                    ],
+                    "Rooms": [
+                        "共同研究室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "火薬学△",
+                    "Instructors": [
+                        "大石"
+                    ],
+                    "Rooms": [
+                        "共同研究室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                }
+            ]
+        },
+        {
+            "Day": "Thursday",
+            "Classes": [
+                {
+                    "Subject": "電磁気学",
+                    "Instructors": [
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "ME4"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "創造製作II",
+                    "Instructors": [
+                        "石田",
+                        "池田将",
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "CAD",
+                        "工場"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "関数論",
+                    "Instructors": [
+                        "飛車"
+                    ],
+                    "Rooms": [
+                        "CAD"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "電気回路II",
+                    "Instructors": [
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "1パ"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "ベクトル解析",
+                    "Instructors": [
+                        "杉村"
+                    ],
+                    "Rooms": [
+                        "IE4"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "ディジタル回路応用",
+                    "Instructors": [
+                        "新田"
+                    ],
+                    "Rooms": [
+                        "IE電算",
+                        "2スタCW"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "システムプログラミングII",
+                    "Instructors": [
+                        "重村"
+                    ],
+                    "Rooms": [
+                        "IE電算",
+                        "2スタCW"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "応用物理",
+                    "Instructors": [
+                        "中村"
+                    ],
+                    "Rooms": [
+                        "IE4"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "建築施工法△",
+                    "Instructors": [
+                        "目山"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "鉄筋コンクリート工学",
+                    "Instructors": [
+                        "温品"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "工学デザイン基礎I",
+                    "Instructors": [
+                        "中川",
+                        "古田",
+                        "島袋",
+                        "洞崎"
+                    ],
+                    "Rooms": [
+                        "設計製作",
+                        "1パ"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "道路工学I△",
+                    "Instructors": [
+                        "目山"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "応用数物演習△",
+                    "Instructors": [
+                        "飛車"
+                    ],
+                    "Rooms": [
+                        "1スタCWE"
+                    ],
+                    "Targets": [
+                        "ME5",
+                        "IE5",
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "卒業研究",
+                    "Instructors": [
+                        "ME全員"
+                    ],
+                    "Rooms": [
+                        "各研究室"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "流体力学△",
+                    "Instructors": [
+                        "張間"
+                    ],
+                    "Rooms": [
+                        "1スタCWE"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "設計製図Ⅲ",
+                    "Instructors": [
+                        "西村",
+                        "張間"
+                    ],
+                    "Rooms": [
+                        "CAD"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "卒業研究",
+                    "Instructors": [
+                        "IE全員"
+                    ],
+                    "Rooms": [
+                        "各研究室"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "総合英語演習II",
+                    "Instructors": [
+                        "カート"
+                    ],
+                    "Rooms": [
+                        "2スタE"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "オペレーティングシステムII",
+                    "Instructors": [
+                        "重村"
+                    ],
+                    "Rooms": [
+                        "2スタE"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "5年言語△",
+                    "Instructors": [
+                        "徳永",
+                        "奥山",
+                        "新枝",
+                        "上田真"
+                    ],
+                    "Rooms": [
+                        "ICT",
+                        "演習室",
+                        "1スタCWE",
+                        "メディア"
+                    ],
+                    "Targets": [
+                        "ME5",
+                        "IE5",
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "河海工学II△",
+                    "Instructors": [
+                        "渡辺"
+                    ],
+                    "Rooms": [
+                        "演習室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "日本建築史△",
+                    "Instructors": [
+                        "中川"
+                    ],
+                    "Rooms": [
+                        "設計製作"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "測量学特論",
+                    "Instructors": [
+                        "佐賀"
+                    ],
+                    "Rooms": [
+                        "共同研究室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "火薬学△",
+                    "Instructors": [
+                        "大石"
+                    ],
+                    "Rooms": [
+                        "共同研究室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                }
+            ]
+        },
+        {
+            "Day": "Friday",
+            "Classes": [
+                {
+                    "Subject": "電磁気学",
+                    "Instructors": [
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "ME4"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "創造製作II",
+                    "Instructors": [
+                        "石田",
+                        "池田将",
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "CAD",
+                        "工場"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "関数論",
+                    "Instructors": [
+                        "飛車"
+                    ],
+                    "Rooms": [
+                        "CAD"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "電気回路II",
+                    "Instructors": [
+                        "片山"
+                    ],
+                    "Rooms": [
+                        "1パ"
+                    ],
+                    "Targets": [
+                        "ME4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "ベクトル解析",
+                    "Instructors": [
+                        "杉村"
+                    ],
+                    "Rooms": [
+                        "IE4"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "ディジタル回路応用",
+                    "Instructors": [
+                        "新田"
+                    ],
+                    "Rooms": [
+                        "IE電算",
+                        "2スタCW"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "システムプログラミングII",
+                    "Instructors": [
+                        "重村"
+                    ],
+                    "Rooms": [
+                        "IE電算",
+                        "2スタCW"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "応用物理",
+                    "Instructors": [
+                        "中村"
+                    ],
+                    "Rooms": [
+                        "IE4"
+                    ],
+                    "Targets": [
+                        "IE4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "建築施工法△",
+                    "Instructors": [
+                        "目山"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "鉄筋コンクリート工学",
+                    "Instructors": [
+                        "温品"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "工学デザイン基礎I",
+                    "Instructors": [
+                        "中川",
+                        "古田",
+                        "島袋",
+                        "洞崎"
+                    ],
+                    "Rooms": [
+                        "設計製作",
+                        "1パ"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "道路工学I△",
+                    "Instructors": [
+                        "目山"
+                    ],
+                    "Rooms": [
+                        "CA4"
+                    ],
+                    "Targets": [
+                        "CA4"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "応用数物演習△",
+                    "Instructors": [
+                        "飛車"
+                    ],
+                    "Rooms": [
+                        "1スタCWE"
+                    ],
+                    "Targets": [
+                        "ME5",
+                        "IE5",
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "卒業研究",
+                    "Instructors": [
+                        "ME全員"
+                    ],
+                    "Rooms": [
+                        "各研究室"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "流体力学△",
+                    "Instructors": [
+                        "張間"
+                    ],
+                    "Rooms": [
+                        "1スタCWE"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "設計製図Ⅲ",
+                    "Instructors": [
+                        "西村",
+                        "張間"
+                    ],
+                    "Rooms": [
+                        "CAD"
+                    ],
+                    "Targets": [
+                        "ME5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "卒業研究",
+                    "Instructors": [
+                        "IE全員"
+                    ],
+                    "Rooms": [
+                        "各研究室"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "総合英語演習II",
+                    "Instructors": [
+                        "カート"
+                    ],
+                    "Rooms": [
+                        "2スタE"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "オペレーティングシステムII",
+                    "Instructors": [
+                        "重村"
+                    ],
+                    "Rooms": [
+                        "2スタE"
+                    ],
+                    "Targets": [
+                        "IE5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "5年言語△",
+                    "Instructors": [
+                        "徳永",
+                        "奥山",
+                        "新枝",
+                        "上田真"
+                    ],
+                    "Rooms": [
+                        "ICT",
+                        "演習室",
+                        "1スタCWE",
+                        "メディア"
+                    ],
+                    "Targets": [
+                        "ME5",
+                        "IE5",
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 3,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "河海工学II△",
+                    "Instructors": [
+                        "渡辺"
+                    ],
+                    "Rooms": [
+                        "演習室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 0,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "日本建築史△",
+                    "Instructors": [
+                        "中川"
+                    ],
+                    "Rooms": [
+                        "設計製作"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 1,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "測量学特論",
+                    "Instructors": [
+                        "佐賀"
+                    ],
+                    "Rooms": [
+                        "共同研究室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 2,
+                        "length": 2
+                    }
+                },
+                {
+                    "Subject": "火薬学△",
+                    "Instructors": [
+                        "大石"
+                    ],
+                    "Rooms": [
+                        "共同研究室"
+                    ],
+                    "Targets": [
+                        "CA5"
+                    ],
+                    "periods": {
+                        "period": 3,
                         "length": 2
                     }
                 }

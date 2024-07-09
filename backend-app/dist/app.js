@@ -38,6 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const courseAPI = __importStar(require("./CourseAPI"));
 const timetableAPI = __importStar(require("./TimetableAPI"));
+const jsonToCsv = __importStar(require("./ConvertCSV"));
 const app = (0, express_1.default)();
 const port = 3000;
 app.use(express_1.default.json());
@@ -166,8 +167,9 @@ app.post('/api/timetable/create', (req, res) => __awaiter(void 0, void 0, void 0
         const roomData = yield timetableAPI.loadRooms(); //教室データを取得
         const convertedData = timetableAPI.convert2(coursesData, instructorData, roomData); //データを出力形式に変換
         yield timetableAPI.write(convertedData); // write関数を利用してデータを書き込む
+        const rst = yield jsonToCsv.convert(); // CSV形式に変換
         // レスポンスを返す
-        res.status(201).json(convertedData);
+        res.status(201).json({ message: '時間割が作成されました。' });
         const endTime = Date.now();
         console.log(`Time taken: ${endTime - startTime}ms`);
     }
