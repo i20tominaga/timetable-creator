@@ -41,11 +41,11 @@ interface ExportJson {
 }
 
 // ファイルパスの定義
-const coursesFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Courses.json';
-const instructorsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Instructors.json';
-const roomsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Data/Rooms.json';
-const exportFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Export.json';
-const listFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Timetables.json';
+const coursesFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/SampleData/Courses.json';
+const instructorsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/SampleData/Instructors.json';
+const roomsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/Data/Rooms.json';
+const exportFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/SampleData/Export.json';
+const listFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/SampleData/TimeTables.json';
 
 // ファイルのロード関数
 export function loadCourses(): Promise<CourseJson> {
@@ -197,27 +197,28 @@ export function convert2(coursesData: CourseJson, instructorsData: InstructorJso
 
     // 各曜日ごとのコマと教室の使用状況を追跡する
     const roomSchedule: { [key: string]: { [period: number]: string[] } } = {};
-    dayOfWeek.forEach(day => {
+    for (const day of dayOfWeek) {
         roomSchedule[day] = {};
-    });
+    }
 
-    dayOfWeek.forEach((day, dayIndex) => {
+    for (const dayIndex in dayOfWeek) {
+        const day = dayOfWeek[dayIndex];
         let dayClassesCount = 0;
 
-        gradeGroups.forEach(grade => {
+        for (const grade of gradeGroups) {
             let gradeClassesCount = 0;
 
             for (const course of coursesData.Course) {
                 if (course.targets.includes(grade) && gradeClassesCount < maxClassesPerDay && dayClassesCount < maxClassesPerDay * gradeGroups.length) {
                     const period = gradeClassesCount; // periodを設定
                     const roomAvailableValue = roomAvailable(course.rooms[0], day, period, roomSchedule);
-                    /*const instructorAvailableValue = course.instructors.every(instructor => {
-                        const available = instructorAvailable(instructor, dayIndex + 1, period + 1, instructorsData);
-                        logAvailableInstructors(instructor, dayIndex + 1, period + 1, available);
+                    const instructorAvailableValue = course.instructors.every(instructor => {
+                        const available = instructorAvailable(instructor, parseInt(dayIndex) + 1, period + 1, instructorsData);
+                        logAvailableInstructors(instructor, parseInt(dayIndex) + 1, period + 1, available);
                         return available;
-                    });*/
+                    });
 
-                    if (roomAvailableValue /*&& instructorAvailableValue*/) {
+                    if (roomAvailableValue && instructorAvailableValue) {
                         // 各教室を使用中としてマークする
                         if (!roomSchedule[day][period]) {
                             roomSchedule[day][period] = [];
@@ -239,8 +240,8 @@ export function convert2(coursesData: CourseJson, instructorsData: InstructorJso
                     }
                 }
             }
-        });
-    });
+        }
+    }
 
     // 書き込むデータをエクスポート
     write(rst);

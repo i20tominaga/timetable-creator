@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import * as courseAPI from './CourseAPI';
 import * as timetableAPI from './TimetableAPI';
 import * as jsonToCsv from './ConvertCSV';
+import { json } from 'body-parser';
 
 const app = express();
 const port = 3000;
@@ -139,9 +140,8 @@ app.post('/api/timetable/create', async (req: Request, res: Response) => {
         const roomData = await timetableAPI.loadRooms(); //教室データを取得
         const convertedData = timetableAPI.convert2(coursesData, instructorData, roomData); //データを出力形式に変換
         await timetableAPI.write(convertedData); // write関数を利用してデータを書き込む
-        const rst = await jsonToCsv.convert(); // CSV形式に変換
         // レスポンスを返す
-        res.status(201).json({ message: '時間割が作成されました。' });
+        res.status(201).json(convertedData);
         const endTime = Date.now();
         console.log(`Time taken: ${endTime - startTime}ms`);
 
@@ -204,6 +204,16 @@ app.get('/api/timetable/get/:timetableName', async (req: Request, res: Response)
     }
 });
 
+//時間割をCSVに変換するAPI
+app.get('/api/timetable/convertCSV', async (req: Request, res: Response) => {
+    try {
+        jsonToCsv.convert();
+        res.json({ message: '時間割がCSV形式に変換されました。' });
+    } catch (error) {
+        console.error('Error converting timetable to CSV:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+});
 
 //全時間割取得API
 app.get('/api/timetable/getAll', async (req: Request, res: Response) => {

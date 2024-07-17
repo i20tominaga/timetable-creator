@@ -167,9 +167,8 @@ app.post('/api/timetable/create', (req, res) => __awaiter(void 0, void 0, void 0
         const roomData = yield timetableAPI.loadRooms(); //教室データを取得
         const convertedData = timetableAPI.convert2(coursesData, instructorData, roomData); //データを出力形式に変換
         yield timetableAPI.write(convertedData); // write関数を利用してデータを書き込む
-        const rst = yield jsonToCsv.convert(); // CSV形式に変換
         // レスポンスを返す
-        res.status(201).json({ message: '時間割が作成されました。' });
+        res.status(201).json(convertedData);
         const endTime = Date.now();
         console.log(`Time taken: ${endTime - startTime}ms`);
     }
@@ -230,6 +229,17 @@ app.get('/api/timetable/get/:timetableName', (req, res) => __awaiter(void 0, voi
     }
     catch (error) {
         console.error('時間割表の取得中にエラーが発生しました:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+}));
+//時間割をCSVに変換するAPI
+app.get('/api/timetable/convertCSV', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        jsonToCsv.convert();
+        res.json({ message: '時間割がCSV形式に変換されました。' });
+    }
+    catch (error) {
+        console.error('Error converting timetable to CSV:', error);
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));

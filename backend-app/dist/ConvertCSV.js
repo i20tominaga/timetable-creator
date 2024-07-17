@@ -27,9 +27,9 @@ exports.convert = void 0;
 const fs = __importStar(require("fs"));
 const csv_writer_1 = require("csv-writer");
 // JSONファイルのパス
-const jsonFilePath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Export.json';
+const jsonFilePath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/SampleData/Export.json';
 // CSVファイルのパス
-const csvFilePath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Test.csv';
+const csvFilePath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend//SampleData/Test.csv';
 function convert() {
     // JSONファイルの読み込み
     const rawData = fs.readFileSync(jsonFilePath, 'utf8');
@@ -89,7 +89,7 @@ function convert() {
     const csvData = table.map((row) => row);
     // CSVファイルに書き込み
     csvWriter.writeRecords(csvData).then(() => {
-        console.log('CSV file has been created successfully.');
+        console.log('CSV file written successfully');
     });
 }
 exports.convert = convert;

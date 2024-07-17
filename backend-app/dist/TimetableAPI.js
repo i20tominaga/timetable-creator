@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.convert2 = exports.writeList = exports.write = exports.loadDetail = exports.loadList = exports.loadRooms = exports.loadInstructors = exports.loadCourses = void 0;
 const fs_1 = __importDefault(require("fs"));
 // ファイルパスの定義
-const coursesFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Courses.json';
-const instructorsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Instructors.json';
-const roomsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Data/Rooms.json';
-const exportFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Export.json';
-const listFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Timetables.json';
+const coursesFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/SampleData/Courses.json';
+const instructorsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/SampleData/Instructors.json';
+const roomsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/Data/Rooms.json';
+const exportFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/SampleData/Export.json';
+const listFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/SampleData/TimeTables.json';
 // ファイルのロード関数
 function loadCourses() {
     return new Promise((resolve, reject) => {
@@ -147,6 +147,7 @@ function logAvailableInstructors(instructor, day, period, available) {
 }
 // データ形式に変換する関数
 function convert2(coursesData, instructorsData, roomsData) {
+    var _a;
     if (!coursesData || !coursesData.Course) {
         throw new Error('Invalid courses data');
     }
@@ -165,24 +166,24 @@ function convert2(coursesData, instructorsData, roomsData) {
     const maxClassesPerDay = 4;
     // 各曜日ごとのコマと教室の使用状況を追跡する
     const roomSchedule = {};
-    dayOfWeek.forEach(day => {
+    for (const day of dayOfWeek) {
         roomSchedule[day] = {};
-    });
-    dayOfWeek.forEach((day, dayIndex) => {
+    }
+    for (const dayIndex in dayOfWeek) {
+        const day = dayOfWeek[dayIndex];
         let dayClassesCount = 0;
-        gradeGroups.forEach(grade => {
-            var _a;
+        for (const grade of gradeGroups) {
             let gradeClassesCount = 0;
             for (const course of coursesData.Course) {
                 if (course.targets.includes(grade) && gradeClassesCount < maxClassesPerDay && dayClassesCount < maxClassesPerDay * gradeGroups.length) {
                     const period = gradeClassesCount; // periodを設定
                     const roomAvailableValue = roomAvailable(course.rooms[0], day, period, roomSchedule);
-                    /*const instructorAvailableValue = course.instructors.every(instructor => {
-                        const available = instructorAvailable(instructor, dayIndex + 1, period + 1, instructorsData);
-                        logAvailableInstructors(instructor, dayIndex + 1, period + 1, available);
+                    const instructorAvailableValue = course.instructors.every(instructor => {
+                        const available = instructorAvailable(instructor, parseInt(dayIndex) + 1, period + 1, instructorsData);
+                        logAvailableInstructors(instructor, parseInt(dayIndex) + 1, period + 1, available);
                         return available;
-                    });*/
-                    if (roomAvailableValue /*&& instructorAvailableValue*/) {
+                    });
+                    if (roomAvailableValue && instructorAvailableValue) {
                         // 各教室を使用中としてマークする
                         if (!roomSchedule[day][period]) {
                             roomSchedule[day][period] = [];
@@ -203,8 +204,8 @@ function convert2(coursesData, instructorsData, roomsData) {
                     }
                 }
             }
-        });
-    });
+        }
+    }
     // 書き込むデータをエクスポート
     write(rst);
     return rst;
