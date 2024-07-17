@@ -3,6 +3,7 @@ import * as courseAPI from './CourseAPI';
 import * as timetableAPI from './TimetableAPI';
 import * as jsonToCsv from './ConvertCSV';
 import { json } from 'body-parser';
+import { time } from 'console';
 
 const app = express();
 const port = 3000;
@@ -154,6 +155,7 @@ app.post('/api/timetable/create', async (req: Request, res: Response) => {
 //全時間割削除API
 app.delete('/api/timetable/deleteAll', async (req: Request, res: Response) => {
     try {
+        timetableAPI.deleteALL();
         await timetableAPI.writeList([]);
         res.json({ message: '全ての時間割が削除されました。' });
     } catch (error) {
@@ -172,6 +174,7 @@ app.delete('/api/timetable/delete/:timetableName', async (req: Request, res: Res
             if(!timetableData){
                 res.status(404).send('Timetable not found');
             } else {
+                timetableAPI.deleteFile(name);
                 const filteredData = data.filter((timetable: { name: string; }) => timetable.name !== name);
                 await timetableAPI.writeList(filteredData);
                 res.json({ message: '時間割が削除されました。' });

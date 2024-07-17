@@ -180,6 +180,7 @@ app.post('/api/timetable/create', (req, res) => __awaiter(void 0, void 0, void 0
 //全時間割削除API
 app.delete('/api/timetable/deleteAll', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        timetableAPI.deleteALL();
         yield timetableAPI.writeList([]);
         res.json({ message: '全ての時間割が削除されました。' });
     }
@@ -199,6 +200,7 @@ app.delete('/api/timetable/delete/:timetableName', (req, res) => __awaiter(void 
                 res.status(404).send('Timetable not found');
             }
             else {
+                timetableAPI.deleteFile(name);
                 const filteredData = data.filter((timetable) => timetable.name !== name);
                 yield timetableAPI.writeList(filteredData);
                 res.json({ message: '時間割が削除されました。' });

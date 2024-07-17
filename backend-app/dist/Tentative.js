@@ -1,88 +1,116 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = __importStar(require("fs"));
-const path = __importStar(require("path"));
-// TimeTables.jsonのパス
-const timeTablesPath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend//SampleData/TimeTables.json';
-// TimeTables.jsonを読み込む関数
-function loadTimeTables() {
-    if (fs.existsSync(timeTablesPath)) {
-        const data = fs.readFileSync(timeTablesPath, 'utf8');
-        return JSON.parse(data);
+exports.convert = void 0;
+const gradeGroups = ['ME1', 'IE1', 'CA1', 'ME2', 'IE2', 'CA2', 'ME3', 'IE3', 'CA3', 'ME4', 'IE4', 'CA4', 'ME5', 'IE5', 'CA5']; //　クラスの定義
+const groupIndex = (grade) => gradeGroups.indexOf(grade);
+// 配列をシャッフルする関数
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
-    return [];
+    return array;
 }
-// TimeTables.jsonに書き込む関数
-function saveTimeTables(timeTables) {
-    const jsonData = JSON.stringify(timeTables, null, 2);
-    fs.writeFileSync(timeTablesPath, jsonData, 'utf8');
-}
-// ディレクトリのパス
-const directoryPath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/SampleData';
-// ディレクトリが存在しない場合は作成
-if (!fs.existsSync(directoryPath)) {
-    fs.mkdirSync(directoryPath, { recursive: true });
-}
-// JSONファイルに書き込むデータ
-const data = {
-    name: "John Doe",
-    age: 30,
-    profession: "Software Developer"
-};
-// JSONデータを文字列に変換
-const jsonData = JSON.stringify(data, null, 2);
-// ディレクトリ内のファイル一覧を取得
-const files = fs.readdirSync(directoryPath);
-// "Export"で始まるファイル名をフィルタリング
-const exportFiles = files.filter(file => file.startsWith('Export') && file.endsWith('.json'));
-// ファイル名から番号を抽出して最大値を求める
-const maxNumber = exportFiles.reduce((max, file) => {
-    const match = file.match(/^Export(\d+)\.json$/);
-    if (match) {
-        const num = parseInt(match[1], 10);
-        return num > max ? num : max;
+// 授業名とtargetsを格納するオブジェクトの多次元配列
+const uniqueCourses = {};
+// 授業名とtargetsを格納する関数
+function addUniqueCourse(course) {
+    if (!uniqueCourses[course.name]) {
+        uniqueCourses[course.name] = new Set();
     }
-    return max;
-}, 0);
-// 新しいファイル名を決定
-const newFileNumber = maxNumber + 1;
-const fileName = `Export${newFileNumber}.json`;
-// ファイルのパス
-const filePath = path.join(directoryPath, fileName);
-// JSONデータを書き込む
-fs.writeFileSync(filePath, jsonData, 'utf8');
-// TimeTables.jsonの読み込み
-let timeTables = loadTimeTables();
-// 新しいエントリを追加
-timeTables.push({
-    name: `Export${newFileNumber}`,
-    file: filePath
-});
-// TimeTables.jsonに書き込む
-saveTimeTables(timeTables);
-// ファイル名とパスを表示
-console.log('ファイル名:', fileName);
-console.log('ファイルパス:', filePath);
+    uniqueCourses[course.name].add(course.targets.join(','));
+}
+// 同じ授業名でtargetsが異なる場合は新しい授業として扱う
+function isUniqueCourse(course) {
+    if (!uniqueCourses[course.name]) {
+        return true;
+    }
+    return !uniqueCourses[course.name].has(course.targets.join(','));
+}
+// 授業を追加できるか判断する関数
+function addCourseToSchedule(course, period, scheduleMatrix, useTarget, usedCourses) {
+    if (!scheduleMatrix[period - 1]) {
+        scheduleMatrix[period - 1] = Array(21).fill(null);
+    }
+    if (usedCourses.has(course.name)) {
+        return false;
+    }
+    for (const target of course.targets) {
+        const colIndex = groupIndex(target);
+        if (colIndex === -1)
+            continue;
+        for (const item of course.instructors) {
+            if (useTarget.has(item)) {
+                return false; // コンフリクトがある場合は追加しない
+            }
+        }
+        scheduleMatrix[period - 1][colIndex] = course.instructors.join(', ');
+        for (const item of course.instructors) {
+            useTarget.add(item);
+        }
+        usedCourses.add(course.name);
+    }
+    return true;
+}
+// データ形式に変換する関数
+function convert(coursesData, instructorsData) {
+    const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    const days = [];
+    const gradeGroups = {
+        1: ['ME1', 'IE1', 'CA1'],
+        2: ['ME2', 'IE2', 'CA2'],
+        3: ['ME3', 'IE3', 'CA3'],
+        4: ['ME4', 'IE4', 'CA4'],
+        5: ['ME5', 'IE5', 'CA5'],
+    };
+    try {
+        const instructorScheduleMatrix = daysOfWeek.map(() => Array.from({ length: 4 }, () => Array(21).fill(null)));
+        const roomScheduleMatrix = daysOfWeek.map(() => Array.from({ length: 4 }, () => Array(21).fill(null)));
+        const usedInstructors = new Set();
+        const usedRooms = new Set();
+        const usedCourses = new Set();
+        const shuffledCourses = shuffleArray([...coursesData]);
+        // 授業を各曜日ごとに割り当てる
+        for (let dayIndex = 0; dayIndex < daysOfWeek.length; dayIndex++) {
+            const dayOfWeek = daysOfWeek[dayIndex];
+            const classes = [];
+            // 各曜日の各クラスに1コマずつ授業を割り当てる
+            for (let currentPeriod = 1; currentPeriod <= 4; currentPeriod++) {
+                for (const gradeStr in gradeGroups) {
+                    const grade = Number(gradeStr);
+                    const targetGroups = gradeGroups[grade];
+                    for (const target of targetGroups) {
+                        for (let j = 0; j < shuffledCourses.length; j++) {
+                            const course = shuffledCourses[j];
+                            if (course && course.targets && course.targets.includes(target) && isUniqueCourse(course)) {
+                                addUniqueCourse(course);
+                                const instructorCheck = addCourseToSchedule(course, currentPeriod, instructorScheduleMatrix[dayIndex], usedInstructors, usedCourses);
+                                if (instructorCheck) {
+                                    classes.push({
+                                        Subject: course.name,
+                                        Instructors: course.instructors,
+                                        Targets: course.targets,
+                                        Rooms: course.rooms,
+                                        Periods: currentPeriod,
+                                        Length: 2
+                                    });
+                                    break; // 1コマ分の授業を割り当てたら次のクラスに移る
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            days.push({
+                Day: dayOfWeek,
+                Classes: classes
+            });
+        }
+        return { Days: days };
+    }
+    catch (error) {
+        console.error('Error converting data:', error);
+        return { Days: [] };
+    }
+}
+exports.convert = convert;

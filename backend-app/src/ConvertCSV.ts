@@ -2,9 +2,9 @@ import * as fs from 'fs';
 import { createArrayCsvWriter } from 'csv-writer';
 
 // JSONファイルのパス
-const jsonFilePath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend/SampleData/Export.json';
+const jsonFilePath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Export.json';
 // CSVファイルのパス
-const csvFilePath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Backend//SampleData/Test.csv';
+const csvFilePath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Test.csv';
 
 interface Period {
     period: number;
