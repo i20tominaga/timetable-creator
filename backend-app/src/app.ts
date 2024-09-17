@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express';
 import * as courseAPI from './CourseAPI';
 import * as timetableAPI from './TimetableAPI';
 import * as jsonToCsv from './ConvertCSV';
-import { json } from 'body-parser';
 import { time } from 'console';
 
 const app = express();
@@ -136,10 +135,10 @@ app.delete('/api/courses/deleteAll', async (req: Request, res: Response) => {
 app.post('/api/timetable/create', async (req: Request, res: Response) => {
     try {
         const startTime = Date.now();
-        const coursesData =  await timetableAPI.loadCourses(); //授業データを取得
+        const coursesData = await timetableAPI.loadCourses(); //授業データを取得
         const instructorData = await timetableAPI.loadInstructors(); //教員データを取得
         const roomData = await timetableAPI.loadRooms(); //教室データを取得
-        const convertedData = timetableAPI.convert2(coursesData, instructorData, roomData); //データを出力形式に変換
+        const convertedData = timetableAPI.convert3(coursesData, instructorData, roomData); //データを出力形式に変換
         await timetableAPI.write(convertedData); // write関数を利用してデータを書き込む
         // レスポンスを返す
         res.status(201).json(convertedData);
@@ -166,12 +165,12 @@ app.delete('/api/timetable/deleteAll', async (req: Request, res: Response) => {
 
 //時間割削除API
 app.delete('/api/timetable/delete/:timetableName', async (req: Request, res: Response) => {
-    try{
+    try {
         const name = req.params.timetableName;
         const data = await timetableAPI.loadList();
-        if(Array.isArray(data)){
+        if (Array.isArray(data)) {
             const timetableData = data.find((timetable: { name: string; }) => timetable.name === name);
-            if(!timetableData){
+            if (!timetableData) {
                 res.status(404).send('Timetable not found');
             } else {
                 timetableAPI.deleteFile(name);
@@ -191,10 +190,10 @@ app.get('/api/timetable/get/:timetableName', async (req: Request, res: Response)
     try {
         const name = req.params.timetableName;
         const data = await timetableAPI.loadList();
-        if(Array.isArray(data)){
+        if (Array.isArray(data)) {
             const timetableData = data.find((timetable: { name: string; }) => timetable.name === name);
             console.log(timetableData)
-            if(!timetableData){
+            if (!timetableData) {
                 res.status(404).send('Timetable not found');
             } else {
                 const rst = await timetableAPI.loadDetail(timetableData.file);
@@ -208,9 +207,10 @@ app.get('/api/timetable/get/:timetableName', async (req: Request, res: Response)
 });
 
 //時間割をCSVに変換するAPI
-app.get('/api/timetable/convertCSV', async (req: Request, res: Response) => {
+app.get('/api/timetable/convertCSV/:timetableName', async (req: Request, res: Response) => {
     try {
-        jsonToCsv.convert();
+        const name = req.params.timetableName;
+        jsonToCsv.convert(name);
         res.json({ message: '時間割がCSV形式に変換されました。' });
     } catch (error) {
         console.error('Error converting timetable to CSV:', error);
@@ -220,7 +220,7 @@ app.get('/api/timetable/convertCSV', async (req: Request, res: Response) => {
 
 //全時間割取得API
 app.get('/api/timetable/getAll', async (req: Request, res: Response) => {
-    try{
+    try {
         const timetables = await timetableAPI.loadList();
         res.json(timetables);
     } catch (error) {
