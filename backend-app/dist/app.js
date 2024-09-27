@@ -36,12 +36,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const courseAPI = __importStar(require("./CourseAPI"));
 const timetableAPI = __importStar(require("./TimetableAPI"));
 const jsonToCsv = __importStar(require("./ConvertCSV"));
 const app = (0, express_1.default)();
-const port = 3000;
+const port = 3001;
 app.use(express_1.default.json());
+app.use((0, cors_1.default)());
 // 全授業取得API
 app.get('/api/courses/getAll', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -158,19 +160,20 @@ app.delete('/api/courses/deleteAll', (req, res) => __awaiter(void 0, void 0, voi
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));
-// 時間割作成API
-app.post('/api/timetable/create', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+//時間割作成API
+app.post('/api/timetable/create/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const startTime = Date.now();
+        const id = decodeURIComponent(req.params.id); // 日本語など特殊文字をデコード
+        console.log(`Creating timetable with ID: ${id}`);
         const coursesData = yield timetableAPI.loadCourses(); //授業データを取得
         const instructorData = yield timetableAPI.loadInstructors(); //教員データを取得
         const roomData = yield timetableAPI.loadRooms(); //教室データを取得
-        const convertedData = timetableAPI.convert3(coursesData, instructorData, roomData); //データを出力形式に変換
-        yield timetableAPI.write(convertedData); // write関数を利用してデータを書き込む
-        // レスポンスを返す
-        res.status(201).json(convertedData);
-        const endTime = Date.now();
-        console.log(`Time taken: ${endTime - startTime}ms`);
+        // データを出力形式に変換し、idを追加
+        const convertedData = timetableAPI.convert3(coursesData, instructorData, roomData);
+        const newTimetable = Object.assign({ id }, convertedData);
+        // write関数を利用してデータを書き込む
+        yield timetableAPI.write(newTimetable, id);
+        res.status(201).json(newTimetable); // 新しい時間割を返す
     }
     catch (error) {
         console.error('Error creating timetable:', error);
@@ -189,22 +192,24 @@ app.delete('/api/timetable/deleteAll', (req, res) => __awaiter(void 0, void 0, v
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));
-//時間割削除API
-app.delete('/api/timetable/delete/:timetableName', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.delete('/api/timetable/delete/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const name = req.params.timetableName;
-        const data = yield timetableAPI.loadList();
-        if (Array.isArray(data)) {
-            const timetableData = data.find((timetable) => timetable.name === name);
+        const id = req.params.id;
+        const data = yield timetableAPI.loadList(); // 既存のタイムテーブルをロード
+        if (Array.isArray(data.TimeTables)) {
+            const timetableData = data.TimeTables.find((timetable) => timetable.id === id);
             if (!timetableData) {
                 res.status(404).send('Timetable not found');
             }
             else {
-                timetableAPI.deleteFile(name);
-                const filteredData = data.filter((timetable) => timetable.name !== name);
-                yield timetableAPI.writeList(filteredData);
+                timetableAPI.deleteFile(timetableData.name); // タイムテーブルのファイルを削除
+                const filteredData = data.TimeTables.filter((timetable) => timetable.id !== id);
+                yield timetableAPI.writeList({ TimeTables: filteredData }); // 更新されたリストを書き込む
                 res.json({ message: '時間割が削除されました。' });
             }
+        }
+        else {
+            res.status(500).send('Invalid data format');
         }
     }
     catch (error) {
