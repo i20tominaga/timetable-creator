@@ -28,6 +28,24 @@
       ]
     },
     {
+      "name": "確率統計",
+      "instructors": [
+          "段下"
+      ],
+      "targets": [
+          "CA4"
+      ],
+      "rooms": [
+          "CA4"
+      ],
+      "periods": [
+          {
+              "day": 1,
+              "period": 2
+          }
+      ]
+  },
+    {
       "name": "化学基礎",
       "instructors": ["大橋"],
       "targets": ["ME1"],

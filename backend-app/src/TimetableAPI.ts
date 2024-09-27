@@ -61,6 +61,7 @@ interface ExportJson {
 
 
 interface TimeTable {
+    id: string;
     name: string;
     file: string;
 }
@@ -156,13 +157,17 @@ export function loadList(): Promise<TimeList> {
 }
 
 // Function to load TimeTables.json
-function loadTimeTables(): { name: string, file: string }[] {
+function loadTimeTables(): { id: string, name: string, file: string }[] {
     if (fs.existsSync(listFile)) {
         const data = fs.readFileSync(listFile, 'utf8');
         try {
             const jsonData = JSON.parse(data);
             if (Array.isArray(jsonData.TimeTables)) {
-                return jsonData.TimeTables;
+                return jsonData.TimeTables.map((entry: any) => ({
+                    id: entry.id || '',  // idがない場合に備えて初期化
+                    name: entry.name,
+                    file: entry.file,
+                }));
             }
         } catch (err) {
             console.error('Error parsing TimeTables.json:', err);
@@ -193,8 +198,7 @@ export function loadDetail(name: string): Promise<ExportJson> {
         });
     });
 }
-
-export function write(data: ExportJson) {
+export function write(data: ExportJson, id: string) {
     try {
         // Ensure TimeTables is initialized correctly as an array
         const rst: TimeList = {
@@ -233,7 +237,10 @@ export function write(data: ExportJson) {
         if (!Array.isArray(rst.TimeTables)) {
             rst.TimeTables = [];
         }
+
+        // Push new entry with id
         rst.TimeTables.push({
+            id,  // 追加されたID
             name: fileName,
             file: filePath
         });
@@ -447,7 +454,7 @@ export function convert2(coursesData: CourseJson, instructorsData: InstructorJso
         }
     }*/
 
-    write(rst);
+
 
     return rst;
 }
@@ -703,10 +710,6 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
         }
     };
 
-    // 手動でのスケジュール関数（省略：前回と同様）
-
-    // --- 手動スケジュールの追加（省略） ---
-
     // 各クラスごとにスケジューリング
     for (let gradeIndex = 0; gradeIndex < gradeGroups.length; gradeIndex++) {
         const gradeGroup = gradeGroups[gradeIndex];
@@ -822,7 +825,6 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
         }
     }
 
-    // --- ME5、IE5、CA5の空き時間に「卒業研究」をスケジュール ---
     interface GraduateResearchCourse {
         name: string;
         instructors: string[];
@@ -862,7 +864,6 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
         'CA5': graduateResearchCourseCA
     };
 
-    // 各クラスの空き時間に「卒業研究」をスケジュール
     ['ME5', 'IE5', 'CA5'].forEach(targetClass => {
         const gradeIndex = gradeGroups.indexOf(targetClass);
 
@@ -925,7 +926,6 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
             }
         }
     });
-    // --- 卒業研究のスケジュールここまで ---
 
     return rst;
 }
