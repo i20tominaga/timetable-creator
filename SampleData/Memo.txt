@@ -1,5 +1,0 @@
-Courses.json:授業データ格納ファイル
-Instructors.json:先生データ格納ファイル
-TimeTables.json:作成したjsonファイルの一覧表
-Export.json:時間割格納ファイル
-Test.csv:時間割を変換したファイル
