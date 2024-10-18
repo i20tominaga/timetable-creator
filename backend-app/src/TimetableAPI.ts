@@ -1,4 +1,3 @@
-import { load } from 'CourseAPI';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -198,6 +197,7 @@ export function loadDetail(name: string): Promise<ExportJson> {
         });
     });
 }
+
 export function write(data: ExportJson, id: string) {
     try {
         // Ensure TimeTables is initialized correctly as an array

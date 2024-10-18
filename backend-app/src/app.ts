@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import * as courseAPI from './CourseAPI';
 import * as timetableAPI from './TimetableAPI';
 import * as jsonToCsv from './ConvertCSV';
@@ -10,6 +11,30 @@ const port = 3001;
 
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
+
+//全教員取得API
+app.get('/api/instructors/getAll', async (req: Request, res: Response) => {
+    try {
+        const instructorsData = await timetableAPI.loadInstructors();
+        res.json(instructorsData);
+    } catch (error) {
+        console.error('Error fetching all instructors:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+});
+
+//全教室取得API
+app.get('/api/rooms/getAll', async (req: Request, res: Response) => {
+    try {
+        const roomsData = await timetableAPI.loadRooms();
+        res.json(roomsData);
+    } catch (error) {
+        console.error('Error fetching all rooms:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+});
+
 
 // 全授業取得API
 app.get('/api/courses/getAll', async (req: Request, res: Response) => {
@@ -195,19 +220,21 @@ app.delete('/api/timetable/delete/:id', async (req: Request, res: Response) => {
 });
 
 // 特定の時間割の詳細を取得するAPI
-app.get('/api/timetable/get/:timetableName', async (req: Request, res: Response) => {
+app.get('/api/timetable/get/:id', async (req: Request, res: Response) => {
     try {
-        const name = req.params.timetableName;
+        const id = req.params.id;  // idを取得
         const data = await timetableAPI.loadList();
-        if (Array.isArray(data)) {
-            const timetableData = data.find((timetable: { name: string; }) => timetable.name === name);
-            console.log(timetableData)
+        if (Array.isArray(data.TimeTables)) {
+            const timetableData = data.TimeTables.find((timetable: { id: string; }) => timetable.id === id);
+            console.log('Timetable found:', timetableData);  // タイムテーブルが見つかったか確認
             if (!timetableData) {
                 res.status(404).send('Timetable not found');
             } else {
                 const rst = await timetableAPI.loadDetail(timetableData.file);
                 res.json(rst);
             }
+        } else {
+            res.status(500).send('Invalid data format');
         }
     } catch (error) {
         console.error('時間割表の取得中にエラーが発生しました:', error);
@@ -234,6 +261,30 @@ app.get('/api/timetable/getAll', async (req: Request, res: Response) => {
         res.json(timetables);
     } catch (error) {
         console.error('Error fetching all timetables:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+});
+
+//時間割名の編集API
+app.put('/api/timetable/update/:id', async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id;
+        const newName = req.body.name;
+        const data = await timetableAPI.loadList();
+        if (Array.isArray(data.TimeTables)) {
+            const timetableData = data.TimeTables.find((timetable: { id: string; }) => timetable.id === id);
+            if (!timetableData) {
+                res.status(404).send('Timetable not found');
+            } else {
+                timetableData.id = newName;
+                await timetableAPI.writeList(data);
+                res.json({ message: '時間割名が更新されました。' });
+            }
+        } else {
+            res.status(500).send('Invalid data format');
+        }
+    } catch (error) {
+        console.error('Error updating timetable name:', error);
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 });
