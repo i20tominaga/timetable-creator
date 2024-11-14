@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-export const course_file = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/TimeTables.json'; // JSONファイルのパス
+export const course_file = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Courses.json'; // JSONファイルのパス
 export const teacher_file = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Instructors.json'; // JSONファイルのパス
 
 // ファイルからJSONデータを非同期で読み込む関数
@@ -10,7 +10,7 @@ export async function load(): Promise<any> {
         return JSON.parse(data);
     } catch (error) {
         console.error('JSONファイルの読み込みエラー:', error);
-        return null;
+        throw new Error('コースデータの読み込みに失敗しました。');
     }
 }
 

@@ -1,78 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
-
-// インターフェイスの定義
-interface Course {
-    name: string;
-    instructors: string[];
-    targets: string[];
-    rooms: string[];
-    periods: { day: number; period: number; }[];
-}
-
-interface CourseJson {
-    Course: Course[];
-}
-
-// インターフェースの定義
-interface Period {
-    day: number;
-    period: number;
-}
-
-interface Instructor {
-    id: string;
-    name: string;
-    isFullTime: boolean;
-    periods: Period[];
-}
-
-interface InstructorJson {
-    Instructor: Instructor[];
-}
-
-
-interface RoomJson {
-    Room: {
-        name: string;
-        capacity: number;
-        unavailable: number;
-    }[];
-}
-
-interface ClassEntry {
-    Subject: string;
-    Instructors: string[];
-    Rooms: string[];
-    Targets: string[];
-    periods: {
-        period: number;
-        length: number;
-    };
-}
-
-interface ExportJson {
-    Days: {
-        Day: string;
-        Classes: ClassEntry[];
-    }[];
-}
-
-
-interface TimeTable {
-    id: string;
-    name: string;
-    file: string;
-}
-
-interface TimeList {
-    TimeTables: TimeTable[];
-};
+import { Course, CourseJson, InstructorJson, RoomJson, ExportJson, TimeList } from './types';
 
 
 // ファイルパスの定義
 const coursesFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Courses.json';
-const instructorsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Instructors.json';
 const roomsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Data/Rooms.json';
 const listFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/TimeTables.json';
 const directoryPath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData';
@@ -96,40 +28,6 @@ export function loadCourses(): Promise<CourseJson> {
                     const jsonData = JSON.parse(data);
                     console.log("Loaded Courses:", jsonData.Courses); // ここで読み込まれたデータを確認
                     resolve({ Course: jsonData.Courses });
-                } catch (parseError) {
-                    reject(parseError);
-                }
-            }
-        });
-    });
-}
-
-export function loadInstructors(): Promise<InstructorJson> {
-    return new Promise<InstructorJson>((resolve, reject) => {
-        fs.readFile(instructorsFile, 'utf8', (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                try {
-                    const jsonData = JSON.parse(data);
-                    resolve({ Instructor: jsonData.Instructors });
-                } catch (parseError) {
-                    reject(parseError);
-                }
-            }
-        });
-    });
-}
-
-export function loadRooms(): Promise<RoomJson> {
-    return new Promise<RoomJson>((resolve, reject) => {
-        fs.readFile(roomsFile, 'utf8', (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                try {
-                    const jsonData = JSON.parse(data);
-                    resolve({ Room: jsonData.Rooms });
                 } catch (parseError) {
                     reject(parseError);
                 }

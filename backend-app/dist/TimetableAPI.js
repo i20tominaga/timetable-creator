@@ -23,13 +23,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteFile = exports.deleteALL = exports.convert3 = exports.convert = exports.convert2 = exports.writeList = exports.write = exports.loadDetail = exports.loadList = exports.loadRooms = exports.loadInstructors = exports.loadCourses = void 0;
+exports.deleteFile = exports.deleteALL = exports.convert3 = exports.convert = exports.convert2 = exports.writeList = exports.write = exports.loadDetail = exports.loadList = exports.loadCourses = void 0;
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
-;
 // ファイルパスの定義
 const coursesFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Courses.json';
-const instructorsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Instructors.json';
 const roomsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Data/Rooms.json';
 const listFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/TimeTables.json';
 const directoryPath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData';
@@ -60,44 +58,6 @@ function loadCourses() {
     });
 }
 exports.loadCourses = loadCourses;
-function loadInstructors() {
-    return new Promise((resolve, reject) => {
-        fs.readFile(instructorsFile, 'utf8', (err, data) => {
-            if (err) {
-                reject(err);
-            }
-            else {
-                try {
-                    const jsonData = JSON.parse(data);
-                    resolve({ Instructor: jsonData.Instructors });
-                }
-                catch (parseError) {
-                    reject(parseError);
-                }
-            }
-        });
-    });
-}
-exports.loadInstructors = loadInstructors;
-function loadRooms() {
-    return new Promise((resolve, reject) => {
-        fs.readFile(roomsFile, 'utf8', (err, data) => {
-            if (err) {
-                reject(err);
-            }
-            else {
-                try {
-                    const jsonData = JSON.parse(data);
-                    resolve({ Room: jsonData.Rooms });
-                }
-                catch (parseError) {
-                    reject(parseError);
-                }
-            }
-        });
-    });
-}
-exports.loadRooms = loadRooms;
 function loadList() {
     return new Promise((resolve, reject) => {
         fs.readFile(listFile, 'utf8', (err, data) => {
