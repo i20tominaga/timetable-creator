@@ -3,3 +3,5 @@ SampleData/
 schedule2/
 TestData/
 frontend-app/
+.env
+

@@ -1,11 +1,14 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import * as courseAPI from './CourseAPI';
-import * as roomAPI from './RoomAPI';
-import * as instructorAPI from './InstructorAPI';
-import * as timetableAPI from './TimetableAPI';
-import * as jsonToCsv from './ConvertCSV';
+import * as courseAPI from './api/Course';
+import * as roomAPI from './api/Room';
+import * as instructorAPI from './api/Instructor';
+import * as timetableAPI from './api/Timetable';
+import * as jsonToCsv from './utils/ConvertCSV';
+import authRoutes from './routes/authRoutes';
+import { getCurrentDayAndPeriod } from './utils/timeUtils';
+import { authenticateToken } from './middleware/authMiddleware';
 import { time } from 'console';
 
 const app = express();
@@ -14,6 +17,7 @@ const port = 3001;
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
+app.use('/api/auth', authRoutes);
 
 //全教室取得API
 app.get('/api/rooms/getAll', async (req: Request, res: Response) => {
@@ -126,15 +130,15 @@ app.get('/api/rooms/checkAvailability/:roomName', async (req: Request, res: Resp
     const { day, period } = roomAPI.getCurrentDayAndPeriod();
     console.log(`Checking availability for room ${roomName} on day ${day} and period ${period}`);
 
-    if(day === null || period === null ) {
-        return res.status(400).json({ message : '現在は授業時間外です。' });
+    if (day === null || period === null) {
+        return res.status(400).json({ message: '現在は授業時間外です。' });
     }
 
     const roomsData = await roomAPI.loadRooms();
     const room = roomsData.Room.find((r => r.name === roomName));
 
-    if(!room) {
-        return res.status(404).json({ message : '指定された教室が見つかりません。' });
+    if (!room) {
+        return res.status(404).json({ message: '指定された教室が見つかりません。' });
     }
 
     const isAvailable = !room.unavailable.some(p => p.day === day && p.period === period);
@@ -461,6 +465,8 @@ app.delete('/api/timetable/deleteAll', async (req: Request, res: Response) => {
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 });
+
+//特定の時間割削除API
 app.delete('/api/timetable/delete/:id', async (req: Request, res: Response) => {
     try {
         const id = req.params.id;
@@ -553,6 +559,18 @@ app.put('/api/timetable/update/:id', async (req: Request, res: Response) => {
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 });
+
+app.get('/api/timetable/current-period', (req: Request, res: Response) => {
+    try {
+        const currentPeriodData = getCurrentDayAndPeriod();
+        res.status(200).json(currentPeriodData);
+    } catch (error) {
+        console.error('Error fetching current period:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+});
+
+
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

@@ -38,16 +38,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
-const courseAPI = __importStar(require("./CourseAPI"));
-const roomAPI = __importStar(require("./RoomAPI"));
-const instructorAPI = __importStar(require("./InstructorAPI"));
-const timetableAPI = __importStar(require("./TimetableAPI"));
-const jsonToCsv = __importStar(require("./ConvertCSV"));
+const courseAPI = __importStar(require("./api/Course"));
+const roomAPI = __importStar(require("./api/Room"));
+const instructorAPI = __importStar(require("./api/Instructor"));
+const timetableAPI = __importStar(require("./api/Timetable"));
+const jsonToCsv = __importStar(require("./utils/ConvertCSV"));
+const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
+const timeUtils_1 = require("./utils/timeUtils");
 const app = (0, express_1.default)();
 const port = 3001;
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.use((0, helmet_1.default)());
+app.use('/api/auth', authRoutes_1.default);
 //全教室取得API
 app.get('/api/rooms/getAll', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -453,6 +456,7 @@ app.delete('/api/timetable/deleteAll', (req, res) => __awaiter(void 0, void 0, v
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));
+//特定の時間割削除API
 app.delete('/api/timetable/delete/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = req.params.id;
@@ -552,6 +556,16 @@ app.put('/api/timetable/update/:id', (req, res) => __awaiter(void 0, void 0, voi
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));
+app.get('/api/timetable/current-period', (req, res) => {
+    try {
+        const currentPeriodData = (0, timeUtils_1.getCurrentDayAndPeriod)();
+        res.status(200).json(currentPeriodData);
+    }
+    catch (error) {
+        console.error('Error fetching current period:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+});
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
