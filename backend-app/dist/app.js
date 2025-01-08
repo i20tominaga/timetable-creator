@@ -38,6 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
+const axios_1 = __importDefault(require("axios"));
 const courseAPI = __importStar(require("./api/Course"));
 const roomAPI = __importStar(require("./api/Room"));
 const instructorAPI = __importStar(require("./api/Instructor"));
@@ -57,7 +58,8 @@ app.get('/api/rooms/getAll', (req, res) => __awaiter(void 0, void 0, void 0, fun
         const roomsData = yield roomAPI.loadRooms();
         const roomData = roomsData.Room.map((room) => ({
             name: room.name,
-            unavailable: room.unavailable
+            unavailable: room.unavailable,
+            manualOverride: room.manualOverride
         }));
         res.json(roomData);
     }
@@ -79,7 +81,8 @@ app.post('/api/rooms/create', (req, res) => __awaiter(void 0, void 0, void 0, fu
         }
         const newRooms = roomsData.map((newRoom) => ({
             name: newRoom.name,
-            unavailable: newRoom.unavailable
+            unavailable: newRoom.unavailable,
+            manualOverride: newRoom.manualOverride
         }));
         existingRoomsData.Room.push(...newRooms);
         yield roomAPI.writeRooms(existingRoomsData);
@@ -102,7 +105,8 @@ app.put('/api/rooms/update/:roomName', (req, res) => __awaiter(void 0, void 0, v
             // データが存在する場合のみ更新
             roomsData.Room[roomIndex] = {
                 name: roomName,
-                unavailable: unavailable || roomsData.Room[roomIndex].unavailable
+                unavailable: unavailable || roomsData.Room[roomIndex].unavailable,
+                manualOverride: roomsData.Room[roomIndex].manualOverride
             };
             yield roomAPI.writeRooms(roomsData);
             res.json({ updatedRoom: roomsData.Room[roomIndex] });
@@ -148,21 +152,155 @@ app.delete('/api/rooms/deleteAll', (req, res) => __awaiter(void 0, void 0, void 
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));
-//教室の空き状況を判断するAPI
-app.get('/api/rooms/checkAvailability/:roomName', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { roomName } = req.params;
-    const { day, period } = roomAPI.getCurrentDayAndPeriod();
-    console.log(`Checking availability for room ${roomName} on day ${day} and period ${period}`);
-    if (day === null || period === null) {
-        return res.status(400).json({ message: '現在は授業時間外です。' });
+//　手動設定API
+app.post('/api/rooms/set-manual/:roomName', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const roomName = req.params.roomName;
+        const { isManual, reason, setBy, start, end } = req.body;
+        // バリデーション
+        if (typeof isManual !== 'boolean' ||
+            !reason ||
+            typeof reason !== 'string' ||
+            !setBy ||
+            typeof setBy !== 'string' ||
+            typeof start !== 'number' ||
+            typeof end !== 'number') {
+            return res.status(400).json({ message: '無効なデータです。' });
+        }
+        if (start >= end) {
+            return res.status(400).json({ message: '開始時刻は終了時刻より前でなければなりません。' });
+        }
+        // 教室データの取得
+        const roomsData = yield roomAPI.loadRooms();
+        const roomIndex = roomsData.Room.findIndex((room) => room.name === roomName);
+        if (roomIndex === -1) {
+            return res.status(404).json({ message: `教室 '${roomName}' が見つかりません。` });
+        }
+        const room = roomsData.Room[roomIndex];
+        // manualOverride の更新
+        if (isManual) {
+            room.manualOverride = { isManual, reason, setBy };
+            room.unavailable.push({ start, end }); // UNIXタイムスタンプ範囲を unavailable に追加
+        }
+        else {
+            room.manualOverride = { isManual: false, reason: '', setBy: '' };
+        }
+        // 教室データを書き込み
+        yield roomAPI.writeRooms(roomsData);
+        res.json({ message: `教室 '${roomName}' が手動設定されました。` });
     }
-    const roomsData = yield roomAPI.loadRooms();
-    const room = roomsData.Room.find((r => r.name === roomName));
-    if (!room) {
-        return res.status(404).json({ message: '指定された教室が見つかりません。' });
+    catch (error) {
+        console.error('Error updating manual override:', error);
+        res.status(500).json({ message: 'サーバーエラーが発生しました。' });
     }
-    const isAvailable = !room.unavailable.some(p => p.day === day && p.period === period);
-    res.json({ isAvailable });
+}));
+// 教室の使用範囲をクリーンアップするAPI
+app.post('/api/rooms/occupied', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { timetableId } = req.body;
+        if (!timetableId) {
+            return res.status(400).json({ message: 'タイムテーブルIDが指定されていません。' });
+        }
+        // 時間割リストをロードして、指定されたIDに一致する時間割を取得
+        const data = yield timetableAPI.loadList();
+        if (!Array.isArray(data.TimeTables)) {
+            return res.status(500).json({ message: 'Invalid data format' });
+        }
+        const timetableEntry = data.TimeTables.find((timetable) => timetable.id === timetableId);
+        if (!timetableEntry) {
+            return res.status(404).json({ message: '指定された時間割が見つかりません。' });
+        }
+        // 時間割の詳細をロード
+        const timetableData = yield timetableAPI.loadDetail(timetableEntry.file);
+        if (!timetableData) {
+            return res.status(404).json({ message: '時間割データが見つかりません。' });
+        }
+        // 現在の曜日と時限を取得
+        const { day, period } = roomAPI.getCurrentDayAndPeriod();
+        if (period === null) {
+            return res.json({ occupiedRooms: [], isBreakTime: true });
+        }
+        // 現在の曜日に対応するデータを取得
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const currentDayString = daysOfWeek[day];
+        const dayData = timetableData.Days.find((d) => d.Day === currentDayString);
+        if (!dayData) {
+            return res.json({ occupiedRooms: [], isBreakTime: true });
+        }
+        // 現在時限に該当する授業を抽出
+        const currentClasses = dayData.Classes.filter((cls) => cls.periods.period === period);
+        // 使用中の教室を取得
+        const occupiedRooms = currentClasses
+            .flatMap((cls) => cls.Rooms || [])
+            .filter((room, index, self) => self.indexOf(room) === index); // 重複排除
+        res.json({
+            occupiedRooms,
+            isBreakTime: occupiedRooms.length === 0,
+        });
+    }
+    catch (error) {
+        console.error('教室の使用状態取得中にエラーが発生しました:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+}));
+//空き教室取得API
+app.post('/api/rooms/available', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { timetableId } = req.body;
+        if (!timetableId) {
+            return res.status(400).json({ message: 'タイムテーブルIDが指定されていません。' });
+        }
+        const allRoomsData = yield roomAPI.loadRooms(); // 全教室データをロード
+        const allRooms = allRoomsData.Room.map((room) => room.name);
+        // 使用中の教室を取得
+        const occupiedResponse = yield axios_1.default.post('http://localhost:3001/api/rooms/occupied', { timetableId });
+        const occupiedRooms = occupiedResponse.data.occupiedRooms || [];
+        // 空いている教室を計算
+        const availableRooms = allRooms.filter((room) => !occupiedRooms.includes(room));
+        res.json({
+            availableRooms,
+            isBreakTime: occupiedResponse.data.isBreakTime,
+        });
+    }
+    catch (error) {
+        console.error('空き教室の取得中にエラーが発生しました:', error);
+        res.status(500).json({ message: 'エラーが発生しました。' });
+    }
+}));
+app.post('/api/rooms/occupied', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { timetableId } = req.body;
+        if (!timetableId) {
+            return res.status(400).json({ message: 'タイムテーブルIDが指定されていません。' });
+        }
+        const timetableData = yield timetableAPI.loadDetail(timetableId);
+        if (!timetableData) {
+            return res.status(404).json({ message: '指定された時間割が見つかりません。' });
+        }
+        const { day, period } = (0, timeUtils_1.getCurrentDayAndPeriod)();
+        if (period === null) {
+            return res.json({ occupied: false });
+        }
+        // 数値の曜日を文字列の曜日に変換
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const currentDayString = daysOfWeek[day]; // 例: 0 → 'Sunday'
+        const dayData = timetableData.Days.find((d) => d.Day === currentDayString);
+        if (!dayData) {
+            return res.status(404).json({ message: '指定された曜日のデータが見つかりません。' });
+        }
+        const currentClasses = dayData.Classes.filter((cls) => cls.periods.period === period);
+        const occupiedRooms = currentClasses
+            .flatMap((cls) => cls.Rooms || [])
+            .filter((room, index, self) => self.indexOf(room) === index); // 重複排除
+        res.json({
+            occupiedRooms,
+            isBreakTime: occupiedRooms.length === 0,
+        });
+    }
+    catch (error) {
+        console.error("Error fetching occupied rooms:", error);
+        res.status(500).json({ message: 'サーバーエラーが発生しました。' });
+    }
 }));
 //全教員削除API
 app.delete('/api/instructors/deleteAll', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -556,6 +694,7 @@ app.put('/api/timetable/update/:id', (req, res) => __awaiter(void 0, void 0, voi
         res.status(500).json({ message: 'エラーが発生しました。' });
     }
 }));
+//現在時間から現在の曜日と時限を取得するAPI
 app.get('/api/timetable/current-period', (req, res) => {
     try {
         const currentPeriodData = (0, timeUtils_1.getCurrentDayAndPeriod)();

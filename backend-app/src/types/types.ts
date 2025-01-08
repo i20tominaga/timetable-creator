@@ -28,9 +28,19 @@ export interface InstructorJson {
 }
 
 //教室関連のインターフェース
+export interface TimeRange {
+    start: number;
+    end: number;
+}
+export interface ManualOverride {
+    "isManual": boolean;
+    "reason": string;
+    "setBy": string;
+}
 export interface Room {
     name: string;
-    unavailable: Period[];
+    unavailable: TimeRange[];
+    manualOverride: ManualOverride;
 }
 
 export interface RoomJson {

@@ -74,6 +74,9 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             accessLevel: user.accessLevel,
             useTimetable: user.useTimetable,
         }, config_1.JWT_SECRET, { expiresIn: '1h' });
+        console.log('User logged in:', user.name);
+        console.log('User role:', user.role);
+        console.log('User access level:', user.accessLevel);
         return res.status(200).json({
             message: 'ログイン成功',
             token,
