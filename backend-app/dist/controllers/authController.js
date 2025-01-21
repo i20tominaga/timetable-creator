@@ -73,7 +73,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             role: user.role,
             accessLevel: user.accessLevel,
             useTimetable: user.useTimetable,
-        }, config_1.JWT_SECRET, { expiresIn: '1h' });
+        }, config_1.JWT_SECRET, { expiresIn: '24h' });
         console.log('User logged in:', user.name);
         console.log('User role:', user.role);
         console.log('User access level:', user.accessLevel);

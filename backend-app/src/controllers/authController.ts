@@ -73,7 +73,7 @@ export const loginUser = async (req: Request, res: Response) => {
                 useTimetable: user.useTimetable,
             },
             JWT_SECRET,
-            { expiresIn: '1h' }
+            { expiresIn: '24h' }
         );
 
         console.log('User logged in:', user.name);

@@ -1,37 +1,41 @@
-from pysat.formula import WCNF
-
-def add_teacher_constraints(variables, courses, instructors):
+def process_classes_with_constraints(variables, courses, days, max_classes_per_day=4):
     """
-    教師の重複回避制約を追加する。
-
-    Args:
-        variables (dict): 変数マッピング。
-        courses (list): 授業データ。
-        instructors (list): 教師データ。
-
-    Returns:
-        WCNF: 教師の重複回避制約を追加したCNF式。
+    制約をif文で制御しながら授業をスケジュールするロジック。
     """
-    # ハード制約用のWCNFインスタンス
-    wcnf = WCNF()
+    #print("[DEBUG] Processing classes with constraints (verification mode).")
+    daily_schedule = {day: 0 for day in days}  # 各日の授業数カウント
+    weekly_scheduled_courses = set()           # 週1回の授業を記録
 
-    # 教師の重複回避制約の追加
-    for instructor in instructors:
-        instructor_name = instructor["name"]
-        for day in range(1, 6):  # 平日（月〜金）
-            for slot in range(1, 5):  # 各時間枠（1〜4）
-                clause = []  # この時間帯で可能性のある授業のリスト
-                for course in courses:
-                    if instructor_name in course["instructors"]:
-                        for target in course["targets"]:
-                            for room in course["rooms"]:
-                                key = (course["name"], target, day, slot, room)
-                                if key in variables:
-                                    clause.append(variables[key])
+    scheduled_classes = []  # スケジュールされた変数リスト
 
-                # 重複を禁止するペアワイズ制約を追加
-                for i in range(len(clause)):
-                    for j in range(i + 1, len(clause)):
-                        wcnf.append([-clause[i], -clause[j]])  # 重複禁止（ハード制約）
+    for course in courses:
+        # 週1回制約を確認
+        if course["name"] in weekly_scheduled_courses:
+            #print(f"[DEBUG] Skipping course {course['name']} (already scheduled for the week).")
+            continue
 
-    return wcnf
+        for period in course["periods"]:
+            day, slot = period["day"], period["period"]
+
+            # 1日の授業数制限を確認
+            if daily_schedule[day] >= max_classes_per_day:
+                #print(f"[DEBUG] Skipping period for day {day}, slot {slot} (max classes per day reached).")
+                continue
+
+            # 授業の変数を取得
+            scheduled = False
+            for room in course["rooms"]:
+                key = (course["name"], course["targets"][0], day, slot, room)
+                if key in variables:
+                    scheduled_classes.append(variables[key])
+                    daily_schedule[day] += 1
+                    weekly_scheduled_courses.add(course["name"])
+                    scheduled = True
+                    #print(f"[DEBUG] Scheduled course {course['name']} on day {day}, slot {slot}, room {room}.")
+                    break
+
+            if scheduled:
+                break  # 次の授業に移動
+
+    #print(f"[DEBUG] Total scheduled classes: {len(scheduled_classes)}.")
+    return scheduled_classes  # 修正: スケジュールされた授業を返す

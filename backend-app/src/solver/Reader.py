@@ -51,15 +51,20 @@ def read_and_map_variables(courses_path, instructors_path, rooms_path):
     for course in courses:
         for target in course["targets"]:
             for period in course["periods"]:
+                day = period["day"]
+                slot = period["period"] - 1  # スロットのインデックスを0～3に修正
                 for room in course["rooms"]:
-                    key = (course["name"], target, period["day"], period["period"], room)
-                    variables[key] = counter
-                    counter += 1
+                    key = (course["name"], target, day, slot, room)
+                    if key not in variables:  # 重複防止
+                        variables[key] = counter
+                        counter += 1
 
     # 教師関連変数の生成
-    teacher_related_variables = {
-        k: v for k, v in variables.items()
-        if (k[0], k[1]) in course_instructor_map
-    }
+    teacher_related_variables = {}
+    for (course_name, target), instructors in course_instructor_map.items():
+        for instructor in instructors:
+            for key, var_id in variables.items():
+                if key[0] == course_name and key[1] == target:
+                    teacher_related_variables[key] = var_id
 
     return variables, teacher_related_variables, courses, instructors, rooms
