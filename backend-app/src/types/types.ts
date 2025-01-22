@@ -9,6 +9,7 @@ export interface Course {
     targets: string[];
     rooms: string[];
     periods: Period[];
+    length: number;
 }
 
 export interface CourseJson {

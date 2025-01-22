@@ -196,7 +196,7 @@ function instructorAvailable(instructor: string, day: number, period: number, in
     return true;
 }
 
-export function convert2(coursesData: CourseJson, instructorsData: InstructorJson, roomsData: RoomJson) {
+/*export function convert2(coursesData: CourseJson, instructorsData: InstructorJson, roomsData: RoomJson) {
     if (!coursesData || !coursesData.Course) {
         throw new Error('Invalid courses data');
     }
@@ -350,15 +350,15 @@ export function convert2(coursesData: CourseJson, instructorsData: InstructorJso
                 }
             }
         }
-    }*/
+    }
 
 
 
     return rst;
-}
+}*/
 
 // 変換関数
-export function convert(coursesData: CourseJson, instructorsData: InstructorJson, roomsData: RoomJson): ExportJson {
+/*export function convert(coursesData: CourseJson, instructorsData: InstructorJson, roomsData: RoomJson): ExportJson {
     if (!coursesData || !coursesData.Course) {
         throw new Error('Invalid courses data');
     }
@@ -553,7 +553,7 @@ export function convert(coursesData: CourseJson, instructorsData: InstructorJson
     console.log('Remaining Courses:', coursesData.Course.map(course => `${course.name} ${course.targets}`));
 
     return rst;
-}
+}*/
 
 export function convert3(coursesData: CourseJson, instructorsData: InstructorJson, roomsData: RoomJson) {
     if (!coursesData || !coursesData.Course) {
@@ -686,8 +686,8 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
                                 Targets: course.targets,
                                 periods: {
                                     period: period,
-                                    length: 1 // コマの長さ（必要に応じて調整）
-                                }
+                                    length: course.length // コマの長さ（必要に応じて調整）
+                                },
                             });
 
                             // 授業をスケジュール済みとしてマーク（全ターゲットクラスについて）
@@ -729,6 +729,7 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
         targets: string[];
         rooms: string[];
         periods: { day: number; period: number }[];
+        length: number;
     }
 
     const graduateResearchCourseME: GraduateResearchCourse = {
@@ -736,7 +737,8 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
         instructors: ['ME全員'],
         targets: ['ME5'],
         rooms: ['ME研究室'],
-        periods: []
+        periods: [],
+        length: 2
     };
 
     const graduateResearchCourseIE: GraduateResearchCourse = {
@@ -744,7 +746,8 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
         instructors: ['IE全員'],
         targets: ['IE5'],
         rooms: ['IE研究室'],
-        periods: []
+        periods: [],
+        length: 2
     };
 
     const graduateResearchCourseCA: GraduateResearchCourse = {
@@ -752,7 +755,8 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
         instructors: ['CA全員'],
         targets: ['CA5'],
         rooms: ['CA研究室'],
-        periods: []
+        periods: [],
+        length: 2
     };
 
     // ターゲットクラスとコースをマッピング
@@ -812,7 +816,7 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
                             Targets: graduateResearchCourse.targets,
                             periods: {
                                 period: period,
-                                length: 1
+                                length: 2
                             }
                         });
 

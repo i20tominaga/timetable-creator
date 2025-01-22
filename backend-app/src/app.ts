@@ -468,7 +468,8 @@ app.get('/api/courses/getAll', async (req: Request, res: Response) => {
             periods: Array.isArray(course.periods) ? course.periods.map((period: any) => ({
                 day: period.day,
                 period: period.period
-            })) : [] // periodsが配列でなければ空配列を返す
+            })) : [], // periodsが配列でなければ空配列を返す
+            length: course.length
         }));
 
         res.json(courseData);
@@ -518,7 +519,8 @@ app.post('/api/courses/create', async (req: Request, res: Response) => {
             periods: newCourse.periods.map((period: any) => ({
                 day: period.day,
                 period: period.period
-            }))
+            })),
+            length: newCourse.length
         }));
 
         existingCoursesData.Courses.push(...newCourses);
@@ -549,6 +551,7 @@ app.put('/api/courses/update/:courseName', async (req: Request, res: Response) =
                 rooms: rooms || coursesData.Courses[courseIndex].rooms,
                 periods: periods || coursesData.Courses[courseIndex].periods,
                 targets: targets || coursesData.Courses[courseIndex].targets,
+                length: length || coursesData.Courses[courseIndex].length
             };
 
             await courseAPI.write(coursesData);

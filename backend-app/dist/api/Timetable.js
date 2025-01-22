@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteFile = exports.deleteALL = exports.convert3 = exports.convert = exports.convert2 = exports.writeList = exports.write = exports.loadDetail = exports.loadList = exports.loadCourses = void 0;
+exports.deleteFile = exports.deleteALL = exports.convert3 = exports.writeList = exports.write = exports.loadDetail = exports.loadList = exports.loadCourses = void 0;
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 // ファイルパスの定義
@@ -205,18 +205,20 @@ function instructorAvailable(instructor, day, period, instructorsData) {
     console.log(`Instructor ${instructor} is available on day ${day}, period ${period}.`);
     return true;
 }
-function convert2(coursesData, instructorsData, roomsData) {
+/*export function convert2(coursesData: CourseJson, instructorsData: InstructorJson, roomsData: RoomJson) {
     if (!coursesData || !coursesData.Course) {
         throw new Error('Invalid courses data');
     }
-    const schedule = {
+
+    const schedule: { [day: string]: { [period: number]: Course | null } } = {
         Monday: { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null, 8: null },
         Tuesday: { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null, 8: null },
         Wednesday: { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null, 8: null },
         Thursday: { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null, 8: null },
         Friday: { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null, 8: null },
     };
-    const rst = {
+
+    const rst: ExportJson = {
         Days: [
             { Day: 'Monday', Classes: [] },
             { Day: 'Tuesday', Classes: [] },
@@ -225,44 +227,53 @@ function convert2(coursesData, instructorsData, roomsData) {
             { Day: 'Friday', Classes: [] }
         ]
     };
+
     const gradeGroups = ['ME1', 'IE1', 'CA1', 'ME2', 'IE2', 'CA2', 'ME3', 'IE3', 'CA3', 'ME4', 'IE4', 'CA4', 'ME5', 'IE5', 'CA5'];
     const dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
     const maxClassesPerDay = 4;
-    const roomSchedule = {};
+
+    const roomSchedule: { [day: string]: { [period: number]: string[] } } = {};
     for (const day of dayOfWeek) {
         roomSchedule[day] = {};
     }
-    const scheduledCourses = new Set();
-    function generateKey(course, period, day) {
+
+    const scheduledCourses: Set<string> = new Set();
+
+    function generateKey(course: Course, period: number, day: string): string {
         return `${course.name}-${course.targets.join(',')}-${period}-${day}`;
     }
-    function isCourseScheduled(course, period, day) {
+
+    function isCourseScheduled(course: Course, period: number, day: string): boolean {
         // 全ての曜日をチェックして、すでにこのコースがスケジュールされていないか確認
         for (const scheduledDay of dayOfWeek) {
-            if (Object.values(schedule[scheduledDay]).some(scheduledCourse => (scheduledCourse === null || scheduledCourse === void 0 ? void 0 : scheduledCourse.name) === course.name)) {
+            if (Object.values(schedule[scheduledDay]).some(scheduledCourse => scheduledCourse?.name === course.name)) {
                 return true;
             }
         }
         return false;
     }
-    function addScheduledCourse(course, period, day) {
+
+    function addScheduledCourse(course: Course, period: number, day: string): void {
         if (!isCourseScheduled(course, period, day)) {
             schedule[day][period] = course;
         }
     }
-    function removeCourse(course) {
+
+    function removeCourse(course: Course) {
         const index = coursesData.Course.findIndex(c => c.name === course.name && c.targets === course.targets);
         if (index !== -1) {
             coursesData.Course.splice(index, 1);
         }
     }
-    function scheduleCourse(course, day, period) {
-        var _a;
+
+    function scheduleCourse(course: Course, day: string, period: number) {
         if (!roomSchedule[day][period]) {
             roomSchedule[day][period] = [];
         }
         roomSchedule[day][period].push(course.rooms[0]);
-        (_a = rst.Days.find(d => d.Day === day)) === null || _a === void 0 ? void 0 : _a.Classes.push({
+
+        rst.Days.find(d => d.Day === day)?.Classes.push({
             Subject: course.name,
             Instructors: course.instructors,
             Rooms: course.rooms,
@@ -274,19 +285,23 @@ function convert2(coursesData, instructorsData, roomsData) {
         });
         addScheduledCourse(course, period, day);
     }
-    function roomAvailable(room, day, period, roomSchedule) {
+
+    function roomAvailable(room: string, day: string, period: number, roomSchedule: { [day: string]: { [period: number]: string[] } }): boolean {
         return !roomSchedule[day][period] || !roomSchedule[day][period].includes(room);
     }
-    function instructorAvailable(instructor, day, period, instructorsData) {
+
+    function instructorAvailable(instructor: string, day: number, period: number, instructorsData: InstructorJson): boolean {
         const instructorInfo = instructorsData.Instructor.find(i => i.id === instructor);
         if (!instructorInfo) {
             return false;
         }
         return !instructorInfo.periods.some(p => p.day === day && p.period === period);
     }
+
     // 非常勤の先生が担当する授業を先に格納する
     for (const dayIndex in dayOfWeek) {
         const day = dayOfWeek[dayIndex];
+
         for (const grade of gradeGroups) {
             for (const course of coursesData.Course) {
                 if (course.targets.includes(grade)) {
@@ -294,6 +309,7 @@ function convert2(coursesData, instructorsData, roomsData) {
                         const instructorInfo = instructorsData.Instructor.find(i => i.id === inst);
                         return instructorInfo && !instructorInfo.isFullTime;
                     });
+
                     if (isPartTimeInstructor) {
                         for (let period = 1; period <= 4; period++) {
                             const roomAvailableValue = roomAvailable(course.rooms[0], day, period, roomSchedule);
@@ -301,6 +317,7 @@ function convert2(coursesData, instructorsData, roomsData) {
                                 const available = instructorAvailable(instructor, parseInt(dayIndex) + 1, period, instructorsData);
                                 return available;
                             });
+
                             if (roomAvailableValue && instructorAvailableValue && !isCourseScheduled(course, period, day)) {
                                 scheduleCourse(course, day, period);
                                 removeCourse(course);
@@ -312,6 +329,7 @@ function convert2(coursesData, instructorsData, roomsData) {
             }
         }
     }
+
     // 常勤の先生が担当する授業を格納する
     /*for (const dayIndex in dayOfWeek) {
         const day = dayOfWeek[dayIndex];
@@ -341,65 +359,81 @@ function convert2(coursesData, instructorsData, roomsData) {
                 }
             }
         }
-    }*/
+    }
+
+
+
     return rst;
-}
-exports.convert2 = convert2;
+}*/
 // 変換関数
-function convert(coursesData, instructorsData, roomsData) {
+/*export function convert(coursesData: CourseJson, instructorsData: InstructorJson, roomsData: RoomJson): ExportJson {
     if (!coursesData || !coursesData.Course) {
         throw new Error('Invalid courses data');
     }
-    const courseScheduled = {};
-    const roomSchedule = {};
-    const instructorSchedule = {};
+
+    const courseScheduled: { [courseName: string]: boolean } = {};
+    const roomSchedule: { [key: string]: { [period: number]: string[] } } = {};
+    const instructorSchedule: { [key: string]: { [period: number]: string[] } } = {};
+
     const gradeGroups = ['ME1', 'IE1', 'CA1', 'ME2', 'IE2', 'CA2', 'ME3', 'IE3', 'CA3', 'ME4', 'IE4', 'CA4', 'ME5', 'IE5', 'CA5'];
     const dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
     for (const day of dayOfWeek) {
         roomSchedule[day] = {};
         instructorSchedule[day] = {};
     }
-    const rst = {
+
+    const rst: ExportJson = {
         Days: dayOfWeek.map(day => ({
             Day: day,
             Classes: []
         }))
     };
-    function isCourseScheduled(course, period, day) {
+
+    function isCourseScheduled(course: Course, period: number, day: string): boolean {
         return rst.Days.some(d => d.Day === day && d.Classes.some(c => c.Subject === course.name && c.periods.period === period && JSON.stringify(c.Targets) === JSON.stringify(course.targets)));
     }
-    function isSlotOccupied(day, period) {
+
+    function isSlotOccupied(day: string, period: number): boolean {
         return rst.Days.some(d => d.Day === day && d.Classes.some(c => c.periods.period === period));
     }
-    function isPartTimeInstructor(instructorId) {
+
+    function isPartTimeInstructor(instructorId: string): boolean {
         const instructorInfo = instructorsData.Instructor.find(i => i.id === instructorId);
         return instructorInfo ? !instructorInfo.isFullTime : false;
     }
-    function roomAvailable(room, day, period, roomSchedule) {
+
+    function roomAvailable(room: string | undefined, day: string, period: number, roomSchedule: any): boolean {
         // 仮の実装
         return true;
     }
-    function instructorAvailable(instructorId, day, period, instructorsData) {
+
+    function instructorAvailable(instructorId: string, day: number, period: number, instructorsData: InstructorJson): boolean {
         // 仮の実装
         return true;
     }
-    function tryScheduleCourse(course, day, period, grade) {
+
+    function tryScheduleCourse(course: Course, day: string, period: number, grade: string): boolean {
         const roomAvailableValue = roomAvailable(course.rooms[0], day, period, roomSchedule);
         const instructorAvailableValue = course.instructors.every(instructorId => {
             return instructorAvailable(instructorId, dayOfWeek.indexOf(day) + 1, period + 1, instructorsData);
         });
+
         if (!roomAvailableValue || !instructorAvailableValue || isCourseScheduled(course, period, day) || isSlotOccupied(day, period)) {
             console.log(`Cannot schedule ${course.name} for ${grade} on ${day} during period ${period + 1}`);
             return false;
         }
+
         if (!roomSchedule[day][period]) {
             roomSchedule[day][period] = [];
         }
         roomSchedule[day][period].push(course.rooms[0]);
+
         if (!instructorSchedule[day][period]) {
             instructorSchedule[day][period] = [];
         }
         instructorSchedule[day][period].push(...course.instructors);
+
         const dayObj = rst.Days.find(d => d.Day === day);
         if (dayObj) {
             dayObj.Classes.push({
@@ -413,16 +447,20 @@ function convert(coursesData, instructorsData, roomsData) {
                 }
             });
         }
+
         courseScheduled[course.name] = true;
+
         // コースを削除する
         const index = coursesData.Course.indexOf(course);
         if (index !== -1) {
             coursesData.Course.splice(index, 1);
         }
+
         console.log(`Scheduled ${course.name} for ${grade} on ${day} during period ${period + 1}`);
         return true;
     }
-    function findAlternativeSlot(course, grade) {
+
+    function findAlternativeSlot(course: Course, grade: string): boolean {
         for (const day of dayOfWeek) {
             for (let period = 0; period < 4; period++) {
                 if (tryScheduleCourse(course, day, period, grade)) {
@@ -433,7 +471,8 @@ function convert(coursesData, instructorsData, roomsData) {
         }
         return false;
     }
-    function scheduleCourses(priorityFilter) {
+
+    function scheduleCourses(priorityFilter: (course: Course) => boolean) {
         for (const day of dayOfWeek) {
             for (const grade of gradeGroups) {
                 for (const course of coursesData.Course) {
@@ -442,6 +481,7 @@ function convert(coursesData, instructorsData, roomsData) {
                             const courseDay = dayOfWeek[periodInfo.day - 1];
                             if (courseDay === day) {
                                 const period = periodInfo.period - 1;
+
                                 if (!courseScheduled[course.name]) {
                                     if (!tryScheduleCourse(course, day, period, grade)) {
                                         // 重複が発生する場合は、他の時間スロットを探す
@@ -456,7 +496,8 @@ function convert(coursesData, instructorsData, roomsData) {
             }
         }
     }
-    function manuallyScheduleCourseAndRemove(course, targetDay, targetPeriod, grade) {
+
+    function manuallyScheduleCourseAndRemove(course: Course, targetDay: string, targetPeriod: number, grade: string) {
         if (!courseScheduled[`${course.name}-${grade}`]) {
             if (!roomSchedule[targetDay]) {
                 roomSchedule[targetDay] = {};
@@ -465,6 +506,7 @@ function convert(coursesData, instructorsData, roomsData) {
                 roomSchedule[targetDay][targetPeriod] = [];
             }
             roomSchedule[targetDay][targetPeriod].push(course.rooms[0]);
+
             if (!instructorSchedule[targetDay]) {
                 instructorSchedule[targetDay] = {};
             }
@@ -472,6 +514,7 @@ function convert(coursesData, instructorsData, roomsData) {
                 instructorSchedule[targetDay][targetPeriod] = [];
             }
             instructorSchedule[targetDay][targetPeriod].push(...course.instructors);
+
             const dayObj = rst.Days.find(d => d.Day === targetDay);
             if (dayObj) {
                 dayObj.Classes.push({
@@ -485,35 +528,40 @@ function convert(coursesData, instructorsData, roomsData) {
                     }
                 });
             }
+
             const index = coursesData.Course.indexOf(course);
             if (index !== -1) {
                 coursesData.Course.splice(index, 1);
             }
+
             courseScheduled[`${course.name}-${grade}`] = true;
             console.log(`Manually scheduled ${course.name} for ${grade} on ${targetDay} during period ${targetPeriod + 1}`);
-        }
-        else {
+        } else {
             console.log(`Skipping manual scheduling for ${course.name} for ${grade} on ${targetDay} during period ${targetPeriod + 1}: Already scheduled.`);
         }
     }
+
     // 手動でのスケジュール例
     const courseCA4 = coursesData.Course.find(course => course.name === '総合英語演習I' && course.targets.includes('CA4'));
     if (courseCA4) {
         manuallyScheduleCourseAndRemove(courseCA4, 'Thursday', 3, 'CA4');
     }
+
     const courseIE4 = coursesData.Course.find(course => course.name === '総合英語演習I' && course.targets.includes('IE4'));
     if (courseIE4) {
         manuallyScheduleCourseAndRemove(courseIE4, 'Thursday', 2, 'IE4');
     }
+
     // スケジューリングの優先順位に基づく
     scheduleCourses(course => course.targets.length > 1 && course.instructors.some(isPartTimeInstructor));
     scheduleCourses(course => course.targets.length === 1 && course.instructors.some(isPartTimeInstructor));
     scheduleCourses(course => course.targets.length > 1 && !course.instructors.some(isPartTimeInstructor));
     scheduleCourses(course => course.targets.length === 1 && !course.instructors.some(isPartTimeInstructor));
+
     console.log('Remaining Courses:', coursesData.Course.map(course => `${course.name} ${course.targets}`));
+
     return rst;
-}
-exports.convert = convert;
+}*/
 function convert3(coursesData, instructorsData, roomsData) {
     if (!coursesData || !coursesData.Course) {
         throw new Error('Invalid courses data');
@@ -612,8 +660,8 @@ function convert3(coursesData, instructorsData, roomsData) {
                                 Targets: course.targets,
                                 periods: {
                                     period: period,
-                                    length: 1 // コマの長さ（必要に応じて調整）
-                                }
+                                    length: course.length // コマの長さ（必要に応じて調整）
+                                },
                             });
                             // 授業をスケジュール済みとしてマーク（全ターゲットクラスについて）
                             course.targets.forEach(targetClass => {
@@ -651,21 +699,24 @@ function convert3(coursesData, instructorsData, roomsData) {
         instructors: ['ME全員'],
         targets: ['ME5'],
         rooms: ['ME研究室'],
-        periods: []
+        periods: [],
+        length: 2
     };
     const graduateResearchCourseIE = {
         name: '卒業研究',
         instructors: ['IE全員'],
         targets: ['IE5'],
         rooms: ['IE研究室'],
-        periods: []
+        periods: [],
+        length: 2
     };
     const graduateResearchCourseCA = {
         name: '卒業研究',
         instructors: ['CA全員'],
         targets: ['CA5'],
         rooms: ['CA研究室'],
-        periods: []
+        periods: [],
+        length: 2
     };
     // ターゲットクラスとコースをマッピング
     const graduateResearchCourseMap = {
@@ -713,7 +764,7 @@ function convert3(coursesData, instructorsData, roomsData) {
                             Targets: graduateResearchCourse.targets,
                             periods: {
                                 period: period,
-                                length: 1
+                                length: 2
                             }
                         });
                         // 授業をスケジュール済みとしてマーク

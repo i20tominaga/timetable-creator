@@ -439,7 +439,8 @@ app.get('/api/courses/getAll', (req, res) => __awaiter(void 0, void 0, void 0, f
             periods: Array.isArray(course.periods) ? course.periods.map((period) => ({
                 day: period.day,
                 period: period.period
-            })) : [] // periodsが配列でなければ空配列を返す
+            })) : [], // periodsが配列でなければ空配列を返す
+            length: course.length
         }));
         res.json(courseData);
     }
@@ -486,7 +487,8 @@ app.post('/api/courses/create', (req, res) => __awaiter(void 0, void 0, void 0, 
             periods: newCourse.periods.map((period) => ({
                 day: period.day,
                 period: period.period
-            }))
+            })),
+            length: newCourse.length
         }));
         existingCoursesData.Courses.push(...newCourses);
         yield courseAPI.write(existingCoursesData);
@@ -513,6 +515,7 @@ app.put('/api/courses/update/:courseName', (req, res) => __awaiter(void 0, void 
                 rooms: rooms || coursesData.Courses[courseIndex].rooms,
                 periods: periods || coursesData.Courses[courseIndex].periods,
                 targets: targets || coursesData.Courses[courseIndex].targets,
+                length: length || coursesData.Courses[courseIndex].length
             };
             yield courseAPI.write(coursesData);
             // 更新した授業データをレスポンスとして返す

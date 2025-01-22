@@ -3,14 +3,13 @@ import logging
 
 from ResultExporter import format_constraints_to_json, save_to_file
 from initial_solution_generator import generate_initial_solution
-# 下で定義した関数を別モジュール化している場合は import して使います
 from maxsat_optimizer import optimize_schedule_with_maxsat
 
 def main():
     courses_path = "../../../Data/First_Courses.json"
     instructors_path = "../../../SampleData/Instructors.json"
     rooms_path = "../../../Data/Rooms.json"
-    output_path = "../../../SampleData/result3.json"
+    output_path = "../../../Data/Schedule.json"
 
     logging.basicConfig(
         filename='scheduler.log',
