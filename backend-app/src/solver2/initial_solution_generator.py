@@ -1,5 +1,6 @@
 from typing import List, Dict
 import logging
+import random
 
 # ログ設定
 logging.basicConfig(
@@ -35,6 +36,9 @@ def generate_initial_solution(
 
     cat=3の授業は、まずlength=4の授業を2コマ連続で割り当て、次にlength=2の授業を割り当てます。
     """
+
+    # コースの順序をランダムにシャッフルする
+    random.shuffle(fulltime_courses)
 
     # -----------------------------------------
     # 0) 初期設定
@@ -84,8 +88,8 @@ def generate_initial_solution(
     def is_class_slot_free(day_idx: int, period_idx: int, target_class: str, num_periods: int = 1) -> bool:
         day_str = days[day_idx]
         for assigned in initial_solution[day_str]:
-            assigned_period = assigned["periods"]["period"]  # 0ベース
-            assigned_length = assigned["periods"].get("length", 1)  # デフォルトは1コマ
+            assigned_period = assigned["periods"]["period"]  # 0-based
+            assigned_length = assigned["periods"].get("length", 1)  # default 1 period
             assigned_num_periods = get_num_periods(assigned_length)
 
             for offset in range(num_periods):
@@ -173,12 +177,20 @@ def generate_initial_solution(
         """
         cat3_courses = [c for c in courses if get_teacher_category(c) == 3 and get_num_periods(c.get("length", 2)) == 2]
 
-        for course in cat3_courses:
+        # 割り当て可能なスロットが少ない順、かつ教員数が多い順にソート
+        # これにより、スロットが少なく教員数が多い授業が優先的に割り当てられます
+        cat3_courses_sorted = sorted(
+            cat3_courses,
+            key=lambda course: (get_num_possible_slots(course), -len(course.get("instructors", [])))
+        )
+
+        for course in cat3_courses_sorted:
             assigned = False  # 割り当てフラグ
             for day_idx in range(len(days)):
                 for period_idx in range(periods_per_day - 1):  # 2コマ連続なので -1
                     for grade in grade_groups:
                         if not is_class_slot_free(day_idx, period_idx, grade, num_periods=2):
+                            # logging.debug(f"授業「{course['name']}」のスロット（{days[day_idx]}, {period_idx}）がクラス「{grade}」で使用中です。")
                             continue
                         if is_unscheduled(course) and (grade in course["targets"]):
                             if can_assign_length4(course, day_idx, period_idx, grade):
@@ -186,6 +198,7 @@ def generate_initial_solution(
                                 assign_course_length2(course, day_idx, period_idx)      # 1コマ目
                                 assign_course_length2(course, day_idx, period_idx + 1)  # 2コマ目
                                 assigned = True
+                                 #logging.debug(f"授業「{course['name']}」をスロット（{days[day_idx]}, {period_idx}）と（{days[day_idx]}, {period_idx + 1}）に割り当てました。")
                                 break  # 割り当て成功でループ終了
                     if assigned:
                         break  # 割り当て成功で次のコースへ
@@ -200,6 +213,7 @@ def generate_initial_solution(
             2. 各曜日（例: 月曜日から金曜日）を順番に確認し、割り当て可能な授業を探す
         割り当ての優先順位:
             periodsのlengthが小さい順（開催できる時間が少ない授業から）
+            かつ教員の数が多い順
         """
         # cat=3 かつ length=2 のコースを取得
         cat3_courses = [
@@ -207,8 +221,11 @@ def generate_initial_solution(
             if get_teacher_category(c) == 3 and get_num_periods(c.get("length", 2)) == 1
         ]
 
-        # periodsの少ない順にソート（割り当て優先度が高い順）
-        length2_courses_sorted = sorted(cat3_courses, key=get_num_possible_slots)
+        # periodsの少ない順、かつ教員数が多い順にソート
+        length2_courses_sorted = sorted(
+            cat3_courses,
+            key=lambda course: (get_num_possible_slots(course), -len(course.get("instructors", [])))
+        )
 
         # 各コマごとに割り当てを試みる（例: 1コマ目から4コマ目まで）
         for period in range(periods_per_day):
@@ -222,7 +239,37 @@ def generate_initial_solution(
                         if is_class_slot_free(day_idx, period, grade, num_periods=1):
                             if can_assign_length2(course, day_idx, period, grade):
                                 assign_course_length2(course, day_idx, period)
+                                #logging.debug(f"授業「{course['name']}」をスロット（{days[day_idx]}, {period}）に割り当てました。")
                                 break  # このコースは割り当てられたので次のコースへ
+
+    # -----------------------------------------
+    # 5) 「卒業研究」コースの割り当て関数
+    # -----------------------------------------
+    def assign_graduation_courses(graduation_courses: List[Dict]):
+        """
+        「卒業研究」コースを後から割り当てる。
+        各「卒業研究」コースは特定のターゲットクラス（ME5, IE5, CA5）に対して割り当てる。
+        """
+        for course in graduation_courses:
+            assigned = False
+            # 「卒業研究」コースは length=2 と仮定
+            for day_idx in range(len(days)):
+                for period_idx in range(periods_per_day):
+                    for grade in grade_groups:
+                        if grade not in course["targets"]:
+                            continue  # 対象クラスでなければスキップ
+                        if is_class_slot_free(day_idx, period_idx, grade, num_periods=1):
+                            if can_assign_length2(course, day_idx, period_idx, grade):
+                                assign_course_length2(course, day_idx, period_idx)
+                                assigned = True
+                                #logging.debug(f"卒業研究コース「{course['name']}」をスロット（{days[day_idx]}, {period_idx}）に割り当てました。")
+                                break  # 割り当て成功で次のコースへ
+                    if assigned:
+                        break
+                if assigned:
+                    break
+            if not assigned:
+                logging.debug(f"卒業研究コース '{get_unique_course_key(course)}' を割り当てられませんでした。")
 
     # -----------------------------------------
     # 6) 割り当て可能かどうかの関数群
@@ -237,23 +284,28 @@ def generate_initial_solution(
         }
 
         if (day_idx + 1, period_idx + 1) not in valid_slots:
+            # logging.debug(f"授業「{course['name']}」のスロット（{days[day_idx]}, {period_idx}）が有効なスロットではありません。")
             return False
 
         # クラス競合
         for tgt in course["targets"]:
             if not is_class_slot_free(day_idx, period_idx, tgt, num_periods=num_periods):
+                # logging.debug(f"授業「{course['name']}」のスロット（{days[day_idx]}, {period_idx}）がクラス「{tgt}」で使用中です。")
                 return False
 
         # 教員競合
         for instr in course["instructors"]:
             if instr in instructor_schedule[day_idx][period_idx]:
+                # logging.debug(f"授業「{course['name']}」の教員「{instr}」がスロット（{days[day_idx]}, {period_idx}）で使用中です。")
                 return False
             if not is_instructor_available(instr, day_idx, period_idx):
+                # logging.debug(f"授業「{course['name']}」の教員「{instr}」がスロット（{days[day_idx]}, {period_idx}）に対応不可です。")
                 return False
 
         # 教室競合
         for r in course["rooms"]:
             if r in room_schedule[day_idx][period_idx]:
+                # logging.debug(f"授業「{course['name']}」の教室「{r}」がスロット（{days[day_idx]}, {period_idx}）で使用中です。")
                 return False
 
         return True
@@ -263,7 +315,8 @@ def generate_initial_solution(
 
         # Check if two consecutive periods are within the day's schedule
         if period_idx + num_periods > periods_per_day:
-            return False  # 次の期間が存在しない
+            logging.debug(f"授業「{course['name']}」のスロット（{days[day_idx]}, {period_idx}）から連続{num_periods}コマが範囲外です。")
+            return False  # 範囲外
 
         valid_slots = {
             (p["day"], p["period"])
@@ -274,11 +327,13 @@ def generate_initial_solution(
         for offset in range(num_periods):
             current_period = period_idx + offset
             if (day_idx + 1, current_period + 1) not in valid_slots:
+                # logging.debug(f"授業「{course['name']}」のスロット（{days[day_idx]}, {current_period}）が有効なスロットではありません。")
                 return False
 
         # クラス競合
         for tgt in course["targets"]:
             if not is_class_slot_free(day_idx, period_idx, tgt, num_periods=num_periods):
+                # logging.debug(f"授業「{course['name']}」のスロット（{days[day_idx]}, {period_idx}）がクラス「{tgt}」で使用中です。")
                 return False
 
         # 教員競合
@@ -286,8 +341,10 @@ def generate_initial_solution(
             for offset in range(num_periods):
                 current_period = period_idx + offset
                 if instr in instructor_schedule[day_idx][current_period]:
+                    # logging.debug(f"授業「{course['name']}」の教員「{instr}」がスロット（{days[day_idx]}, {current_period}）で使用中です。")
                     return False
                 if not is_instructor_available(instr, day_idx, current_period):
+                    # logging.debug(f"授業「{course['name']}」の教員「{instr}」がスロット（{days[day_idx]}, {current_period}）に対応不可です。")
                     return False
 
         # 教室競合
@@ -295,6 +352,7 @@ def generate_initial_solution(
             for offset in range(num_periods):
                 current_period = period_idx + offset
                 if r in room_schedule[day_idx][current_period]:
+                    # logging.debug(f"授業「{course['name']}」の教室「{r}」がスロット（{days[day_idx]}, {current_period}）で使用中です。")
                     return False
 
         return True
@@ -347,6 +405,7 @@ def generate_initial_solution(
                             if can_assign_length2(course, day_idx, period_idx, grade):
                                 assign_course_length2(course, day_idx, period_idx)
                                 assigned = True
+                                #logging.debug(f"卒業研究コース「{course['name']}」をスロット（{days[day_idx]}, {period_idx}）に割り当てました。")
                                 break  # 割り当て成功で次のコースへ
                     if assigned:
                         break

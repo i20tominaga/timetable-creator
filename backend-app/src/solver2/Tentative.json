@@ -1,0 +1,273 @@
+[DEBUG
+][H1
+] Monday slot=3: 教員 '高山' が重複
+   既存: {'Subject': '創造製作', 'Targets': ['IE5'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW', 'IEソフト'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': '創造製作', 'Targets': ['IE5'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW', 'IEソフト'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Monday slot=3: 教員 '浦上' が重複
+   既存: {'Subject': '創造製作', 'Targets': ['IE5'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW', 'IEソフト'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': '創造製作', 'Targets': ['IE5'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW', 'IEソフト'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Monday slot=3: 教員 '荻原' が重複
+   既存: {'Subject': '創造製作', 'Targets': ['IE5'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW', 'IEソフト'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': '創造製作', 'Targets': ['IE5'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW', 'IEソフト'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Tuesday slot=1: 教員 '島袋' が重複
+   既存: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 0, 'length': 2
+}
+   新規: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 1, 'length': 2
+}
+[DEBUG
+][H1
+] Tuesday slot=1: 教員 '温品' が重複
+   既存: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 0, 'length': 2
+}
+   新規: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 1, 'length': 2
+}
+[DEBUG
+][H1
+] Tuesday slot=1: 教員 '桑嶋' が重複
+   既存: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 0, 'length': 2
+}
+   新規: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 1, 'length': 2
+}
+[DEBUG
+][H1
+] Tuesday slot=1: 教員 '海田' が重複
+   既存: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 0, 'length': 2
+}
+   新規: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 1, 'length': 2
+}
+[DEBUG
+][H1
+] Tuesday slot=1: 教員 '山根' が重複
+   既存: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 0, 'length': 2
+}
+   新規: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 1, 'length': 2
+}
+[DEBUG
+][H1
+] Tuesday slot=1: 教員 '荒木' が重複
+   既存: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 0, 'length': 2
+}
+   新規: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 1, 'length': 2
+}
+[DEBUG
+][H1
+] Tuesday slot=3: 教員 '原田' が重複
+   既存: {'Subject': '電子情報通信システム実験', 'Targets': ['IE5'
+    ], 'Instructors': ['原田', '浦上'
+    ], 'Rooms': ['IE電算', 'IE実験', 'IEソフト'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': '電子情報通信システム実験', 'Targets': ['IE5'
+    ], 'Instructors': ['原田', '浦上'
+    ], 'Rooms': ['IE電算', 'IE実験', 'IEソフト'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Tuesday slot=3: 教員 '浦上' が重複
+   既存: {'Subject': '電子情報通信システム実験', 'Targets': ['IE5'
+    ], 'Instructors': ['原田', '浦上'
+    ], 'Rooms': ['IE電算', 'IE実験', 'IEソフト'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': '電子情報通信システム実験', 'Targets': ['IE5'
+    ], 'Instructors': ['原田', '浦上'
+    ], 'Rooms': ['IE電算', 'IE実験', 'IEソフト'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Tuesday slot=2: 教員 '海田' が重複
+   既存: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 1, 'length': 2
+}
+   新規: {'Subject': '力と変形', 'Targets': ['CA1'
+    ], 'Instructors': ['海田', '山根'
+    ], 'Rooms': ['設計製作'
+    ], 'period': 2, 'length': 1
+}
+[DEBUG
+][H1
+] Tuesday slot=2: 教員 '山根' が重複
+   既存: {'Subject': '基礎工学実験', 'Targets': ['CA3'
+    ], 'Instructors': ['島袋', '温品', '桑嶋', '海田', '山根', '荒木'
+    ], 'Rooms': ['2パ'
+    ], 'period': 1, 'length': 2
+}
+   新規: {'Subject': '力と変形', 'Targets': ['CA1'
+    ], 'Instructors': ['海田', '山根'
+    ], 'Rooms': ['設計製作'
+    ], 'period': 2, 'length': 1
+}
+[DEBUG
+][H1
+] Wednesday slot=3: 教員 '原田' が重複
+   既存: {'Subject': '電子工学実験', 'Targets': ['IE3'
+    ], 'Instructors': ['原田', '増井', '杉村'
+    ], 'Rooms': ['IE実験'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': '電子工学実験', 'Targets': ['IE3'
+    ], 'Instructors': ['原田', '増井', '杉村'
+    ], 'Rooms': ['IE実験'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Wednesday slot=3: 教員 '増井' が重複
+   既存: {'Subject': '電子工学実験', 'Targets': ['IE3'
+    ], 'Instructors': ['原田', '増井', '杉村'
+    ], 'Rooms': ['IE実験'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': '電子工学実験', 'Targets': ['IE3'
+    ], 'Instructors': ['原田', '増井', '杉村'
+    ], 'Rooms': ['IE実験'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Wednesday slot=3: 教員 '杉村' が重複
+   既存: {'Subject': '電子工学実験', 'Targets': ['IE3'
+    ], 'Instructors': ['原田', '増井', '杉村'
+    ], 'Rooms': ['IE実験'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': '電子工学実験', 'Targets': ['IE3'
+    ], 'Instructors': ['原田', '増井', '杉村'
+    ], 'Rooms': ['IE実験'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Wednesday slot=3: 教員 '新田' が重複
+   既存: {'Subject': 'コンピュータシステム実験', 'Targets': ['IE4'
+    ], 'Instructors': ['新田', '柳澤'
+    ], 'Rooms': ['IE電算', '2スタCW'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': 'コンピュータシステム実験', 'Targets': ['IE4'
+    ], 'Instructors': ['新田', '柳澤'
+    ], 'Rooms': ['IE電算', '2スタCW'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Wednesday slot=3: 教員 '柳澤' が重複
+   既存: {'Subject': 'コンピュータシステム実験', 'Targets': ['IE4'
+    ], 'Instructors': ['新田', '柳澤'
+    ], 'Rooms': ['IE電算', '2スタCW'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': 'コンピュータシステム実験', 'Targets': ['IE4'
+    ], 'Instructors': ['新田', '柳澤'
+    ], 'Rooms': ['IE電算', '2スタCW'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Thursday slot=3: 教員 '高山' が重複
+   既存: {'Subject': '創造演習', 'Targets': ['IE4'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': '創造演習', 'Targets': ['IE4'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Thursday slot=3: 教員 '浦上' が重複
+   既存: {'Subject': '創造演習', 'Targets': ['IE4'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': '創造演習', 'Targets': ['IE4'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW'
+    ], 'period': 3, 'length': 2
+}
+[DEBUG
+][H1
+] Thursday slot=3: 教員 '荻原' が重複
+   既存: {'Subject': '創造演習', 'Targets': ['IE4'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW'
+    ], 'period': 2, 'length': 2
+}
+   新規: {'Subject': '創造演習', 'Targets': ['IE4'
+    ], 'Instructors': ['高山', '浦上', '荻原'
+    ], 'Rooms': ['IE電算', 'IE実験', '2スタCW'
+    ], 'period': 3, 'length': 2
+}

@@ -1,0 +1,168 @@
+2025-01-28 13:31:01,814 INFO:=== イテレーション 1 開始 ===
+2025-01-28 13:31:01,851 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:31:04,969 DEBUG:http://localhost:3000 "POST /api/timetable/create/run1 HTTP/1.1" 404 None
+2025-01-28 13:31:05,111 ERROR:イテレーション 1: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/run1
+2025-01-28 13:31:05,111 INFO:=== イテレーション 2 開始 ===
+2025-01-28 13:31:05,115 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:31:05,258 DEBUG:http://localhost:3000 "POST /api/timetable/create/run2 HTTP/1.1" 404 None
+2025-01-28 13:31:05,270 ERROR:イテレーション 2: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/run2
+2025-01-28 13:31:05,271 INFO:=== イテレーション 3 開始 ===
+2025-01-28 13:31:05,273 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:31:05,445 DEBUG:http://localhost:3000 "POST /api/timetable/create/run3 HTTP/1.1" 404 None
+2025-01-28 13:31:05,454 ERROR:イテレーション 3: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/run3
+2025-01-28 13:31:05,454 INFO:=== イテレーション 4 開始 ===
+2025-01-28 13:31:05,457 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:31:05,531 DEBUG:http://localhost:3000 "POST /api/timetable/create/run4 HTTP/1.1" 404 None
+2025-01-28 13:31:05,535 ERROR:イテレーション 4: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/run4
+2025-01-28 13:31:05,535 INFO:=== イテレーション 5 開始 ===
+2025-01-28 13:31:05,538 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:31:05,650 DEBUG:http://localhost:3000 "POST /api/timetable/create/run5 HTTP/1.1" 404 None
+2025-01-28 13:31:05,657 ERROR:イテレーション 5: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/run5
+2025-01-28 13:31:05,657 INFO:=== イテレーション 6 開始 ===
+2025-01-28 13:31:05,660 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:31:05,899 DEBUG:http://localhost:3000 "POST /api/timetable/create/run6 HTTP/1.1" 404 None
+2025-01-28 13:31:05,938 ERROR:イテレーション 6: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/run6
+2025-01-28 13:31:05,938 INFO:=== イテレーション 7 開始 ===
+2025-01-28 13:31:05,942 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:31:06,005 DEBUG:http://localhost:3000 "POST /api/timetable/create/run7 HTTP/1.1" 404 None
+2025-01-28 13:31:06,011 ERROR:イテレーション 7: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/run7
+2025-01-28 13:31:06,012 INFO:=== イテレーション 8 開始 ===
+2025-01-28 13:31:06,015 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:31:06,214 DEBUG:http://localhost:3000 "POST /api/timetable/create/run8 HTTP/1.1" 404 None
+2025-01-28 13:31:06,219 ERROR:イテレーション 8: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/run8
+2025-01-28 13:31:06,219 INFO:=== イテレーション 9 開始 ===
+2025-01-28 13:31:06,224 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:31:06,528 DEBUG:http://localhost:3000 "POST /api/timetable/create/run9 HTTP/1.1" 404 None
+2025-01-28 13:31:06,530 ERROR:イテレーション 9: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/run9
+2025-01-28 13:31:06,530 INFO:=== イテレーション 10 開始 ===
+2025-01-28 13:31:06,533 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:31:06,603 DEBUG:http://localhost:3000 "POST /api/timetable/create/run10 HTTP/1.1" 404 None
+2025-01-28 13:31:06,605 ERROR:イテレーション 10: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/run10
+2025-01-28 13:31:06,607 INFO:=== 平均評価結果 (10回) ===
+2025-01-28 13:31:06,607 INFO:平均 Hard Violation Rate : 0.000
+2025-01-28 13:31:06,607 INFO:平均 Soft Violation Rate : 0.000
+2025-01-28 13:31:06,607 INFO:全てのイテレーションが完了し、平均評価結果が出力されました。
+2025-01-28 13:32:12,825 INFO:=== イテレーション 1 開始 ===
+2025-01-28 13:32:12,864 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:32:13,134 DEBUG:http://localhost:3000 "POST /api/timetable/create/Export1 HTTP/1.1" 404 None
+2025-01-28 13:32:13,147 ERROR:イテレーション 1: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/Export1
+2025-01-28 13:32:13,147 INFO:=== イテレーション 2 開始 ===
+2025-01-28 13:32:13,149 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:32:13,182 DEBUG:http://localhost:3000 "POST /api/timetable/create/Export2 HTTP/1.1" 404 None
+2025-01-28 13:32:13,186 ERROR:イテレーション 2: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/Export2
+2025-01-28 13:32:13,186 INFO:=== イテレーション 3 開始 ===
+2025-01-28 13:32:13,188 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:32:13,242 DEBUG:http://localhost:3000 "POST /api/timetable/create/Export3 HTTP/1.1" 404 None
+2025-01-28 13:32:13,246 ERROR:イテレーション 3: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/Export3
+2025-01-28 13:32:13,246 INFO:=== イテレーション 4 開始 ===
+2025-01-28 13:32:13,247 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:32:13,278 DEBUG:http://localhost:3000 "POST /api/timetable/create/Export4 HTTP/1.1" 404 None
+2025-01-28 13:32:13,281 ERROR:イテレーション 4: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/Export4
+2025-01-28 13:32:13,281 INFO:=== イテレーション 5 開始 ===
+2025-01-28 13:32:13,283 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:32:13,324 DEBUG:http://localhost:3000 "POST /api/timetable/create/Export5 HTTP/1.1" 404 None
+2025-01-28 13:32:13,326 ERROR:イテレーション 5: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/Export5
+2025-01-28 13:32:13,326 INFO:=== イテレーション 6 開始 ===
+2025-01-28 13:32:13,328 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:32:13,379 DEBUG:http://localhost:3000 "POST /api/timetable/create/Export6 HTTP/1.1" 404 None
+2025-01-28 13:32:13,381 ERROR:イテレーション 6: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/Export6
+2025-01-28 13:32:13,382 INFO:=== イテレーション 7 開始 ===
+2025-01-28 13:32:13,383 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:32:13,423 DEBUG:http://localhost:3000 "POST /api/timetable/create/Export7 HTTP/1.1" 404 None
+2025-01-28 13:32:13,425 ERROR:イテレーション 7: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/Export7
+2025-01-28 13:32:13,425 INFO:=== イテレーション 8 開始 ===
+2025-01-28 13:32:13,427 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:32:13,453 DEBUG:http://localhost:3000 "POST /api/timetable/create/Export8 HTTP/1.1" 404 None
+2025-01-28 13:32:13,455 ERROR:イテレーション 8: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/Export8
+2025-01-28 13:32:13,455 INFO:=== イテレーション 9 開始 ===
+2025-01-28 13:32:13,457 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:32:13,474 DEBUG:http://localhost:3000 "POST /api/timetable/create/Export9 HTTP/1.1" 404 None
+2025-01-28 13:32:13,477 ERROR:イテレーション 9: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/Export9
+2025-01-28 13:32:13,477 INFO:=== イテレーション 10 開始 ===
+2025-01-28 13:32:13,478 DEBUG:Starting new HTTP connection (1): localhost:3000
+2025-01-28 13:32:13,494 DEBUG:http://localhost:3000 "POST /api/timetable/create/Export10 HTTP/1.1" 404 None
+2025-01-28 13:32:13,498 ERROR:イテレーション 10: TypeScript APIの呼び出しに失敗: 404 Client Error: Not Found for url: http://localhost:3000/api/timetable/create/Export10
+2025-01-28 13:32:13,499 INFO:=== 平均評価結果 (10回) ===
+2025-01-28 13:32:13,499 INFO:平均 Hard Violation Rate : 0.000
+2025-01-28 13:32:13,499 INFO:平均 Soft Violation Rate : 0.000
+2025-01-28 13:32:13,499 INFO:全てのイテレーションが完了し、平均評価結果が出力されました。
+2025-01-28 13:34:20,032 INFO:=== イテレーション 1 開始 ===
+2025-01-28 13:34:20,088 DEBUG:Starting new HTTP connection (1): localhost:3001
+2025-01-28 13:34:20,240 DEBUG:http://localhost:3001 "POST /api/timetable/create/Export1 HTTP/1.1" 201 32839
+2025-01-28 13:34:20,241 INFO:イテレーション 1: TypeScript API呼び出し成功。ID: Export1
+2025-01-28 13:34:20,244 INFO:イテレーション 1: エクスポートファイルの読み込みに成功。ファイル: Export2.json
+2025-01-28 13:34:20,251 INFO:イテレーション 1: 評価が完了しました。Hard Violation Rate: 0.040607902735562314, Soft Violation Rate: 0.041237113402061855
+2025-01-28 13:34:20,251 INFO:イテレーション 1: 処理完了。
+2025-01-28 13:34:21,253 INFO:=== イテレーション 2 開始 ===
+2025-01-28 13:34:21,264 DEBUG:Starting new HTTP connection (1): localhost:3001
+2025-01-28 13:34:21,357 DEBUG:http://localhost:3001 "POST /api/timetable/create/Export2 HTTP/1.1" 201 32839
+2025-01-28 13:34:21,358 INFO:イテレーション 2: TypeScript API呼び出し成功。ID: Export2
+2025-01-28 13:34:21,360 INFO:イテレーション 2: エクスポートファイルの読み込みに成功。ファイル: Export3.json
+2025-01-28 13:34:21,365 INFO:イテレーション 2: 評価が完了しました。Hard Violation Rate: 0.08, Soft Violation Rate: 0.030927835051546393
+2025-01-28 13:34:21,365 INFO:イテレーション 2: 処理完了。
+2025-01-28 13:34:22,370 INFO:=== イテレーション 3 開始 ===
+2025-01-28 13:34:22,375 DEBUG:Starting new HTTP connection (1): localhost:3001
+2025-01-28 13:34:22,445 DEBUG:http://localhost:3001 "POST /api/timetable/create/Export3 HTTP/1.1" 201 32839
+2025-01-28 13:34:22,446 INFO:イテレーション 3: TypeScript API呼び出し成功。ID: Export3
+2025-01-28 13:34:22,447 INFO:イテレーション 3: エクスポートファイルの読み込みに成功。ファイル: Export4.json
+2025-01-28 13:34:22,451 INFO:イテレーション 3: 評価が完了しました。Hard Violation Rate: 0.08, Soft Violation Rate: 0.030927835051546393
+2025-01-28 13:34:22,451 INFO:イテレーション 3: 処理完了。
+2025-01-28 13:34:23,456 INFO:=== イテレーション 4 開始 ===
+2025-01-28 13:34:23,462 DEBUG:Starting new HTTP connection (1): localhost:3001
+2025-01-28 13:34:23,544 DEBUG:http://localhost:3001 "POST /api/timetable/create/Export4 HTTP/1.1" 201 32839
+2025-01-28 13:34:23,545 INFO:イテレーション 4: TypeScript API呼び出し成功。ID: Export4
+2025-01-28 13:34:23,546 INFO:イテレーション 4: エクスポートファイルの読み込みに成功。ファイル: Export5.json
+2025-01-28 13:34:23,550 INFO:イテレーション 4: 評価が完了しました。Hard Violation Rate: 0.08, Soft Violation Rate: 0.030927835051546393
+2025-01-28 13:34:23,550 INFO:イテレーション 4: 処理完了。
+2025-01-28 13:34:24,555 INFO:=== イテレーション 5 開始 ===
+2025-01-28 13:34:24,559 DEBUG:Starting new HTTP connection (1): localhost:3001
+2025-01-28 13:34:24,612 DEBUG:http://localhost:3001 "POST /api/timetable/create/Export5 HTTP/1.1" 201 32839
+2025-01-28 13:34:24,613 INFO:イテレーション 5: TypeScript API呼び出し成功。ID: Export5
+2025-01-28 13:34:24,614 INFO:イテレーション 5: エクスポートファイルの読み込みに成功。ファイル: Export6.json
+2025-01-28 13:34:24,617 INFO:イテレーション 5: 評価が完了しました。Hard Violation Rate: 0.08, Soft Violation Rate: 0.030927835051546393
+2025-01-28 13:34:24,618 INFO:イテレーション 5: 処理完了。
+2025-01-28 13:34:25,623 INFO:=== イテレーション 6 開始 ===
+2025-01-28 13:34:25,625 DEBUG:Starting new HTTP connection (1): localhost:3001
+2025-01-28 13:34:25,657 DEBUG:http://localhost:3001 "POST /api/timetable/create/Export6 HTTP/1.1" 201 32839
+2025-01-28 13:34:25,657 INFO:イテレーション 6: TypeScript API呼び出し成功。ID: Export6
+2025-01-28 13:34:25,659 INFO:イテレーション 6: エクスポートファイルの読み込みに成功。ファイル: Export7.json
+2025-01-28 13:34:25,663 INFO:イテレーション 6: 評価が完了しました。Hard Violation Rate: 0.08, Soft Violation Rate: 0.030927835051546393
+2025-01-28 13:34:25,663 INFO:イテレーション 6: 処理完了。
+2025-01-28 13:34:26,668 INFO:=== イテレーション 7 開始 ===
+2025-01-28 13:34:26,672 DEBUG:Starting new HTTP connection (1): localhost:3001
+2025-01-28 13:34:26,707 DEBUG:http://localhost:3001 "POST /api/timetable/create/Export7 HTTP/1.1" 201 32839
+2025-01-28 13:34:26,708 INFO:イテレーション 7: TypeScript API呼び出し成功。ID: Export7
+2025-01-28 13:34:26,709 INFO:イテレーション 7: エクスポートファイルの読み込みに成功。ファイル: Export8.json
+2025-01-28 13:34:26,713 INFO:イテレーション 7: 評価が完了しました。Hard Violation Rate: 0.08, Soft Violation Rate: 0.030927835051546393
+2025-01-28 13:34:26,713 INFO:イテレーション 7: 処理完了。
+2025-01-28 13:34:27,718 INFO:=== イテレーション 8 開始 ===
+2025-01-28 13:34:27,723 DEBUG:Starting new HTTP connection (1): localhost:3001
+2025-01-28 13:34:27,768 DEBUG:http://localhost:3001 "POST /api/timetable/create/Export8 HTTP/1.1" 201 32839
+2025-01-28 13:34:27,768 INFO:イテレーション 8: TypeScript API呼び出し成功。ID: Export8
+2025-01-28 13:34:27,769 INFO:イテレーション 8: エクスポートファイルの読み込みに成功。ファイル: Export9.json
+2025-01-28 13:34:27,773 INFO:イテレーション 8: 評価が完了しました。Hard Violation Rate: 0.08, Soft Violation Rate: 0.030927835051546393
+2025-01-28 13:34:27,773 INFO:イテレーション 8: 処理完了。
+2025-01-28 13:34:28,779 INFO:=== イテレーション 9 開始 ===
+2025-01-28 13:34:28,784 DEBUG:Starting new HTTP connection (1): localhost:3001
+2025-01-28 13:34:28,831 DEBUG:http://localhost:3001 "POST /api/timetable/create/Export9 HTTP/1.1" 201 32839
+2025-01-28 13:34:28,832 INFO:イテレーション 9: TypeScript API呼び出し成功。ID: Export9
+2025-01-28 13:34:28,833 INFO:イテレーション 9: エクスポートファイルの読み込みに成功。ファイル: Export10.json
+2025-01-28 13:34:28,837 INFO:イテレーション 9: 評価が完了しました。Hard Violation Rate: 0.08, Soft Violation Rate: 0.030927835051546393
+2025-01-28 13:34:28,837 INFO:イテレーション 9: 処理完了。
+2025-01-28 13:34:29,842 INFO:=== イテレーション 10 開始 ===
+2025-01-28 13:34:29,847 DEBUG:Starting new HTTP connection (1): localhost:3001
+2025-01-28 13:34:29,919 DEBUG:http://localhost:3001 "POST /api/timetable/create/Export10 HTTP/1.1" 201 32840
+2025-01-28 13:34:29,920 INFO:イテレーション 10: TypeScript API呼び出し成功。ID: Export10
+2025-01-28 13:34:29,921 INFO:イテレーション 10: エクスポートファイルの読み込みに成功。ファイル: Export11.json
+2025-01-28 13:34:29,926 INFO:イテレーション 10: 評価が完了しました。Hard Violation Rate: 0.08, Soft Violation Rate: 0.030927835051546393
+2025-01-28 13:34:29,926 INFO:イテレーション 10: 処理完了。
+2025-01-28 13:34:30,931 INFO:=== 平均評価結果 (10回) ===
+2025-01-28 13:34:30,931 INFO:平均 Hard Violation Rate : 0.076
+2025-01-28 13:34:30,932 INFO:平均 Soft Violation Rate : 0.032
+2025-01-28 13:34:30,932 INFO:平均 Hard Constraint H1_instructor_conflict = 0.000
+2025-01-28 13:34:30,932 INFO:平均 Hard Constraint H2_room_conflict = 0.000
+2025-01-28 13:34:30,932 INFO:平均 Hard Constraint H3_same_course_conflict = 0.000
+2025-01-28 13:34:30,932 INFO:平均 Hard Constraint H4_exceed_4_times_in_a_day = 0.000
+2025-01-28 13:34:30,932 INFO:平均 Hard Constraint H5_two_period_continuous = 0.380
+2025-01-28 13:34:30,932 INFO:平均 Soft Constraint S1_instructor_free_day = 0.032
+2025-01-28 13:34:30,932 INFO:全てのイテレーションが完了し、平均評価結果が出力されました。

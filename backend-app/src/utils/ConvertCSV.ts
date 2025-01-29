@@ -3,7 +3,7 @@ import { createArrayCsvWriter } from 'csv-writer';
 import * as timetableAPI from '../api/Timetable';
 
 // CSVファイルのパス
-const csvFilePath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Test.csv';
+const csvFilePath = '../../../SampleData/Test.csv';
 
 interface Period {
     period: number;

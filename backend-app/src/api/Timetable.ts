@@ -26,7 +26,7 @@ export function loadCourses(): Promise<CourseJson> {
             } else {
                 try {
                     const jsonData = JSON.parse(data);
-                    console.log("Loaded Courses:", jsonData.Courses); // ここで読み込まれたデータを確認
+                    //console.log("Loaded Courses:", jsonData.Courses); // ここで読み込まれたデータを確認
                     resolve({ Course: jsonData.Courses });
                 } catch (parseError) {
                     reject(parseError);
@@ -177,22 +177,22 @@ function roomAvailable(room: string, day: string, period: number, roomSchedule: 
 
 // 教員が指定された時間に出勤可能か確認する関数
 function instructorAvailable(instructor: string, day: number, period: number, instructorsData: InstructorJson): boolean {
-    console.log(`Checking availability for instructor ${instructor} on day ${day}, period ${period}`);
+    //console.log(`Checking availability for instructor ${instructor} on day ${day}, period ${period}`);
 
     const instructorInfo = instructorsData.Instructor.find(i => i.id === instructor);
     if (!instructorInfo) {
-        console.log(`Instructor ${instructor} not found in data.`);
+        //console.log(`Instructor ${instructor} not found in data.`);
         return false;
     }
 
     // インストラクターの可用性を確認
     const availability = instructorInfo.periods.find(p => p.day === day && p.period === period);
     if (!availability) {
-        console.log(`Instructor ${instructor} is not available on day ${day}, period ${period}.`);
+        //console.log(`Instructor ${instructor} is not available on day ${day}, period ${period}.`);
         return false;
     }
 
-    console.log(`Instructor ${instructor} is available on day ${day}, period ${period}.`);
+    //console.log(`Instructor ${instructor} is available on day ${day}, period ${period}.`);
     return true;
 }
 
@@ -566,10 +566,23 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
         rooms: [] as string[]
     });
 
-    const gradeGroups = ['ME1', 'IE1', 'CA1', 'ME2', 'IE2', 'CA2', 'ME3', 'IE3', 'CA3', 'ME4', 'IE4', 'CA4', 'ME5', 'IE5', 'CA5'];
+    let gradeGroups = ['ME1', 'IE1', 'CA1', 'ME2', 'IE2', 'CA2', 'ME3', 'IE3', 'CA3', 'ME4', 'IE4', 'CA4', 'ME5', 'IE5', 'CA5'];
     const dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
     const maxPeriodsPerDay = 4;
+
+    // シャッフル関数の定義
+    function shuffleArray<T>(array: T[]): T[] {
+        const shuffled = array.slice(); // 元の配列をコピー
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1)); // 0 ≤ j ≤ i
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // 要素を交換
+        }
+        return shuffled;
+    }
+
+    // シャッフルされたグ授業データを取得
+    coursesData.Course = shuffleArray(coursesData.Course);
 
     // スケジュール管理用のデータ構造
     const scheduledCourses = new Set<string>(); // 既にスケジュールされた授業（授業名とターゲットクラスの組み合わせ）
@@ -595,6 +608,9 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
         Days: dayOfWeek.map(day => ({ Day: day, Classes: [] }))
     };
 
+    //格納されなかった授業の総数をカウントする変数
+    let unscheduledCoursesCount = 0;
+
     // 教員の空き時間を確認する関数
     const isInstructorAvailableAt = (instrId: string, dayIndex: number, period: number): boolean => {
         const instructor = instructorsData.Instructor.find(instr => instr.id === instrId);
@@ -615,8 +631,11 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
         // このクラスをターゲットとする授業のリスト
         const availableCourses = coursesData.Course.filter(c => c.targets.includes(gradeGroup));
 
+        // 授業の順序をシャッフル
+        const shuffledAvailableCourses = shuffleArray(availableCourses);
+
         // 既にスケジュールされた授業を除外し、教員が存在する授業のみを選択
-        const unscheduledCourses = availableCourses.filter(c => {
+        const unscheduledCourses = shuffledAvailableCourses.filter(c => {
             // 授業名とターゲットクラスで一意に識別
             const courseIdentifier = c.name + "_" + gradeGroup;
             if (scheduledCourses.has(courseIdentifier)) return false;
@@ -634,9 +653,16 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
         for (const course of unscheduledCourses) {
             let scheduledFlag = false;
 
+            // 曜日と時限の順序をシャッフル（オプション）
+            const shuffledDayIndices = shuffleArray([...Array(dayOfWeek.length).keys()]);
+            const shuffledPeriodIndices = shuffleArray([...Array(maxPeriodsPerDay).keys()]);
+
             // 各曜日・時限を巡回してスケジュール可能か確認
-            for (let dayIndex = 0; dayIndex < dayOfWeek.length && !scheduledFlag; dayIndex++) {
-                for (let period = 0; period < maxPeriodsPerDay && !scheduledFlag; period++) {
+            for (const dayIndex of shuffledDayIndices) {
+                if (scheduledFlag) break;
+                for (const period of shuffledPeriodIndices) {
+                    if (scheduledFlag) break;
+
                     // 授業が指定する時間帯か確認
                     const isCourseAvailable = !course.periods || course.periods.some(p => p.day === dayIndex + 1 && p.period === period + 1);
 
@@ -698,7 +724,8 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
 
                             scheduledFlag = true;
                         } else {
-                            // デバッグ情報を出力
+                            // デバッグ情報を出力（必要に応じてコメントアウト可能）
+                            /*
                             if (!isInstructorNotBusy) {
                                 console.log(`Cannot schedule ${course.name} for class ${gradeGroup} at day ${dayIndex + 1}, period ${period + 1}: Instructor is busy`);
                             }
@@ -711,6 +738,7 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
                             if (!areTargetClassesAvailable) {
                                 console.log(`Cannot schedule ${course.name} at day ${dayIndex + 1}, period ${period + 1}: One or more target classes are not available`);
                             }
+                            */
                         }
                     }
                 }
@@ -718,11 +746,13 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
 
             // スケジュールに失敗した場合の処理
             if (!scheduledFlag) {
-                console.warn(`授業「${course.name}」をターゲットクラス「${course.targets.join(', ')}」にスケジュールできませんでした。`);
+                //console.warn(`授業「${course.name}」をターゲットクラス「${course.targets.join(', ')}」にスケジュールできませんでした。`);
+                unscheduledCoursesCount++;
             }
         }
     }
 
+    // 以下、卒業研究のスケジューリング部分は変更なし
     interface GraduateResearchCourse {
         name: string;
         instructors: string[];
@@ -775,8 +805,12 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
             throw new Error(`Unknown targetClass: ${targetClass}`);
         }
 
-        for (let dayIndex = 0; dayIndex < dayOfWeek.length; dayIndex++) {
-            for (let period = 0; period < maxPeriodsPerDay; period++) {
+        // 曜日と時限の順序をシャッフル（オプション）
+        const shuffledDayIndices = shuffleArray([...Array(dayOfWeek.length).keys()]);
+        const shuffledPeriodIndices = shuffleArray([...Array(maxPeriodsPerDay).keys()]);
+
+        for (const dayIndex of shuffledDayIndices) {
+            for (const period of shuffledPeriodIndices) {
                 // スロットが空いているか
                 if (scheduled[dayIndex][gradeIndex][period].courseName === "") {
                     // スケジュール可能か確認
@@ -828,7 +862,7 @@ export function convert3(coursesData: CourseJson, instructorsData: InstructorJso
             }
         }
     });
-
+    console.log("スケジュールされなかった授業の総数:", unscheduledCoursesCount);
     return rst;
 }
 
