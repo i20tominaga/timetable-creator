@@ -1,3 +1,5 @@
+# main.py
+
 import json
 import logging
 import requests
@@ -14,10 +16,11 @@ from Evaluation import evaluate_schedule_with_violation_rate
 
 def main():
     # 各種パス設定
-    courses_path = "../../../Data/First_Courses.json"
-    instructors_path = "../../../SampleData/Instructors.json"
+    courses_path = "../../../Data/First_Courses2023.json"
+    instructors_path = "../../../SampleData/Instructors2023.json"
     rooms_path = "../../../Data/Rooms.json"
-    maxsat_output_base_path = "../../..//Data/Schedule"   # ← 最適化後のスケジュール（後に番号を付与）
+    initial_schedule_file = "../../../Data/initial_schedule.json"  # 初期スケジュールのファイルパス（使用しない場合は削除）
+    maxsat_output_base_path = "../../../Data/Schedule"   # ← 最適化後のスケジュール（後に番号を付与）
     export_directory = "../../../SampleData/"           # ← Exportファイルの保存ディレクトリ
     export_base_name = "Export"
     export_extension = ".json"
@@ -36,6 +39,8 @@ def main():
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     periods_per_day = 4
 
+    logging.debug(f"Days list: {days}")
+
     # --- 1) データの読み込み ---
     try:
         with open(courses_path, "r", encoding="utf-8") as file:
@@ -49,16 +54,26 @@ def main():
         logging.error(f"データの読み込みに失敗しました: {e}")
         return
 
-    # --- 2) Greedy版の初期評価準備 ---
-    greedy_method_initial = f"{export_directory}{export_base_name}2{export_extension}"  # 初回のGreedyファイル
+    # --- 2) 初期スケジュールの生成 ---
     try:
-        with open(greedy_method_initial, "r", encoding="utf-8") as f:
-            greedy_data_initial = json.load(f)
-        greedy_eval_initial = evaluate_schedule_with_violation_rate(greedy_data_initial, instructors_data)
+        fulltime_courses = copy.deepcopy(courses_data.get("Courses", []))
+        instructors = copy.deepcopy(instructors_data.get("Instructor", []))
+        rooms = [room["name"] for room in rooms_data.get("Room", [])]
+
+        initial_solution = generate_initial_solution(
+            fulltime_courses=fulltime_courses,
+            rooms=rooms,
+            days=days,
+            periods_per_day=periods_per_day,
+            instructors_data=instructors,
+            rooms_data=rooms_data.get("Room", [])
+        )
+        logging.info("初期解の生成が完了しました。")
+        print("初期解の生成が完了しました。")
     except Exception as e:
-        print(f"[ERROR] Greedy版スケジュールの初期評価に失敗: {e}")
-        logging.error(f"Greedy版スケジュールの初期評価に失敗: {e}")
-        greedy_eval_initial = None
+        print(f"[ERROR] 初期解の生成に失敗しました: {e}")
+        logging.error(f"初期解の生成に失敗しました: {e}")
+        return
 
     # --- 3) MaxSATソルバーによる最適化と評価を10回実行 ---
     logging.info("=== MaxSATソルバーによる最適化と評価の10回実行開始 ===")
@@ -72,28 +87,12 @@ def main():
     maxsat_total_time = 0.0
     maxsat_times = []
 
-
     for i in range(1, maxsat_iterations + 1):
         logging.info(f"=== MaxSAT イテレーション {i} 開始 ===")
         print(f"\n=== MaxSAT イテレーション {i} ===")
 
         try:
             maxsat_start_time = time.perf_counter()
-            # 初期解の生成
-            fulltime_courses = copy.deepcopy(courses_data.get("Courses", []))
-            instructors = copy.deepcopy(instructors_data.get("Instructor", []))
-            rooms = [room["name"] for room in rooms_data.get("Room", [])]
-
-            initial_solution = generate_initial_solution(
-                fulltime_courses=fulltime_courses,
-                rooms=rooms,
-                days=days,
-                periods_per_day=periods_per_day,
-                instructors_data=instructors,
-                rooms_data=rooms_data.get("Room", [])
-            )
-            logging.info(f"イテレーション {i}: 初期解の生成が完了しました。")
-            print("初期解の生成が完了しました。")
 
             # MaxSATソルバーによる最適化
             improved_solution = optimize_schedule_with_reassignment(
@@ -107,9 +106,9 @@ def main():
             logging.info(f"イテレーション {i}: MaxSATソルバーによる最適化が完了しました。")
             print("MaxSATソルバーによる最適化が完了しました。")
 
-            # 結果をJSON形式に変換して保存
+            # 結果をJSON形式に変換して保存（期待する形式に修正）
             formatted_solution = {
-                day: {"Classes": classes} for day, classes in improved_solution.items()
+                day: classes for day, classes in improved_solution.items()
             }
             json_str = format_constraints_to_json(formatted_solution)
             maxsat_output_path = f"{maxsat_output_base_path}{i}{export_extension}"
@@ -125,7 +124,15 @@ def main():
             # 改善後スケジュールの評価
             with open(maxsat_output_path, "r", encoding="utf-8") as f:
                 improved_data = json.load(f)
-            improved_eval = evaluate_schedule_with_violation_rate(improved_data, instructors_data)
+
+            # 'Days' キーが含まれている場合は正しく変換
+            if "Days" in improved_data:
+                formatted_schedule = {day_info["Day"]: day_info["Classes"] for day_info in improved_data.get("Days", [])}
+            else:
+                # 'Days' キーがない場合はそのまま
+                formatted_schedule = improved_data
+
+            improved_eval = evaluate_schedule_with_violation_rate(formatted_schedule, instructors)
 
             print(f"=== イテレーション {i} の評価 ===")
             print(f"Hard Violation Rate : {improved_eval['hard_violation_rate']:.3f}")
@@ -185,9 +192,10 @@ def main():
             response = requests.post(url)
             response.raise_for_status()  # HTTPエラーがあれば例外を発生させる
             logging.info(f"イテレーション {i}: TypeScript API呼び出し成功。ID: {unique_id}")
+            print("TypeScript API呼び出しに成功しました。")
         except requests.RequestException as e:
-            print(f"[ERROR] イテレーション {i}: TypeScript APIの呼び出しに失敗: {e}")
-            logging.error(f"イテレーション {i}: TypeScript APIの呼び出しに失敗: {e}")
+            print(f"[ERROR] イテレーション {i}: TypeScript APIの呼び出しに失敗しました: {e}")
+            logging.error(f"イテレーション {i}: TypeScript APIの呼び出しに失敗しました: {e}")
             continue
         greedy_end_time = time.perf_counter()
         iteration_time = greedy_end_time - greedy_start_time
@@ -222,44 +230,39 @@ def main():
 
         # --- 4.4) 時間割の評価 ---
         try:
-            evaluation = evaluate_schedule_with_violation_rate(timetable_data, instructors_data)
+            # JSONの形式が {"id": "run1", "Days": [ { "Day": "Monday", "Classes": [...] }, ... ] } であるため、
+            # 評価関数が期待する形式（{ "Monday": [...], ... }）に変換する
+            formatted_schedule = {day_info["Day"]: day_info["Classes"] for day_info in timetable_data.get("Days", [])}
+            improved_eval = evaluate_schedule_with_violation_rate(formatted_schedule, instructors)
 
             print(f"=== イテレーション {i} の評価 ===")
-            print(f"Hard Violation Rate : {evaluation['hard_violation_rate']:.3f}")
-            print(f"Soft Violation Rate : {evaluation['soft_violation_rate']:.3f}")
+            print(f"Hard Violation Rate : {improved_eval['hard_violation_rate']:.3f}")
+            print(f"Soft Violation Rate : {improved_eval['soft_violation_rate']:.3f}")
 
             # 評価結果を累積
-            greedy_total_hard_violation += evaluation['hard_violation_rate']
-            greedy_total_soft_violation += evaluation['soft_violation_rate']
+            greedy_total_hard_violation += improved_eval['hard_violation_rate']
+            greedy_total_soft_violation += improved_eval['soft_violation_rate']
 
-            for constraint, rate in evaluation.get("hard_constraint_rates", {}).items():
+            for constraint, rate in improved_eval.get("hard_constraint_rates", {}).items():
                 if constraint not in greedy_total_hard_constraints:
                     greedy_total_hard_constraints[constraint] = 0.0
                 greedy_total_hard_constraints[constraint] += rate
 
-            for constraint, rate in evaluation.get("soft_constraint_rates", {}).items():
+            for constraint, rate in improved_eval.get("soft_constraint_rates", {}).items():
                 if constraint not in greedy_total_soft_constraints:
                     greedy_total_soft_constraints[constraint] = 0.0
                 greedy_total_soft_constraints[constraint] += rate
 
-            logging.info(f"イテレーション {i}: 評価が完了しました。Hard Violation Rate: {evaluation['hard_violation_rate']}, Soft Violation Rate: {evaluation['soft_violation_rate']}")
+            logging.info(f"イテレーション {i}: 評価が完了しました。Hard Violation Rate: {improved_eval['hard_violation_rate']}, Soft Violation Rate: {improved_eval['soft_violation_rate']}")
         except Exception as e:
-            print(f"[ERROR] イテレーション {i}: 時間割の評価に失敗: {e}")
-            logging.error(f"イテレーション {i}: 時間割の評価に失敗: {e}")
+            print(f"[ERROR] イテレーション {i}: 時間割の評価に失敗しました: {e}")
+            logging.error(f"イテレーション {i}: 時間割の評価に失敗しました: {e}")
             continue
 
         logging.info(f"イテレーション {i}: 処理完了。")
         time.sleep(1)  # APIサーバーに負荷をかけないための待機
 
     # --- 5) 平均評価結果の計算 ---
-    # MaxSATは10回
-    average_maxsat_hard_violation = maxsat_total_hard_violation / maxsat_iterations
-    average_maxsat_soft_violation = maxsat_total_soft_violation / maxsat_iterations
-
-    average_maxsat_hard_constraints = {k: v / maxsat_iterations for k, v in maxsat_total_hard_constraints.items()}
-    average_maxsat_soft_constraints = {k: v / maxsat_iterations for k, v in maxsat_total_soft_constraints.items()}
-
-    average_maxsat_time = maxsat_total_time / maxsat_iterations
     if maxsat_iterations > 0:
         average_maxsat_hard_violation = maxsat_total_hard_violation / maxsat_iterations
         average_maxsat_soft_violation = maxsat_total_soft_violation / maxsat_iterations
@@ -268,28 +271,25 @@ def main():
         average_maxsat_time = maxsat_total_time / maxsat_iterations
         min_maxsat_time = min(maxsat_times) if maxsat_times else 0.0
         max_maxsat_time = max(maxsat_times) if maxsat_times else 0.0
-        midiam_maxsat_time = sum(maxsat_times) / len(maxsat_times) if maxsat_times else 0.0
+        median_maxsat_time = sum(maxsat_times) / len(maxsat_times) if maxsat_times else 0.0
     else:
         average_maxsat_hard_violation = average_maxsat_soft_violation = 0.0
         average_maxsat_hard_constraints = average_maxsat_soft_constraints = {}
-        average_maxsat_time = min_maxsat_time = max_maxsat_time = midiam_maxsat_time = 0.0
-    # 貪欲法は10回
-    average_greedy_hard_violation = greedy_total_hard_violation / greedy_iterations
-    average_greedy_soft_violation = greedy_total_soft_violation / greedy_iterations
-
-    average_greedy_hard_constraints = {k: v / greedy_iterations for k, v in greedy_total_hard_constraints.items()}
-    average_greedy_soft_constraints = {k: v / greedy_iterations for k, v in greedy_total_soft_constraints.items()}
+        average_maxsat_time = min_maxsat_time = max_maxsat_time = median_maxsat_time = 0.0
 
     if greedy_iterations > 0:
+        average_greedy_hard_violation = greedy_total_hard_violation / greedy_iterations
+        average_greedy_soft_violation = greedy_total_soft_violation / greedy_iterations
+        average_greedy_hard_constraints = {k: v / greedy_iterations for k, v in greedy_total_hard_constraints.items()}
+        average_greedy_soft_constraints = {k: v / greedy_iterations for k, v in greedy_total_soft_constraints.items()}
         average_greedy_time = greedy_total_time / greedy_iterations
         min_greedy_time = min(greedy_times) if greedy_times else 0.0
         max_greedy_time = max(greedy_times) if greedy_times else 0.0
-        midiam_greedy_time = sum(greedy_times) / len(greedy_times) if greedy_times else 0.0
+        median_greedy_time = sum(greedy_times) / len(greedy_times) if greedy_times else 0.0
     else:
         average_greedy_hard_violation = average_greedy_soft_violation = 0.0
         average_greedy_hard_constraints = average_greedy_soft_constraints = {}
-        average_greedy_time = min_greedy_time = max_greedy_time =midiam_greedy_time = 0.0
-
+        average_greedy_time = min_greedy_time = max_greedy_time = median_greedy_time = 0.0
 
     # --- 6) 平均評価結果の出力 ---
     print("\n=== 平均評価結果 ===")
@@ -299,7 +299,7 @@ def main():
     print(f"平均 作成時間 : {average_maxsat_time:.3f} 秒")
     print(f"最短 作成時間 : {min_maxsat_time:.3f} 秒")
     print(f"最長 作成時間 : {max_maxsat_time:.3f} 秒")
-    print(f"中央値 作成時間 : {midiam_maxsat_time:.3f} 秒")
+    print(f"中央値 作成時間 : {median_maxsat_time:.3f} 秒")
 
     print("平均 Hard Constraints:")
     for k, v in average_maxsat_hard_constraints.items():
@@ -314,7 +314,7 @@ def main():
     print(f"平均 作成時間 : {average_greedy_time:.3f} 秒")
     print(f"最短 作成時間 : {min_greedy_time:.3f} 秒")
     print(f"最長 作成時間 : {max_greedy_time:.3f} 秒")
-    print(f"中央値 作成時間 : {midiam_greedy_time:.3f} 秒")
+    print(f"中央値 作成時間 : {median_greedy_time:.3f} 秒")
 
     print("平均 Hard Constraints:")
     for k, v in average_greedy_hard_constraints.items():
@@ -330,7 +330,7 @@ def main():
     logging.info(f"平均 作成時間 : {average_maxsat_time:.3f} 秒")
     logging.info(f"最短 作成時間 : {min_maxsat_time:.3f} 秒")
     logging.info(f"最長 作成時間 : {max_maxsat_time:.3f} 秒")
-    logging.info(f"中央値 作成時間 : {midiam_maxsat_time:.3f} 秒")
+    logging.info(f"中央値 作成時間 : {median_maxsat_time:.3f} 秒")
 
     for k, v in average_maxsat_hard_constraints.items():
         logging.info(f"平均 Hard Constraint {k} = {v:.3f}")
@@ -343,7 +343,7 @@ def main():
     logging.info(f"平均 作成時間 : {average_greedy_time:.3f} 秒")
     logging.info(f"最短 作成時間 : {min_greedy_time:.3f} 秒")
     logging.info(f"最長 作成時間 : {max_greedy_time:.3f} 秒")
-    logging.info(f"中央値 作成時間 : {midiam_greedy_time:.3f} 秒")
+    logging.info(f"中央値 作成時間 : {median_greedy_time:.3f} 秒")
 
     for k, v in average_greedy_hard_constraints.items():
         logging.info(f"平均 Hard Constraint {k} = {v:.3f}")

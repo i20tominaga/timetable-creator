@@ -57,13 +57,22 @@ def find_conflicting_classes(
             conflicts.append(other_class)
     return conflicts
 
+def log_total_constraints(wcnf: WCNF):
+    """
+    ログファイルに総制約数を出力する関数。
+    """
+    num_hard = len(wcnf.hard)  # 修正箇所
+    num_soft = len(wcnf.soft)
+    total_constraints = num_hard + num_soft
+    logging.info(f"総制約数: {total_constraints} (ハード制約: {num_hard}, ソフト制約: {num_soft})")
+
 def optimize_schedule_with_reassignment(
     initial_solution: Dict[str, List[Dict[str, Any]]],
     days: List[str],
     periods_per_day: int,
     rooms: List[str],
     instructors_data: List[Dict[str, Any]],
-    courses_data: List[Dict[str, Any]],  # 必要な courses_data を含む
+    courses_data: List[Dict[str, Any]],
 ) -> Dict[str, List[Dict[str, Any]]]:
     """
     授業情報を基に、授業を削除せず再配置するスケジュール最適化。
@@ -110,6 +119,9 @@ def optimize_schedule_with_reassignment(
             for key, var in var_map.items()
             if key[0] == subject
         ]
+        if not class_vars:
+            logging.warning(f"授業 '{subject}' に割り当て可能なスロットがありません。")
+            continue
         wcnf.append(class_vars)  # 授業がいずれかのスロットに配置される
         for i in range(len(class_vars)):
             for j in range(i + 1, len(class_vars)):
@@ -145,16 +157,16 @@ def optimize_schedule_with_reassignment(
                         wcnf.append([-instructor_vars[i], -instructor_vars[j]])  # 排他制約
 
     # ソフト制約: 特定の曜日に担当授業が少ない教員を優先的に休みにする
-    # 授業数が少ない教員を再配置しやすくする
     instructor_daily_load = {instr["id"]: [0] * len(days) for instr in instructors_data}
 
     for var, class_info in var_to_class_info.items():
         for instructor in class_info["Instructors"]:
             instructor_daily_load[instructor][class_info["Day"]] += 1
+
     for day_idx, day in enumerate(days):
         for instructor_id, daily_loads in instructor_daily_load.items():
             if daily_loads[day_idx] > 0:
-                weight = 1000 / daily_loads[day_idx]
+                weight = 10000 / daily_loads[day_idx]
                 daily_vars = [
                     var
                     for var, class_info in var_to_class_info.items()
@@ -164,7 +176,10 @@ def optimize_schedule_with_reassignment(
                 if daily_vars:
                     wcnf.append([-v for v in daily_vars], weight=weight)
 
-    # MaxSATソルバーの実行
+    # ログに総制約数を出力
+    log_total_constraints(wcnf)
+
+    # ソルバーの実行
     try:
         solver = RC2(wcnf)
         model = solver.compute()
@@ -181,7 +196,16 @@ def optimize_schedule_with_reassignment(
     for var in model:
         if var > 0 and var in var_to_class_info:
             class_info = var_to_class_info[var]
-            optimized_solution[days[class_info["Day"]]].append({
+            day_index = class_info["Day"]
+            if not isinstance(day_index, int):
+                logging.error(f"Day index is not integer: {day_index} (type: {type(day_index)})")
+                continue
+            try:
+                day_name = days[day_index]
+            except IndexError:
+                logging.error(f"Day index {day_index} is out of range for days list.")
+                continue
+            optimized_solution[day_name].append({
                 "Subject": class_info["Subject"],
                 "StartPeriod": class_info["StartPeriod"],
                 "Room": class_info["Room"],

@@ -37,7 +37,7 @@ const fs = __importStar(require("fs"));
 const csv_writer_1 = require("csv-writer");
 const timetableAPI = __importStar(require("../api/Timetable"));
 // CSVファイルのパス
-const csvFilePath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Test.csv';
+const csvFilePath = '../../../SampleData/Test.csv';
 function convert(name) {
     return __awaiter(this, void 0, void 0, function* () {
         try {

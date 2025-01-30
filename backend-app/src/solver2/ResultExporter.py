@@ -1,10 +1,10 @@
+# ResultExporter.py
+
 import json
 import logging
-from typing import Dict, List
+from typing import Dict, List, Any
 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s:%(message)s')
-
-def format_constraints_to_json(schedule: Dict[str, Dict[str, List[Dict]]]) -> Dict:
+def format_constraints_to_json(schedule: Dict[str, List[Dict[str, Any]]]) -> Dict:
     """
     スケジュールをJSON形式に整形。
     """
@@ -13,10 +13,10 @@ def format_constraints_to_json(schedule: Dict[str, Dict[str, List[Dict]]]) -> Di
         "Days": []
     }
 
-    for day, data in schedule.items():
+    for day, classes in schedule.items():
         day_entry = {
             "Day": day,
-            "Classes": data["Classes"]
+            "Classes": classes
         }
         formatted_schedule["Days"].append(day_entry)
 
