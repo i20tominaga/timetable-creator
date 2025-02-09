@@ -322,21 +322,22 @@ def generate_initial_solution(
 
         def fill_length2_courses_for_cat3(courses: List[Dict]):
             """
-            常勤＆単数（cat=3）のコース (length=2=1コマ) を、
-            1コマ目(period=0)～3コマ目(period=2) の各曜日に対して埋める。
-            さらに「直接割り当てられない場合、既に割り当て済みの授業とスワップして再度割り当てを試す」簡易ロジックを追加。
+            常勤＆単数（cat=3）のコースのうち、length=2 (1コマ) を対象に、
+            1) まず (day_idx=0..金曜日, クラス順) で埋める
+            2) 金曜日の最後のクラス(CA5)まで終わったら、そのコマ(p)について
+            全曜日×全クラスを再チェックして空きが埋まるかぎり繰り返す
 
-            - day_idxとday_nameを厳密に紐づけし、ログ出力にズレが生じないようにする
-            - 空きコマがあっても直に入るコースがない場合、他コマの既存授業を一旦 unassign → 入れたいコースを格納 → unassigned したコースをどこかに再度入れられないかを試す
-            (実装はあくまでサンプルであり、本格的なローカルサーチではない)
+            - 1コマ目,2コマ目,3コマ目 (period=0,1,2) に対してこの仕組みを採用する
+            (period>=3 は除外 or 必要に応じて別ロジック)
             """
 
-            # 1) cat=3 & length=2(=1コマ) のコースだけ
+            # 1) 対象となる cat=3 & length=2(=1コマ授業) のコースを抽出
             cat3_courses = [
                 c for c in courses
                 if get_teacher_category(c) == 3 and get_num_periods(c.get("length", 2)) == 1
             ]
-            # ソート(従来通り)
+
+            # 必要に応じてソート（従来の例にならう）
             length2_courses_sorted = sorted(
                 cat3_courses,
                 key=lambda course: (
@@ -345,14 +346,18 @@ def generate_initial_solution(
                 )
             )
 
-            # period=0..2 のみ
-            for p in range(3):
-                # (A) まず曜日順に埋める
-                for day_idx, day_name in enumerate(days):
+            # 2) コマ(0,1,2) を順番に処理
+            for p in range(3):  # 1コマ目～3コマ目だけ
+
+                # 2.1) まずは月～金 (day_idx=0..len(days)-1) を順に埋める
+                for day_idx in range(len(days)):
+
+                    # 「同じ (day_idx, p) で空きがある限り繰り返す」ループ
                     while True:
                         assigned_something = False
 
                         for course in length2_courses_sorted:
+                            # frequency, 同日チェック
                             if not course_can_be_assigned(course, day_idx):
                                 continue
 
@@ -365,138 +370,87 @@ def generate_initial_solution(
                             if not can_place:
                                 continue
 
-                            # 教員・教室OKか
-                            rep_target = next(iter(course["targets"]), None)
-                            if rep_target and can_assign_length2(course, day_idx, p, rep_target):
+                            # 教員・教室チェック
+                            representative_target = next(iter(course["targets"]), None)
+                            if representative_target is None:
+                                continue
+                            if can_assign_length2(course, day_idx, p, representative_target):
                                 assign_course_length2(course, day_idx, p)
                                 assigned_something = True
-                                logging.debug(f"[fill_len2_cat3] Assigned {course['name']} -> {day_name}, p={p}")
+                                # 1コマ割り当てできたので、再度 whileループ頭に戻り、
+                                # 「さらにもう1つ入るものはないか」探す
                                 break
 
+                        # for course in length2_courses_sorted が終わった
                         if not assigned_something:
-                            break
+                            break  # 次の曜日へ
 
-                # (B) 金曜日(最後)まで行ったら 全曜日×全クラスを再チェック
+                # 2.2) 「金曜日の最後のクラス(CA5)まで埋めた」段階で、
+                #      もう一度最初から(全曜日×クラス)をチェックして空きコマが埋まるか繰り返す
+                #      入らないなら次のコマ(p+1)へ進む
+
                 while True:
                     assigned_something_global = False
 
-                    for day_idx, day_name in enumerate(days):
+                    # 全曜日を順番にチェック
+                    for day_idx in range(len(days)):
+                        # 全クラス (grade_groups) を順番にチェック
+                        #   例: ME1 -> IE1 -> CA1 -> ME2 -> IE2 -> CA2 -> ... CA5
                         for grade in grade_groups:
-                            # すでに埋まっているかチェック
-                            assigned_current = False
-                            for asn in initial_solution[day_name]:
+                            # 既に (day_idx, p) にこのクラスが入っていないか？
+                            # (=空きコマがあるか？)
+                            #   → もし入っていなければ、入れられるコースがあるかを探す
+                            #      入れられればアサインして assigned_something_global=True
+                            assigned_current_class = False
+                            for asn in initial_solution[days[day_idx]]:
                                 sp = asn["periods"]["period"]
                                 ln = asn["periods"]["length"]
-                                covered = [sp + off for off in range(ln)]
-                                if p in covered and (grade in asn["Targets"]):
-                                    assigned_current = True
+                                if p in [sp + off for off in range(ln)] and (grade in asn["Targets"]):
+                                    assigned_current_class = True
                                     break
+                            if assigned_current_class:
+                                # すでにこのクラスは pコマ目が埋まっている
+                                continue
+                            else:
+                                # このクラスが pコマ目に入っていない
+                                print(f"Checking {days[day_idx]} {grade} {p}")
 
-                            if assigned_current:
-                                continue  # 既に埋まってる
-
-                            # --- ここで「空きコマ」発見 ---
-                            logging.debug(f"[DEBUG] Found empty slot -> {day_name} p={p}, grade={grade}")
-
-                            # (1) まず直接入れられるコースを探す
-                            assigned_here = False
+                            # 空いているなら、コースを探す
+                            assigned_one_course = False
+                            # この曜日・コマに入れるコースを探す
                             for course in length2_courses_sorted:
                                 if not course_can_be_assigned(course, day_idx):
                                     continue
                                 if grade not in course["targets"]:
                                     continue
-                                # 全ターゲット空きチェック
+
+                                # このコースが(grade, p)に入るか
                                 can_place = True
-                                for g in course["targets"]:
-                                    if not is_class_slot_free(day_idx, p, g, num_periods=1):
-                                        can_place = False
-                                        break
-                                if not can_place:
-                                    continue
+                                if not is_class_slot_free(day_idx, p, grade, num_periods=1):
+                                    can_place = False
 
-                                if can_assign_length2(course, day_idx, p, grade):
-                                    assign_course_length2(course, day_idx, p)
-                                    assigned_something_global = True
-                                    assigned_here = True
-                                    logging.debug(f"[fill_len2_cat3] Re-check assigned {course['name']} -> {day_name}, p={p}")
-                                    break
-
-                            if assigned_here:
-                                # 次のクラスへ
-                                continue
-
-                            # (2) 直接入れられるコースが無い→スワップ試行してみる
-                            #     例: 適当にどこかの割り当てを1つ外し→この空きに入れてみる
-                            #     超簡易サンプル(本格的にはもっとしっかり選択ロジックが必要)
-                            logging.debug(f"[DEBUG] No direct course for {day_name}, p={p}, grade={grade} -> Trying swap")
-
-                            # ここでは "先頭のアサイン1件" を無理やり外して再度挑戦してみる という例
-                            # 適当にループして、unassign可能なコマを見つける
-                            swapped = False
-                            for swap_day_name in days:
-                                if swapped:
-                                    break
-                                for asn in initial_solution[swap_day_name]:
-                                    # unassign してみる
-                                    unassign_course_length2(
-                                        {
-                                            "name": asn["Subject"],
-                                            "instructors": asn["Instructors"],
-                                            "rooms": asn["Rooms"],
-                                            "targets": asn["Targets"],
-                                            "length": 2  # 1コマ
-                                        },
-                                        days.index(swap_day_name),
-                                        asn["periods"]["period"]
-                                    )
-                                    logging.debug(f"[DEBUG] Unassigned {asn['Subject']} from {swap_day_name}, p={asn['periods']['period']}")
-
-                                    # 再度(grade)コマを割り当て可能かを試す
-                                    assigned_here2 = False
-                                    for course in length2_courses_sorted:
-                                        if not course_can_be_assigned(course, day_idx):
-                                            continue
-                                        if grade not in course["targets"]:
-                                            continue
-                                        can_place2 = True
-                                        for g in course["targets"]:
-                                            if not is_class_slot_free(day_idx, p, g, num_periods=1):
-                                                can_place2 = False
-                                                break
-                                        if not can_place2:
-                                            continue
-                                        if can_assign_length2(course, day_idx, p, grade):
-                                            assign_course_length2(course, day_idx, p)
-                                            logging.debug(f"[SWAP] Assigned {course['name']} to fill empty {day_name} p={p}, grade={grade}")
-                                            assigned_something_global = True
-                                            assigned_here2 = True
-                                            swapped = True
-                                            break
-
-                                    if not assigned_here2:
-                                        # もし埋まらなかったら元に戻す
-                                        assign_course_length2(
-                                            {
-                                                "name": asn["Subject"],
-                                                "instructors": asn["Instructors"],
-                                                "rooms": asn["Rooms"],
-                                                "targets": asn["Targets"],
-                                                "length": 2
-                                            },
-                                            days.index(swap_day_name),
-                                            asn["periods"]["period"]
-                                        )
-                                        logging.debug(f"[SWAP] Failed to fill {day_name} p={p}, revert unassign {asn['Subject']}")
-                                    if swapped:
+                                if can_place:
+                                    # 教員・教室チェック
+                                    if can_assign_length2(course, day_idx, p, grade):
+                                        assign_course_length2(course, day_idx, p)
+                                        assigned_something_global = True
+                                        assigned_one_course = True
                                         break
 
-                            # swapを試してもダメなら仕方ないので空きのまま続行
+                            if assigned_one_course:
+                                # このクラスに1つ入れたら、次のクラスへ移る
+                                pass
 
+                    # for day_idx in range(len(days)): 終わり
+                    # もしまったく追加割り当てが発生しなければ、このコマの再チェックは完了
                     if not assigned_something_global:
-                        break  # 追加で入れられないなら終了
+                        break
 
-            logging.debug("[fill_length2_courses_for_cat3] Done filling period=0..2 (1～3コマ).")
+                # while True 終了 → pコマ目で追加割り当てはもう無い
+                # 次のコマ(p+1)へ進む
 
+            # ここで p in [0..2] の割り当てが終わり
+            # 関数終了
 
         # 次のコマ p+1 へ
         # ----------------------------------------------------

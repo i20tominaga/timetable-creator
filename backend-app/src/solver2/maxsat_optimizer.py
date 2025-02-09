@@ -1,4 +1,5 @@
 import logging
+import json
 from typing import Dict, List, Any
 from pysat.formula import WCNF
 from pysat.examples.rc2 import RC2
@@ -61,7 +62,7 @@ def log_total_constraints(wcnf: WCNF):
     """
     ログファイルに総制約数を出力する関数。
     """
-    num_hard = len(wcnf.hard)  # 修正箇所
+    num_hard = len(wcnf.hard)
     num_soft = len(wcnf.soft)
     total_constraints = num_hard + num_soft
     logging.info(f"総制約数: {total_constraints} (ハード制約: {num_hard}, ソフト制約: {num_soft})")
@@ -75,7 +76,17 @@ def optimize_schedule_with_reassignment(
     courses_data: List[Dict[str, Any]],
 ) -> Dict[str, List[Dict[str, Any]]]:
     """
-    授業情報を基に、授業を削除せず再配置するスケジュール最適化。
+    授業情報を基に、MaxSATソルバー(RC2)を用いて、スケジュール最適化を行います。
+
+    各授業は、利用可能なスロット（day, period, room）に対して変数を生成し、
+    ・「授業は必ずどこかのスロットに配置される」こと
+    ・「教室や教員の重複が起こらない」こと
+    といったハード制約を追加します。
+
+    さらに、下記のハード制約を追加することで、
+    各曜日の必須コマ（0-indexで period 0, 1, 2、すなわち1～3コマ目）には必ず授業が配置されるようにしています。
+
+    入力は「授業データ（courses_data）」「教室データ（rooms）」「教師データ（instructors_data）」となります。
     """
     logging.info("再配置を含むスケジュール最適化を開始します。")
 
@@ -122,10 +133,10 @@ def optimize_schedule_with_reassignment(
         if not class_vars:
             logging.warning(f"授業 '{subject}' に割り当て可能なスロットがありません。")
             continue
-        wcnf.append(class_vars)  # 授業がいずれかのスロットに配置される
+        wcnf.append(class_vars)
         for i in range(len(class_vars)):
             for j in range(i + 1, len(class_vars)):
-                wcnf.append([-class_vars[i], -class_vars[j]])  # 排他制約
+                wcnf.append([-class_vars[i], -class_vars[j]])
 
     # 制約2: 教室の競合を防ぐ
     for day_idx in range(len(days)):
@@ -138,7 +149,7 @@ def optimize_schedule_with_reassignment(
                 ]
                 for i in range(len(room_vars)):
                     for j in range(i + 1, len(room_vars)):
-                        wcnf.append([-room_vars[i], -room_vars[j]])  # 排他制約
+                        wcnf.append([-room_vars[i], -room_vars[j]])
 
     # 制約3: 教員の競合を防ぐ
     for instructor in instructors_data:
@@ -154,15 +165,27 @@ def optimize_schedule_with_reassignment(
                 ]
                 for i in range(len(instructor_vars)):
                     for j in range(i + 1, len(instructor_vars)):
-                        wcnf.append([-instructor_vars[i], -instructor_vars[j]])  # 排他制約
+                        wcnf.append([-instructor_vars[i], -instructor_vars[j]])
 
-    # ソフト制約: 特定の曜日に担当授業が少ない教員を優先的に休みにする
+    # 追加の必須制約: 各曜日の1～3コマ目（0-indexedで period 0,1,2）は必ず授業が配置される
+    for day_idx in range(len(days)):
+        for target_period in range(3):  # period 0, 1, 2
+            candidate_vars = [
+                var
+                for key, var in var_map.items()
+                if key[1] == day_idx and key[2] <= target_period < key[2] + var_to_class_info[var]["Length"]
+            ]
+            if candidate_vars:
+                # この曜日・コマには、候補のいずれかが採用されなければならない（ハード制約）
+                wcnf.append(candidate_vars)
+            else:
+                logging.warning(f"Day {day_idx}のperiod {target_period}に配置可能な授業候補が存在しません。")
+
+    # ソフト制約: 担当授業数が少ない教員を優先して休みにする（オプション）
     instructor_daily_load = {instr["id"]: [0] * len(days) for instr in instructors_data}
-
     for var, class_info in var_to_class_info.items():
         for instructor in class_info["Instructors"]:
             instructor_daily_load[instructor][class_info["Day"]] += 1
-
     for day_idx, day in enumerate(days):
         for instructor_id, daily_loads in instructor_daily_load.items():
             if daily_loads[day_idx] > 0:
@@ -170,13 +193,11 @@ def optimize_schedule_with_reassignment(
                 daily_vars = [
                     var
                     for var, class_info in var_to_class_info.items()
-                    if class_info["Day"] == day_idx
-                    and instructor_id in class_info["Instructors"]
+                    if class_info["Day"] == day_idx and instructor_id in class_info["Instructors"]
                 ]
                 if daily_vars:
                     wcnf.append([-v for v in daily_vars], weight=weight)
 
-    # ログに総制約数を出力
     log_total_constraints(wcnf)
 
     # ソルバーの実行
@@ -215,3 +236,62 @@ def optimize_schedule_with_reassignment(
 
     logging.info("再配置を含むスケジュール最適化が完了しました。")
     return optimized_solution
+
+def main():
+    courses_path = "../../../Data/First_Courses2023.json"
+    instructors_path = "../../../SampleData/Instructors2023.json"
+    rooms_path = "../../../Data/Rooms.json"
+    initial_schedule_file = "../../../Data/initial_schedule.json"  # 初期スケジュールのファイルパス（使用しない場合は削除）
+    maxsat_output_base_path = "../../../Data/Schedule"   # ← 最適化後のスケジュール（後に番号を付与）
+    export_directory = "../../../SampleData/"           # ← Exportファイルの保存ディレクトリ
+    export_base_name = "Export"
+    export_extension = ".json"
+
+    try:
+        with open(courses_path, "r", encoding="utf-8") as file:
+            courses_data = json.load(file)
+        with open(instructors_path, "r", encoding="utf-8") as file:
+            instructors_data = json.load(file)
+        with open(rooms_path, "r", encoding="utf-8") as file:
+            rooms_data = json.load(file)
+    except Exception as e:
+        print(f"[ERROR] データの読み込みに失敗しました: {e}")
+        logging.error(f"データの読み込みに失敗しました: {e}")
+        return
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+    periods_per_day = 6
+
+    # 初期スケジュールの読み込み（必要に応じて）
+    initial_solution = {}
+    if initial_schedule_file:
+        try:
+            with open(initial_schedule_file, "r", encoding="utf-8") as file:
+                initial_solution = json.load(file)
+        except Exception as e:
+            print(f"[ERROR] 初期スケジュールの読み込みに失敗しました: {e}")
+            logging.error(f"初期スケジュールの読み込みに失敗しました: {e}")
+
+    # スケジュールの最適化
+    optimized_schedule = optimize_schedule_with_reassignment(
+        initial_solution,
+        days,
+        periods_per_day,
+        rooms_data,
+        instructors_data,
+        courses_data
+    )
+
+    # 最適化されたスケジュールの保存
+    output_path = f"{maxsat_output_base_path}_optimized.json"
+    try:
+        with open(output_path, "w", encoding="utf-8") as file:
+            json.dump(optimized_schedule, file, ensure_ascii=False, indent=4)
+        print(f"最適化されたスケジュールを保存しました: {output_path}")
+        logging.info(f"最適化されたスケジュールを保存しました: {output_path}")
+    except Exception as e:
+        print(f"[ERROR] 最適化されたスケジュールの保存に失敗しました: {e}")
+        logging.error(f"最適化されたスケジュールの保存に失敗しました: {e}")
+
+if __name__ == "__main__":
+    main()
+    

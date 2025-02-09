@@ -27,7 +27,7 @@ exports.deleteFile = exports.deleteALL = exports.convert3 = exports.writeList = 
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 // ファイルパスの定義
-const coursesFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Data/First_Courses.json';
+const coursesFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Data/First_Courses2023.json';
 const roomsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/Data/Rooms.json';
 const listFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/TimeTables.json';
 const directoryPath = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData';
@@ -566,9 +566,12 @@ function convert3(coursesData, instructorsData, roomsData) {
     if (!coursesData || !coursesData.Course) {
         throw new Error('Invalid courses data');
     }
-    // 空のスロットを作成する関数を配列として返すように修正
-    const createEmptySlot = () => [];
-    const gradeGroups = ['ME1', 'IE1', 'CA1', 'ME2', 'IE2', 'CA2', 'ME3', 'IE3', 'CA3', 'ME4', 'IE4', 'CA4', 'ME5', 'IE5', 'CA5'];
+    const createEmptySlot = () => ({
+        courseName: "",
+        instructors: [],
+        rooms: []
+    });
+    let gradeGroups = ['ME1', 'IE1', 'CA1', 'ME2', 'IE2', 'CA2', 'ME3', 'IE3', 'CA3', 'ME4', 'IE4', 'CA4', 'ME5', 'IE5', 'CA5'];
     const dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     const maxPeriodsPerDay = 4;
     // シャッフル関数の定義
@@ -580,18 +583,18 @@ function convert3(coursesData, instructorsData, roomsData) {
         }
         return shuffled;
     }
-    // シャッフルされた授業データを取得
+    // シャッフルされたグ授業データを取得
     coursesData.Course = shuffleArray(coursesData.Course);
-    // スケジュール管理用のデータ構造を配列の配列に変更
+    // スケジュール管理用のデータ構造
     const scheduledCourses = new Set(); // 既にスケジュールされた授業（授業名とターゲットクラスの組み合わせ）
     const instructorSchedule = Array.from({ length: dayOfWeek.length }, () => Array.from({ length: maxPeriodsPerDay }, () => new Set()));
     const roomSchedule = Array.from({ length: dayOfWeek.length }, () => Array.from({ length: maxPeriodsPerDay }, () => new Set()));
-    // 各クラスの時間割を初期化（スロットは配列に変更）
+    // 各クラスの時間割を初期化
     const scheduled = Array.from({ length: dayOfWeek.length }, () => Array.from({ length: gradeGroups.length }, () => Array.from({ length: maxPeriodsPerDay }, () => createEmptySlot())));
     const rst = {
         Days: dayOfWeek.map(day => ({ Day: day, Classes: [] }))
     };
-    // 格納されなかった授業の総数をカウントする変数
+    //格納されなかった授業の総数をカウントする変数
     let unscheduledCoursesCount = 0;
     // 教員の空き時間を確認する関数
     const isInstructorAvailableAt = (instrId, dayIndex, period) => {
@@ -606,184 +609,6 @@ function convert3(coursesData, instructorsData, roomsData) {
             return instructor.periods.some(p => p.day === dayIndex + 1 && p.period === period + 1);
         }
     };
-    // そのクラスが (day_idx,period_idx) に既に入っていないか
-    const isClassSlotFree = (day_idx, period_idx, target_class, num_periods = 1) => {
-        const gradeIndex = gradeGroups.indexOf(target_class);
-        const scheduledSlots = scheduled[day_idx][gradeIndex][period_idx];
-        for (const assigned of scheduledSlots) {
-            if (assigned.courseName === "")
-                continue;
-            const assigned_period = period_idx; // 0-based
-            const assigned_length = assigned.rooms.length > 0 ? 1 : 1; // Adjust if length is stored differently
-            for (let offset = 0; offset < num_periods; offset++) {
-                const check_period = period_idx + offset;
-                if (check_period >= maxPeriodsPerDay) {
-                    return false; // 範囲外
-                }
-                if (assigned_length === 1) {
-                    if (assigned.courseName !== "" && assigned_period === check_period) {
-                        return false;
-                    }
-                }
-                // Add more conditions if length > 1 is handled differently
-            }
-        }
-        return true;
-    };
-    // カテゴリ判定
-    const getTeacherCategory = (course) => {
-        /**
-         * カテゴリを判定します。
-         * cat=0 => 非常勤&複数
-         * cat=1 => 非常勤&単数
-         * cat=2 => 常勤&複数
-         * cat=3 => 常勤&単数
-         */
-        const is_parttime = course.instructors.some((instrId) => {
-            const instructor = instructorsData.Instructor.find(instr => instr.id === instrId);
-            return instructor ? !instructor.isFullTime : false;
-        });
-        const num_targets = course.targets.length;
-        let category = 3; // デフォルト
-        if (is_parttime && num_targets > 1) {
-            category = 0;
-        }
-        else if (is_parttime && num_targets <= 1) {
-            category = 1;
-        }
-        else if (!is_parttime && num_targets > 1) {
-            category = 2;
-        }
-        else {
-            category = 3;
-        }
-        return category;
-    };
-    const getNumPossibleSlots = (course) => {
-        return course.periods ? course.periods.length : 0;
-    };
-    // getNumPeriods 関数を定義
-    const getNumPeriods = (length) => {
-        return Math.floor(length / 2); // length=2 => 1, length=4 => 2
-    };
-    // 割り当て可能かどうかの関数群
-    const canAssign = (course, day_idx, period_idx, grade, length) => {
-        // 1. 必要なすべての期間が利用可能か確認
-        for (let offset = 0; offset < length; offset++) {
-            const current_period = period_idx + offset;
-            if (current_period >= maxPeriodsPerDay) {
-                return false; // 範囲外
-            }
-            // 授業がその期間に対応可能か確認
-            if (course.periods && !course.periods.some((p) => p.day === day_idx + 1 && p.period === current_period + 1)) {
-                return false;
-            }
-            // クラススロットが空いているか確認
-            if (!isClassSlotFree(day_idx, current_period, grade, length)) {
-                return false;
-            }
-        }
-        // 2. 教員の空きと競合を確認
-        for (let instr of course.instructors) {
-            for (let offset = 0; offset < length; offset++) {
-                const current_period = period_idx + offset;
-                if (instructorSchedule[day_idx][current_period].has(instr)) {
-                    return false; // 教員が既に他の授業を担当
-                }
-                if (!isInstructorAvailableAt(instr, day_idx, current_period)) {
-                    return false; // 教員がその時間帯に対応不可
-                }
-            }
-        }
-        // 3. 教室の空きと競合を確認
-        for (let room of course.rooms) {
-            for (let offset = 0; offset < length; offset++) {
-                const current_period = period_idx + offset;
-                if (roomSchedule[day_idx][current_period].has(room)) {
-                    return false; // 教室が既に使用中
-                }
-            }
-        }
-        return true;
-    };
-    // 割り当て処理
-    const assignCourse = (course, day_idx, period_idx, grade, length) => {
-        for (let offset = 0; offset < length; offset++) {
-            const current_period = period_idx + offset;
-            // Assign to scheduled
-            scheduled[day_idx][gradeGroups.indexOf(grade)][current_period].push({
-                courseName: course.name,
-                instructors: course.instructors,
-                rooms: course.rooms
-            });
-            // Update instructor and room schedules
-            course.instructors.forEach((instr) => instructorSchedule[day_idx][current_period].add(instr));
-            course.rooms.forEach((room) => roomSchedule[day_idx][current_period].add(room));
-        }
-        // Update rst
-        rst.Days[day_idx].Classes.push({
-            Subject: course.name,
-            Instructors: course.instructors,
-            Rooms: course.rooms,
-            Targets: course.targets,
-            periods: {
-                period: period_idx,
-                length: length
-            },
-        });
-        // Mark as scheduled
-        course.targets.forEach((targetClass) => {
-            const courseIdentifier = `${course.name}_${targetClass}`;
-            scheduledCourses.add(courseIdentifier);
-        });
-    };
-    // 割り当て解除処理
-    const unassignCourse = (course, day_idx, period_idx, grade, length) => {
-        for (let offset = 0; offset < length; offset++) {
-            const current_period = period_idx + offset;
-            // Unassign from scheduled
-            scheduled[day_idx][gradeGroups.indexOf(grade)][current_period] = scheduled[day_idx][gradeGroups.indexOf(grade)][current_period].filter(cls => cls.courseName !== course.name || !course.instructors.every((instr) => cls.instructors.includes(instr)));
-            // Update instructor and room schedules
-            course.instructors.forEach((instr) => instructorSchedule[day_idx][current_period].delete(instr));
-            course.rooms.forEach((room) => roomSchedule[day_idx][current_period].delete(room));
-        }
-        // Remove from rst
-        rst.Days[day_idx].Classes = rst.Days[day_idx].Classes.filter(cls => cls.Subject !== course.name || !course.instructors.every((instr) => cls.Instructors.includes(instr)));
-        // Unmark as scheduled
-        course.targets.forEach((targetClass) => {
-            const courseIdentifier = `${course.name}_${targetClass}`;
-            scheduledCourses.delete(courseIdentifier);
-        });
-    };
-    // バックトラッキングによる再割り当て関数
-    const backtrackAssign = (unscheduledCourses, index = 0) => {
-        if (index >= unscheduledCourses.length) {
-            return true; // すべての授業が割り当てられた
-        }
-        const course = unscheduledCourses[index];
-        const category = getTeacherCategory(course);
-        const length = getNumPeriods(course.length);
-        // 優先度の高い順にスロットを試す
-        for (let day_idx = 0; day_idx < dayOfWeek.length; day_idx++) {
-            for (let period_idx = 0; period_idx < maxPeriodsPerDay; period_idx++) {
-                for (let grade of course.targets) {
-                    if (canAssign(course, day_idx, period_idx, grade, length)) {
-                        // Assign the course
-                        assignCourse(course, day_idx, period_idx, grade, length);
-                        // Recursively assign the next course
-                        if (backtrackAssign(unscheduledCourses, index + 1)) {
-                            return true;
-                        }
-                        // If assignment failed, unassign and try next slot
-                        unassignCourse(course, day_idx, period_idx, grade, length);
-                    }
-                }
-            }
-        }
-        // どのスロットにも割り当てられない場合
-        return false;
-    };
-    // 初期割り当て処理
     // 各クラスごとにスケジューリング
     for (let gradeIndex = 0; gradeIndex < gradeGroups.length; gradeIndex++) {
         const gradeGroup = gradeGroups[gradeIndex];
@@ -794,7 +619,7 @@ function convert3(coursesData, instructorsData, roomsData) {
         // 既にスケジュールされた授業を除外し、教員が存在する授業のみを選択
         const unscheduledCourses = shuffledAvailableCourses.filter(c => {
             // 授業名とターゲットクラスで一意に識別
-            const courseIdentifier = `${c.name}_${gradeGroup}`;
+            const courseIdentifier = c.name + "_" + gradeGroup;
             if (scheduledCourses.has(courseIdentifier))
                 return false;
             // 教員が存在するか確認
@@ -804,7 +629,7 @@ function convert3(coursesData, instructorsData, roomsData) {
             });
             return hasInstructors;
         });
-        // 授業ごとにスケジュール
+        // 授業ごとにスケジューリング
         for (const course of unscheduledCourses) {
             let scheduledFlag = false;
             // 曜日と時限の順序をシャッフル（オプション）
@@ -822,7 +647,7 @@ function convert3(coursesData, instructorsData, roomsData) {
                     if (!isCourseAvailable)
                         continue; // 指定された時間帯でない場合はスキップ
                     // スロットが空いているか
-                    if (scheduled[dayIndex][gradeIndex][period].length === 0) {
+                    if (scheduled[dayIndex][gradeIndex][period].courseName === "") {
                         // 教員が他の授業を担当していないか確認
                         const busyInstructors = instructorSchedule[dayIndex][period];
                         const isInstructorNotBusy = !course.instructors.some(instr => busyInstructors.has(instr));
@@ -834,17 +659,17 @@ function convert3(coursesData, instructorsData, roomsData) {
                         // ターゲットとなる他のクラスがその時間帯に空いているか確認（複数ターゲットの場合）
                         const areTargetClassesAvailable = course.targets.every(targetClass => {
                             const targetGradeIndex = gradeGroups.indexOf(targetClass);
-                            return scheduled[dayIndex][targetGradeIndex][period].length === 0;
+                            return scheduled[dayIndex][targetGradeIndex][period].courseName === "";
                         });
                         if (isInstructorNotBusy && isInstructorAvailable && isRoomAvailable && areTargetClassesAvailable) {
                             // ターゲットとなる各クラスのスケジュールに追加
                             course.targets.forEach(targetClass => {
                                 const targetGradeIndex = gradeGroups.indexOf(targetClass);
-                                scheduled[dayIndex][targetGradeIndex][period].push({
+                                scheduled[dayIndex][targetGradeIndex][period] = {
                                     courseName: course.name,
                                     instructors: course.instructors,
                                     rooms: course.rooms
-                                });
+                                };
                             });
                             // 教員と教室のスケジュールを更新
                             course.instructors.forEach(instr => busyInstructors.add(instr));
@@ -862,7 +687,7 @@ function convert3(coursesData, instructorsData, roomsData) {
                             });
                             // 授業をスケジュール済みとしてマーク（全ターゲットクラスについて）
                             course.targets.forEach(targetClass => {
-                                const courseIdentifier = `${course.name}_${targetClass}`;
+                                const courseIdentifier = course.name + "_" + targetClass;
                                 scheduledCourses.add(courseIdentifier);
                             });
                             scheduledFlag = true;
@@ -889,7 +714,7 @@ function convert3(coursesData, instructorsData, roomsData) {
             }
             // スケジュールに失敗した場合の処理
             if (!scheduledFlag) {
-                //console.warn(`授業「${course.name}」をターゲットクラス「${gradeGroup}」にスケジュールできませんでした。`);
+                //console.warn(`授業「${course.name}」をターゲットクラス「${course.targets.join(', ')}」にスケジュールできませんでした。`);
                 unscheduledCoursesCount++;
             }
         }
@@ -936,7 +761,7 @@ function convert3(coursesData, instructorsData, roomsData) {
         for (const dayIndex of shuffledDayIndices) {
             for (const period of shuffledPeriodIndices) {
                 // スロットが空いているか
-                if (scheduled[dayIndex][gradeIndex][period].length === 0) {
+                if (scheduled[dayIndex][gradeIndex][period].courseName === "") {
                     // スケジュール可能か確認
                     const isCourseAvailable = !graduateResearchCourse.periods.length || graduateResearchCourse.periods.some(p => p.day === dayIndex + 1 && p.period === period + 1);
                     if (!isCourseAvailable)
@@ -951,11 +776,11 @@ function convert3(coursesData, instructorsData, roomsData) {
                     const isRoomAvailable = !graduateResearchCourse.rooms.some(room => occupiedRooms.has(room));
                     if (isInstructorNotBusy && isInstructorAvailable && isRoomAvailable) {
                         // 時間割に追加
-                        scheduled[dayIndex][gradeIndex][period].push({
+                        scheduled[dayIndex][gradeIndex][period] = {
                             courseName: graduateResearchCourse.name,
                             instructors: graduateResearchCourse.instructors,
                             rooms: graduateResearchCourse.rooms
-                        });
+                        };
                         // 教員と教室のスケジュールを更新
                         graduateResearchCourse.instructors.forEach(instr => busyInstructors.add(instr));
                         graduateResearchCourse.rooms.forEach(room => occupiedRooms.add(room));
@@ -968,10 +793,10 @@ function convert3(coursesData, instructorsData, roomsData) {
                             periods: {
                                 period: period,
                                 length: 2
-                            },
+                            }
                         });
                         // 授業をスケジュール済みとしてマーク
-                        const courseIdentifier = `${graduateResearchCourse.name}_${targetClass}`;
+                        const courseIdentifier = graduateResearchCourse.name + "_" + targetClass;
                         scheduledCourses.add(courseIdentifier);
                     }
                 }
@@ -979,47 +804,6 @@ function convert3(coursesData, instructorsData, roomsData) {
         }
     });
     console.log("スケジュールされなかった授業の総数:", unscheduledCoursesCount);
-    // -----------------------------------------
-    // 12) 未割り当てのコースを特定しバックトラッキングを実行
-    // -----------------------------------------
-    // 未割り当てのコースを特定
-    const allKeys = new Set();
-    coursesData.Course.forEach(c => {
-        c.targets.forEach((target) => {
-            allKeys.add(`${c.name}_${target}`);
-        });
-    });
-    const unscheduled = Array.from(allKeys).filter(k => !scheduledCourses.has(k));
-    if (unscheduled.length > 0) {
-        console.log("=== 未割り当てのコースを再割り当てします ===");
-        // 未割り当てのコースオブジェクトを取得
-        const unscheduledCourses = coursesData.Course.filter(c => c.targets.some(target => {
-            const key = `${c.name}_${target}`;
-            return unscheduled.includes(key);
-        }));
-        // バックトラッキングで再割り当てを試みる
-        const success = backtrackAssign(unscheduledCourses);
-        if (success) {
-            console.log("バックトラッキングにより未割り当てのコースをすべて割り当てました。");
-        }
-        else {
-            console.log("バックトラッキングでも一部のコースを割り当てられませんでした。");
-        }
-    }
-    else {
-        console.log("全てのコースを初期割り当てでスケジュールできました。");
-    }
-    // 再度未割り当てのコースを特定
-    const finalUnscheduled = Array.from(allKeys).filter(k => !scheduledCourses.has(k));
-    if (finalUnscheduled.length > 0) {
-        console.log("=== 以下のコースは割り当てられませんでした ===");
-        finalUnscheduled.forEach(k => {
-            console.log(`  - ${k}`);
-        });
-    }
-    else {
-        console.log("全てのコースを割り当てました。");
-    }
     return rst;
 }
 exports.convert3 = convert3;

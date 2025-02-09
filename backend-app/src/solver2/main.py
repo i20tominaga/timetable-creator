@@ -1,5 +1,3 @@
-# main.py
-
 import json
 import logging
 import requests

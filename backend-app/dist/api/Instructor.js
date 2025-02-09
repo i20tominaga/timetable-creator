@@ -34,7 +34,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loadInstructors = exports.writeInstructors = void 0;
 const fs = __importStar(require("fs/promises"));
-const instructorsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Instructors.json';
+const instructorsFile = '/Users/tominagaayumu/Library/CloudStorage/OneDrive-独立行政法人国立高等専門学校機構/卒研/code/SampleData/Instructors2023.json';
 // 非同期でファイルに書き込み
 function writeInstructors(data) {
     return __awaiter(this, void 0, void 0, function* () {
